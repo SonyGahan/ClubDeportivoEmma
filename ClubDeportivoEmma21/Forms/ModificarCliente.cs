@@ -16,5 +16,15 @@ namespace ClubDeportivoEmma21.Forms
         {
             InitializeComponent();
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ModificarCliente_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

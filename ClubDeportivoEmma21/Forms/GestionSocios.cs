@@ -18,11 +18,7 @@ namespace ClubDeportivoEmma21.Forms
 
         private void btnSocioRegistrarSocio_Click(object sender, EventArgs e)
         {
-            // Abre el formulario de alta de socio y cierra este
-            AltaSocio altaSocio = new AltaSocio();
-            this.Hide();
-            altaSocio.ShowDialog();
-            this.Close();
+            new AltaSocio().ShowDialog();
         }
 
         private void btnSocioModificar_Click(object sender, EventArgs e)

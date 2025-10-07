@@ -42,6 +42,7 @@
             txtSocioMail = new TextBox();
             chbSocioAptoMedico = new CheckBox();
             btnRegistrarSocio = new Button();
+            btnCancelarAltaSocio = new Button();
             SuspendLayout();
             // 
             // lblSocioNombre
@@ -158,12 +159,24 @@
             btnRegistrarSocio.TabIndex = 13;
             btnRegistrarSocio.Text = "Registrar Socio";
             btnRegistrarSocio.UseVisualStyleBackColor = true;
+            btnRegistrarSocio.Click += btnRegistrarSocio_Click;
+            // 
+            // btnCancelarAltaSocio
+            // 
+            btnCancelarAltaSocio.Location = new Point(148, 332);
+            btnCancelarAltaSocio.Name = "btnCancelarAltaSocio";
+            btnCancelarAltaSocio.Size = new Size(160, 35);
+            btnCancelarAltaSocio.TabIndex = 14;
+            btnCancelarAltaSocio.Text = "Cancelar";
+            btnCancelarAltaSocio.UseVisualStyleBackColor = true;
+            btnCancelarAltaSocio.Click += btnCancelar_Click;
             // 
             // AltaSocio
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(394, 363);
+            ClientSize = new Size(433, 403);
+            Controls.Add(btnCancelarAltaSocio);
             Controls.Add(btnRegistrarSocio);
             Controls.Add(chbSocioAptoMedico);
             Controls.Add(txtSocioMail);
@@ -180,6 +193,7 @@
             Controls.Add(lblSocioNombre);
             Name = "AltaSocio";
             Text = "Alta Socio";
+            Load += AltaSocio_Load;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -200,5 +214,6 @@
         private TextBox txtSocioMail;
         private CheckBox chbSocioAptoMedico;
         private Button btnRegistrarSocio;
+        private Button btnCancelarAltaSocio;
     }
 }
