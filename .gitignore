@@ -1,0 +1,52 @@
+# -----------------------
+# .gitignore para .NET + Visual Studio
+# -----------------------
+
+# Carpetas de compilación
+bin/
+obj/
+
+# Configuración de Visual Studio
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Paquetes NuGet
+packages/
+*.nupkg
+*.nuget.props
+*.nuget.targets
+
+# Archivos de depuración
+*.pdb
+*.mdb
+
+# Archivos temporales
+Thumbs.db
+Desktop.ini
+*.tmp
+*.log
+
+# Carpetas de salida
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+arm/
+arm64/
+publish/
+
+# Archivos de configuración sensibles (¡nunca subir!)
+appsettings.Development.json
+appsettings.Local.json
+secrets.json
+appsettings.json
+.env
+*.env
+
+# Proyectos de prueba
+[TestRr]esult*/
