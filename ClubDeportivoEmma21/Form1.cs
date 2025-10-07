@@ -15,13 +15,6 @@ namespace ClubDeportivoEmma21
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            // Nada especial por ahora
-        }
-
-        private void btnAltas_Click(object sender, EventArgs e)
-        {
-            FormAltas f = new FormAltas();
-            f.ShowDialog();
         }
 
         private void btnConsultas_Click(object sender, EventArgs e)
@@ -33,6 +26,18 @@ namespace ClubDeportivoEmma21
         private void btnMorosos_Click(object sender, EventArgs e)
         {
             FormMorosos f = new FormMorosos();
+            f.ShowDialog();
+        }
+
+        private void btnGestionSocios_Click(object sender, EventArgs e)
+        {
+            GestionSocios f = new GestionSocios();
+            f.ShowDialog();
+        }
+
+        private void btnGestionNoSocios_Click(object sender, EventArgs e)
+        {
+            GestionNoSocios f = new GestionNoSocios();
             f.ShowDialog();
         }
 

@@ -28,19 +28,56 @@
         /// </summary>
         private void InitializeComponent()
         {
+            btnMorososImprimir = new Button();
+            btnMorososExportar = new Button();
+            btnMorososVolver = new Button();
             SuspendLayout();
+            // 
+            // btnMorososImprimir
+            // 
+            btnMorososImprimir.Location = new Point(61, 57);
+            btnMorososImprimir.Name = "btnMorososImprimir";
+            btnMorososImprimir.Size = new Size(121, 47);
+            btnMorososImprimir.TabIndex = 0;
+            btnMorososImprimir.Text = "Imprimir";
+            btnMorososImprimir.UseVisualStyleBackColor = true;
+            // 
+            // btnMorososExportar
+            // 
+            btnMorososExportar.Location = new Point(226, 57);
+            btnMorososExportar.Name = "btnMorososExportar";
+            btnMorososExportar.Size = new Size(121, 47);
+            btnMorososExportar.TabIndex = 1;
+            btnMorososExportar.Text = "Exportar";
+            btnMorososExportar.UseVisualStyleBackColor = true;
+            // 
+            // btnMorososVolver
+            // 
+            btnMorososVolver.Location = new Point(159, 161);
+            btnMorososVolver.Name = "btnMorososVolver";
+            btnMorososVolver.Size = new Size(107, 34);
+            btnMorososVolver.TabIndex = 2;
+            btnMorososVolver.Text = "Volver";
+            btnMorososVolver.UseVisualStyleBackColor = true;
             // 
             // FormMorosos
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(420, 233);
+            Controls.Add(btnMorososVolver);
+            Controls.Add(btnMorososExportar);
+            Controls.Add(btnMorososImprimir);
             Name = "FormMorosos";
-            Text = "Listado de Morosos";
+            Text = "Reporte de Vencimientos";
             Load += FormMorosos_Load;
             ResumeLayout(false);
         }
 
         #endregion
+
+        private Button btnMorososImprimir;
+        private Button btnMorososExportar;
+        private Button btnMorososVolver;
     }
 }
