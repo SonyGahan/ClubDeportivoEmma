@@ -162,6 +162,7 @@
             btnModificarCliente.TabIndex = 14;
             btnModificarCliente.Text = "Guardar Cambios";
             btnModificarCliente.UseVisualStyleBackColor = true;
+            btnModificarCliente.Click += btnModificarCliente_Click;
             // 
             // btnEliminarCliente
             // 
@@ -171,6 +172,7 @@
             btnEliminarCliente.TabIndex = 15;
             btnEliminarCliente.Text = "Dar de Baja";
             btnEliminarCliente.UseVisualStyleBackColor = true;
+            btnEliminarCliente.Click += btnEliminarCliente_Click;
             // 
             // lblIngresoDni
             // 
@@ -180,7 +182,6 @@
             lblIngresoDni.Size = new Size(71, 15);
             lblIngresoDni.TabIndex = 16;
             lblIngresoDni.Text = "Ingrese DNI:";
-            lblIngresoDni.Click += label1_Click;
             // 
             // txtIngresoDni
             // 
@@ -197,6 +198,7 @@
             btnBuscarCliente.TabIndex = 18;
             btnBuscarCliente.Text = "Buscar";
             btnBuscarCliente.UseVisualStyleBackColor = true;
+            btnBuscarCliente.Click += btnBuscarCliente_Click;
             // 
             // ModificarCliente
             // 

@@ -96,7 +96,7 @@
             Controls.Add(btnSocioModificar);
             Controls.Add(btnSocioRegistrarSocio);
             Name = "GestionSocios";
-            Text = "GestionSocios";
+            Text = "Gestion Socios";
             Load += GestionSocios_Load;
             ResumeLayout(false);
         }
