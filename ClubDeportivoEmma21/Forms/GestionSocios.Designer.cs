@@ -41,7 +41,7 @@
             btnSocioRegistrarSocio.Name = "btnSocioRegistrarSocio";
             btnSocioRegistrarSocio.Size = new Size(156, 66);
             btnSocioRegistrarSocio.TabIndex = 0;
-            btnSocioRegistrarSocio.Text = "Registrar Nuevo Socio";
+            btnSocioRegistrarSocio.Text = "Registrar Socio";
             btnSocioRegistrarSocio.UseVisualStyleBackColor = true;
             btnSocioRegistrarSocio.Click += btnSocioRegistrarSocio_Click;
             // 
@@ -77,9 +77,9 @@
             // 
             // btnSocioVolver
             // 
-            btnSocioVolver.Location = new Point(216, 319);
+            btnSocioVolver.Location = new Point(245, 294);
             btnSocioVolver.Name = "btnSocioVolver";
-            btnSocioVolver.Size = new Size(125, 30);
+            btnSocioVolver.Size = new Size(65, 30);
             btnSocioVolver.TabIndex = 4;
             btnSocioVolver.Text = "Volver";
             btnSocioVolver.UseVisualStyleBackColor = true;
@@ -89,7 +89,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(565, 403);
+            ClientSize = new Size(555, 368);
             Controls.Add(btnSocioVolver);
             Controls.Add(btnSocioCarnet);
             Controls.Add(btnSocioPagoCuota);

@@ -21,5 +21,10 @@ namespace ClubDeportivoEmma21.Forms
         {
 
         }
+
+        private void btnRegistrarNoSocio_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

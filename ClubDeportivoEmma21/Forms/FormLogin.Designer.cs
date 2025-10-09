@@ -37,9 +37,9 @@
             // 
             // btnLogin
             // 
-            btnLogin.Location = new Point(153, 187);
+            btnLogin.Location = new Point(176, 154);
             btnLogin.Name = "btnLogin";
-            btnLogin.Size = new Size(136, 39);
+            btnLogin.Size = new Size(100, 28);
             btnLogin.TabIndex = 0;
             btnLogin.Text = "Iniciar sesión";
             btnLogin.UseVisualStyleBackColor = true;
@@ -57,7 +57,7 @@
             // lblContrasena
             // 
             lblContrasena.AutoSize = true;
-            lblContrasena.Location = new Point(94, 120);
+            lblContrasena.Location = new Point(94, 104);
             lblContrasena.Name = "lblContrasena";
             lblContrasena.Size = new Size(70, 15);
             lblContrasena.TabIndex = 2;
@@ -65,24 +65,24 @@
             // 
             // txtUsuario
             // 
-            txtUsuario.Location = new Point(193, 54);
+            txtUsuario.Location = new Point(176, 54);
             txtUsuario.Name = "txtUsuario";
-            txtUsuario.Size = new Size(151, 23);
+            txtUsuario.Size = new Size(100, 23);
             txtUsuario.TabIndex = 3;
             // 
             // txtContrasena
             // 
-            txtContrasena.Location = new Point(193, 112);
+            txtContrasena.Location = new Point(176, 96);
             txtContrasena.Name = "txtContrasena";
             txtContrasena.PasswordChar = '*';
-            txtContrasena.Size = new Size(151, 23);
+            txtContrasena.Size = new Size(100, 23);
             txtContrasena.TabIndex = 4;
             // 
             // FormLogin
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(433, 319);
+            ClientSize = new Size(376, 227);
             Controls.Add(txtContrasena);
             Controls.Add(txtUsuario);
             Controls.Add(lblContrasena);

@@ -21,5 +21,10 @@ namespace ClubDeportivoEmma21.Forms
         {
 
         }
+
+        private void textBox1_TextChanged_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }

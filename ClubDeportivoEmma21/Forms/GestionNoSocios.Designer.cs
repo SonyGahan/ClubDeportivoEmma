@@ -40,7 +40,7 @@
             btnNoSociosRegistrar.Name = "btnNoSociosRegistrar";
             btnNoSociosRegistrar.Size = new Size(168, 63);
             btnNoSociosRegistrar.TabIndex = 0;
-            btnNoSociosRegistrar.Text = "Registrar Nuevo No Socio";
+            btnNoSociosRegistrar.Text = "Registrar No Socio";
             btnNoSociosRegistrar.UseVisualStyleBackColor = true;
             // 
             // btnNoSociosModificar
@@ -63,9 +63,9 @@
             // 
             // btnNoSociosVolver
             // 
-            btnNoSociosVolver.Location = new Point(110, 333);
+            btnNoSociosVolver.Location = new Point(144, 349);
             btnNoSociosVolver.Name = "btnNoSociosVolver";
-            btnNoSociosVolver.Size = new Size(126, 37);
+            btnNoSociosVolver.Size = new Size(67, 30);
             btnNoSociosVolver.TabIndex = 3;
             btnNoSociosVolver.Text = "Volver";
             btnNoSociosVolver.UseVisualStyleBackColor = true;

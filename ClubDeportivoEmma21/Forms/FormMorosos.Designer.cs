@@ -31,40 +31,63 @@
             btnMorososImprimir = new Button();
             btnMorososExportar = new Button();
             btnMorososVolver = new Button();
+            lstSociosMorosos = new ListView();
+            txtTituloMorosos = new TextBox();
             SuspendLayout();
             // 
             // btnMorososImprimir
             // 
-            btnMorososImprimir.Location = new Point(61, 57);
+            btnMorososImprimir.Location = new Point(522, 94);
             btnMorososImprimir.Name = "btnMorososImprimir";
-            btnMorososImprimir.Size = new Size(121, 47);
+            btnMorososImprimir.Size = new Size(70, 26);
             btnMorososImprimir.TabIndex = 0;
             btnMorososImprimir.Text = "Imprimir";
             btnMorososImprimir.UseVisualStyleBackColor = true;
+            btnMorososImprimir.Click += btnMorososImprimir_Click;
             // 
             // btnMorososExportar
             // 
-            btnMorososExportar.Location = new Point(226, 57);
+            btnMorososExportar.Location = new Point(522, 61);
             btnMorososExportar.Name = "btnMorososExportar";
-            btnMorososExportar.Size = new Size(121, 47);
+            btnMorososExportar.Size = new Size(70, 27);
             btnMorososExportar.TabIndex = 1;
             btnMorososExportar.Text = "Exportar";
             btnMorososExportar.UseVisualStyleBackColor = true;
+            btnMorososExportar.Click += btnMorososExportar_Click;
             // 
             // btnMorososVolver
             // 
-            btnMorososVolver.Location = new Point(159, 161);
+            btnMorososVolver.Location = new Point(522, 126);
             btnMorososVolver.Name = "btnMorososVolver";
-            btnMorososVolver.Size = new Size(107, 34);
+            btnMorososVolver.Size = new Size(70, 28);
             btnMorososVolver.TabIndex = 2;
             btnMorososVolver.Text = "Volver";
             btnMorososVolver.UseVisualStyleBackColor = true;
+            btnMorososVolver.Click += btnMorososVolver_Click;
+            // 
+            // lstSociosMorosos
+            // 
+            lstSociosMorosos.Location = new Point(40, 60);
+            lstSociosMorosos.Name = "lstSociosMorosos";
+            lstSociosMorosos.Size = new Size(459, 281);
+            lstSociosMorosos.TabIndex = 3;
+            lstSociosMorosos.UseCompatibleStateImageBehavior = false;
+            // 
+            // txtTituloMorosos
+            // 
+            txtTituloMorosos.Location = new Point(40, 31);
+            txtTituloMorosos.Name = "txtTituloMorosos";
+            txtTituloMorosos.Size = new Size(158, 23);
+            txtTituloMorosos.TabIndex = 4;
+            txtTituloMorosos.Text = "Listado de Socios Morosos:";
             // 
             // FormMorosos
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(420, 233);
+            ClientSize = new Size(632, 366);
+            Controls.Add(txtTituloMorosos);
+            Controls.Add(lstSociosMorosos);
             Controls.Add(btnMorososVolver);
             Controls.Add(btnMorososExportar);
             Controls.Add(btnMorososImprimir);
@@ -72,6 +95,7 @@
             Text = "Reporte de Vencimientos";
             Load += FormMorosos_Load;
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -79,5 +103,7 @@
         private Button btnMorososImprimir;
         private Button btnMorososExportar;
         private Button btnMorososVolver;
+        private ListView lstSociosMorosos;
+        private TextBox txtTituloMorosos;
     }
 }

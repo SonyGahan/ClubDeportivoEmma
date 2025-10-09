@@ -153,9 +153,9 @@
             // 
             // btnRegistrarSocio
             // 
-            btnRegistrarSocio.Location = new Point(148, 281);
+            btnRegistrarSocio.Location = new Point(329, 23);
             btnRegistrarSocio.Name = "btnRegistrarSocio";
-            btnRegistrarSocio.Size = new Size(160, 36);
+            btnRegistrarSocio.Size = new Size(93, 23);
             btnRegistrarSocio.TabIndex = 13;
             btnRegistrarSocio.Text = "Registrar Socio";
             btnRegistrarSocio.UseVisualStyleBackColor = true;
@@ -163,9 +163,9 @@
             // 
             // btnCancelarAltaSocio
             // 
-            btnCancelarAltaSocio.Location = new Point(148, 332);
+            btnCancelarAltaSocio.Location = new Point(329, 54);
             btnCancelarAltaSocio.Name = "btnCancelarAltaSocio";
-            btnCancelarAltaSocio.Size = new Size(160, 35);
+            btnCancelarAltaSocio.Size = new Size(93, 23);
             btnCancelarAltaSocio.TabIndex = 14;
             btnCancelarAltaSocio.Text = "Cancelar";
             btnCancelarAltaSocio.UseVisualStyleBackColor = true;
@@ -175,7 +175,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(433, 403);
+            ClientSize = new Size(492, 290);
             Controls.Add(btnCancelarAltaSocio);
             Controls.Add(btnRegistrarSocio);
             Controls.Add(chbSocioAptoMedico);

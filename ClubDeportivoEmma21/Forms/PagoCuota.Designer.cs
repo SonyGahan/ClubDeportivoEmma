@@ -39,6 +39,7 @@
             txtVencimiento = new TextBox();
             txtMontoCuota = new TextBox();
             btnPagoSocioCancelar = new Button();
+            lblNombreSocio = new Label();
             SuspendLayout();
             // 
             // lblDniCuotaSocio
@@ -49,26 +50,6 @@
             lblDniCuotaSocio.Size = new Size(62, 15);
             lblDniCuotaSocio.TabIndex = 0;
             lblDniCuotaSocio.Text = "DNI Socio:";
-            //
-            // Label para mostrar nombre completo del socio
-            //
-            lblNombreSocio = new Label();
-            lblNombreSocio.AutoSize = true;
-            lblNombreSocio.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            lblNombreSocio.ForeColor = Color.DarkBlue;
-            lblNombreSocio.Location = new Point(49, 59);
-            lblNombreSocio.Name = "lblNombreSocio";
-            lblNombreSocio.Size = new Size(0, 15);
-            lblNombreSocio.TabIndex = 11;
-            lblNombreSocio.Text = "";
-            Controls.Add(lblNombreSocio);
-            //
-            // Bloqueamos campos automáticos
-            //
-            txtVencimiento.ReadOnly = true;
-            txtMontoCuota.ReadOnly = true;
-            txtVencimiento.BackColor = Color.Beige;
-            txtMontoCuota.BackColor = Color.Beige;
             // 
             // lblVencimientoSocio
             // 
@@ -93,21 +74,21 @@
             lblFormaDePagoSocio.AutoSize = true;
             lblFormaDePagoSocio.Location = new Point(49, 144);
             lblFormaDePagoSocio.Name = "lblFormaDePagoSocio";
-            lblFormaDePagoSocio.Size = new Size(92, 15);
+            lblFormaDePagoSocio.Size = new Size(95, 15);
             lblFormaDePagoSocio.TabIndex = 3;
-            lblFormaDePagoSocio.Text = "Formas de Pago";
+            lblFormaDePagoSocio.Text = "Formas de Pago:";
             // 
             // clbOpcionDePagoSocio
             // 
             clbOpcionDePagoSocio.FormattingEnabled = true;
-            clbOpcionDePagoSocio.Location = new Point(49, 172);
+            clbOpcionDePagoSocio.Location = new Point(49, 165);
             clbOpcionDePagoSocio.Name = "clbOpcionDePagoSocio";
-            clbOpcionDePagoSocio.Size = new Size(174, 94);
+            clbOpcionDePagoSocio.Size = new Size(124, 94);
             clbOpcionDePagoSocio.TabIndex = 4;
             // 
             // btnPagoSocio
             // 
-            btnPagoSocio.Location = new Point(319, 237);
+            btnPagoSocio.Location = new Point(319, 104);
             btnPagoSocio.Name = "btnPagoSocio";
             btnPagoSocio.Size = new Size(94, 29);
             btnPagoSocio.TabIndex = 5;
@@ -117,7 +98,7 @@
             // 
             // txtDniCuotaSocio
             // 
-            txtDniCuotaSocio.Location = new Point(139, 27);
+            txtDniCuotaSocio.Location = new Point(119, 27);
             txtDniCuotaSocio.Name = "txtDniCuotaSocio";
             txtDniCuotaSocio.Size = new Size(156, 23);
             txtDniCuotaSocio.TabIndex = 6;
@@ -135,15 +116,19 @@
             // 
             // txtVencimiento
             // 
-            txtVencimiento.Location = new Point(195, 67);
+            txtVencimiento.BackColor = Color.Beige;
+            txtVencimiento.Location = new Point(175, 67);
             txtVencimiento.Name = "txtVencimiento";
+            txtVencimiento.ReadOnly = true;
             txtVencimiento.Size = new Size(100, 23);
             txtVencimiento.TabIndex = 8;
             // 
             // txtMontoCuota
             // 
-            txtMontoCuota.Location = new Point(195, 103);
+            txtMontoCuota.BackColor = Color.Beige;
+            txtMontoCuota.Location = new Point(175, 103);
             txtMontoCuota.Name = "txtMontoCuota";
+            txtMontoCuota.ReadOnly = true;
             txtMontoCuota.Size = new Size(100, 23);
             txtMontoCuota.TabIndex = 9;
             // 
@@ -157,11 +142,22 @@
             btnPagoSocioCancelar.UseVisualStyleBackColor = true;
             btnPagoSocioCancelar.Click += btnPagoSocioCancelar_Click;
             // 
+            // lblNombreSocio
+            // 
+            lblNombreSocio.AutoSize = true;
+            lblNombreSocio.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            lblNombreSocio.ForeColor = Color.DarkBlue;
+            lblNombreSocio.Location = new Point(49, 59);
+            lblNombreSocio.Name = "lblNombreSocio";
+            lblNombreSocio.Size = new Size(0, 15);
+            lblNombreSocio.TabIndex = 11;
+            // 
             // PagoCuota
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(480, 302);
+            ClientSize = new Size(468, 302);
+            Controls.Add(lblNombreSocio);
             Controls.Add(btnPagoSocioCancelar);
             Controls.Add(txtMontoCuota);
             Controls.Add(txtVencimiento);

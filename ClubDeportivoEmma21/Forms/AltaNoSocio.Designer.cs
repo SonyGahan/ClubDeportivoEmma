@@ -42,6 +42,7 @@
             txtNoSocioMail = new TextBox();
             chbNoSocioAptoMedico = new CheckBox();
             btnRegistrarNoSocio = new Button();
+            btnCancelarRegistroNoSocio = new Button();
             SuspendLayout();
             // 
             // lblNoSocioNombre
@@ -152,18 +153,29 @@
             // 
             // btnRegistrarNoSocio
             // 
-            btnRegistrarNoSocio.Location = new Point(148, 281);
+            btnRegistrarNoSocio.Location = new Point(337, 23);
             btnRegistrarNoSocio.Name = "btnRegistrarNoSocio";
-            btnRegistrarNoSocio.Size = new Size(160, 36);
+            btnRegistrarNoSocio.Size = new Size(122, 23);
             btnRegistrarNoSocio.TabIndex = 13;
-            btnRegistrarNoSocio.Text = "Registrar Socio";
+            btnRegistrarNoSocio.Text = "Registrar No Socio";
             btnRegistrarNoSocio.UseVisualStyleBackColor = true;
+            btnRegistrarNoSocio.Click += btnRegistrarNoSocio_Click;
+            // 
+            // btnCancelarRegistroNoSocio
+            // 
+            btnCancelarRegistroNoSocio.Location = new Point(337, 54);
+            btnCancelarRegistroNoSocio.Name = "btnCancelarRegistroNoSocio";
+            btnCancelarRegistroNoSocio.Size = new Size(122, 24);
+            btnCancelarRegistroNoSocio.TabIndex = 14;
+            btnCancelarRegistroNoSocio.Text = "Cancelar";
+            btnCancelarRegistroNoSocio.UseVisualStyleBackColor = true;
             // 
             // AltaNoSocio
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(394, 363);
+            ClientSize = new Size(514, 292);
+            Controls.Add(btnCancelarRegistroNoSocio);
             Controls.Add(btnRegistrarNoSocio);
             Controls.Add(chbNoSocioAptoMedico);
             Controls.Add(txtNoSocioMail);
@@ -201,5 +213,6 @@
         private TextBox txtNoSocioMail;
         private CheckBox chbNoSocioAptoMedico;
         private Button btnRegistrarNoSocio;
+        private Button btnCancelarRegistroNoSocio;
     }
 }

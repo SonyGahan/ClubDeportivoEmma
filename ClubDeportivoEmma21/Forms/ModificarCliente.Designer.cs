@@ -46,12 +46,13 @@
             lblIngresoDni = new Label();
             txtIngresoDni = new TextBox();
             btnBuscarCliente = new Button();
+            btnBuscarClienteCancelar = new Button();
             SuspendLayout();
             // 
             // lblModificarClienteNombre
             // 
             lblModificarClienteNombre.AutoSize = true;
-            lblModificarClienteNombre.Location = new Point(60, 112);
+            lblModificarClienteNombre.Location = new Point(60, 125);
             lblModificarClienteNombre.Name = "lblModificarClienteNombre";
             lblModificarClienteNombre.Size = new Size(54, 15);
             lblModificarClienteNombre.TabIndex = 0;
@@ -60,7 +61,7 @@
             // lblModificarClienteApellido
             // 
             lblModificarClienteApellido.AutoSize = true;
-            lblModificarClienteApellido.Location = new Point(60, 141);
+            lblModificarClienteApellido.Location = new Point(60, 154);
             lblModificarClienteApellido.Name = "lblModificarClienteApellido";
             lblModificarClienteApellido.Size = new Size(54, 15);
             lblModificarClienteApellido.TabIndex = 1;
@@ -69,7 +70,7 @@
             // lblModificarClienteDni
             // 
             lblModificarClienteDni.AutoSize = true;
-            lblModificarClienteDni.Location = new Point(63, 171);
+            lblModificarClienteDni.Location = new Point(63, 184);
             lblModificarClienteDni.Name = "lblModificarClienteDni";
             lblModificarClienteDni.Size = new Size(30, 15);
             lblModificarClienteDni.TabIndex = 2;
@@ -78,7 +79,7 @@
             // lblModificarClienteTelefono
             // 
             lblModificarClienteTelefono.AutoSize = true;
-            lblModificarClienteTelefono.Location = new Point(60, 204);
+            lblModificarClienteTelefono.Location = new Point(60, 217);
             lblModificarClienteTelefono.Name = "lblModificarClienteTelefono";
             lblModificarClienteTelefono.Size = new Size(55, 15);
             lblModificarClienteTelefono.TabIndex = 3;
@@ -87,7 +88,7 @@
             // lblModificarClienteDireccion
             // 
             lblModificarClienteDireccion.AutoSize = true;
-            lblModificarClienteDireccion.Location = new Point(60, 233);
+            lblModificarClienteDireccion.Location = new Point(60, 246);
             lblModificarClienteDireccion.Name = "lblModificarClienteDireccion";
             lblModificarClienteDireccion.Size = new Size(60, 15);
             lblModificarClienteDireccion.TabIndex = 4;
@@ -96,7 +97,7 @@
             // lblModificarClienteMail
             // 
             lblModificarClienteMail.AutoSize = true;
-            lblModificarClienteMail.Location = new Point(60, 262);
+            lblModificarClienteMail.Location = new Point(60, 275);
             lblModificarClienteMail.Name = "lblModificarClienteMail";
             lblModificarClienteMail.Size = new Size(33, 15);
             lblModificarClienteMail.TabIndex = 5;
@@ -104,42 +105,42 @@
             // 
             // txtModificarClienteNombre
             // 
-            txtModificarClienteNombre.Location = new Point(148, 104);
+            txtModificarClienteNombre.Location = new Point(148, 117);
             txtModificarClienteNombre.Name = "txtModificarClienteNombre";
             txtModificarClienteNombre.Size = new Size(115, 23);
             txtModificarClienteNombre.TabIndex = 6;
             // 
             // txtModificarClienteApellido
             // 
-            txtModificarClienteApellido.Location = new Point(148, 133);
+            txtModificarClienteApellido.Location = new Point(148, 146);
             txtModificarClienteApellido.Name = "txtModificarClienteApellido";
             txtModificarClienteApellido.Size = new Size(115, 23);
             txtModificarClienteApellido.TabIndex = 8;
             // 
             // txtModificarClienteDni
             // 
-            txtModificarClienteDni.Location = new Point(148, 163);
+            txtModificarClienteDni.Location = new Point(148, 176);
             txtModificarClienteDni.Name = "txtModificarClienteDni";
             txtModificarClienteDni.Size = new Size(115, 23);
             txtModificarClienteDni.TabIndex = 9;
             // 
             // txtModificarClienteTelefono
             // 
-            txtModificarClienteTelefono.Location = new Point(148, 196);
+            txtModificarClienteTelefono.Location = new Point(148, 209);
             txtModificarClienteTelefono.Name = "txtModificarClienteTelefono";
             txtModificarClienteTelefono.Size = new Size(115, 23);
             txtModificarClienteTelefono.TabIndex = 10;
             // 
             // txtModificarClienteDireccion
             // 
-            txtModificarClienteDireccion.Location = new Point(148, 225);
+            txtModificarClienteDireccion.Location = new Point(148, 238);
             txtModificarClienteDireccion.Name = "txtModificarClienteDireccion";
             txtModificarClienteDireccion.Size = new Size(115, 23);
             txtModificarClienteDireccion.TabIndex = 11;
             // 
             // txtModificarClienteMail
             // 
-            txtModificarClienteMail.Location = new Point(148, 254);
+            txtModificarClienteMail.Location = new Point(148, 267);
             txtModificarClienteMail.Name = "txtModificarClienteMail";
             txtModificarClienteMail.Size = new Size(115, 23);
             txtModificarClienteMail.TabIndex = 12;
@@ -147,7 +148,7 @@
             // chbModificarClienteAptoMedico
             // 
             chbModificarClienteAptoMedico.AutoSize = true;
-            chbModificarClienteAptoMedico.Location = new Point(148, 295);
+            chbModificarClienteAptoMedico.Location = new Point(148, 308);
             chbModificarClienteAptoMedico.Name = "chbModificarClienteAptoMedico";
             chbModificarClienteAptoMedico.Size = new Size(95, 19);
             chbModificarClienteAptoMedico.TabIndex = 13;
@@ -156,19 +157,19 @@
             // 
             // btnModificarCliente
             // 
-            btnModificarCliente.Location = new Point(148, 337);
+            btnModificarCliente.Location = new Point(295, 117);
             btnModificarCliente.Name = "btnModificarCliente";
-            btnModificarCliente.Size = new Size(124, 27);
+            btnModificarCliente.Size = new Size(101, 27);
             btnModificarCliente.TabIndex = 14;
-            btnModificarCliente.Text = "Guardar Cambios";
+            btnModificarCliente.Text = "Guardar";
             btnModificarCliente.UseVisualStyleBackColor = true;
             btnModificarCliente.Click += btnModificarCliente_Click;
             // 
             // btnEliminarCliente
             // 
-            btnEliminarCliente.Location = new Point(148, 379);
+            btnEliminarCliente.Location = new Point(295, 154);
             btnEliminarCliente.Name = "btnEliminarCliente";
-            btnEliminarCliente.Size = new Size(124, 27);
+            btnEliminarCliente.Size = new Size(101, 27);
             btnEliminarCliente.TabIndex = 15;
             btnEliminarCliente.Text = "Dar de Baja";
             btnEliminarCliente.UseVisualStyleBackColor = true;
@@ -192,7 +193,7 @@
             // 
             // btnBuscarCliente
             // 
-            btnBuscarCliente.Location = new Point(276, 31);
+            btnBuscarCliente.Location = new Point(295, 30);
             btnBuscarCliente.Name = "btnBuscarCliente";
             btnBuscarCliente.Size = new Size(101, 27);
             btnBuscarCliente.TabIndex = 18;
@@ -200,11 +201,21 @@
             btnBuscarCliente.UseVisualStyleBackColor = true;
             btnBuscarCliente.Click += btnBuscarCliente_Click;
             // 
+            // btnBuscarClienteCancelar
+            // 
+            btnBuscarClienteCancelar.Location = new Point(295, 63);
+            btnBuscarClienteCancelar.Name = "btnBuscarClienteCancelar";
+            btnBuscarClienteCancelar.Size = new Size(100, 27);
+            btnBuscarClienteCancelar.TabIndex = 19;
+            btnBuscarClienteCancelar.Text = "Cancelar";
+            btnBuscarClienteCancelar.UseVisualStyleBackColor = true;
+            // 
             // ModificarCliente
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(428, 482);
+            ClientSize = new Size(428, 348);
+            Controls.Add(btnBuscarClienteCancelar);
             Controls.Add(btnBuscarCliente);
             Controls.Add(txtIngresoDni);
             Controls.Add(lblIngresoDni);
@@ -250,5 +261,6 @@
         private Label lblIngresoDni;
         private TextBox txtIngresoDni;
         private Button btnBuscarCliente;
+        private Button btnBuscarClienteCancelar;
     }
 }
