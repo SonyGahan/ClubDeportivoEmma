@@ -81,6 +81,7 @@
             Controls.Add(btnNoSociosRegistrar);
             Name = "GestionNoSocios";
             Text = "GestionNoSocios";
+            Load += GestionNoSocios_Load;
             ResumeLayout(false);
         }
 

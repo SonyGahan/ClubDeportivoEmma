@@ -12,30 +12,48 @@ namespace ClubDeportivoEmma21.Forms
         private int idSocioActual = 0;
         private int idCuotaPendiente = 0;
 
+        // Constructor vacío desde Gestión Socios
         public PagoCuota()
         {
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
         }
 
+        // Constructor sobrecargado desde Consultas o Gestion con socio predefinido
+        public PagoCuota(int idSocio, string dni)
+        {
+            InitializeComponent();
+            this.StartPosition = FormStartPosition.CenterScreen;
+
+            idSocioActual = idSocio;
+            txtDniCuotaSocio.Text = dni;
+
+            // Ocultar los elementos de búsqueda (ya tenemos el socio)
+            lblDniSocio.Visible = false;
+            txtDniCuotaSocio.Visible = false;
+            btnPagoSocioBuscar.Visible = false;
+        }
+
         private void PagoCuota_Load(object sender, EventArgs e)
         {
-            // Inicializar lista de formas de pago
+            // Cargar opciones de pago
             clbOpcionDePagoSocio.Items.Clear();
-            clbOpcionDePagoSocio.Items.Add("Efectivo");
-            clbOpcionDePagoSocio.Items.Add("Transferencia");
-            clbOpcionDePagoSocio.Items.Add("Tarjeta");
-
+            clbOpcionDePagoSocio.Items.AddRange(new object[] { "Efectivo", "Transferencia", "Tarjeta" });
             clbOpcionDePagoSocio.CheckOnClick = true;
+
             clbOpcionDePagoSocio.ItemCheck += (s, ev) =>
             {
                 for (int i = 0; i < clbOpcionDePagoSocio.Items.Count; i++)
                     if (i != ev.Index)
                         clbOpcionDePagoSocio.SetItemChecked(i, false);
             };
+
+            // Si el socio ya viene cargado desde otro formulario
+            if (idSocioActual > 0)
+                CargarDatosSocioPorId(idSocioActual);
         }
 
-        // Buscar socio
+        // Método para buscar socio manualmente, si entra sin datos
         private void btnPagoSocioBuscar_Click(object sender, EventArgs e)
         {
             string dni = txtDniCuotaSocio.Text.Trim();
@@ -50,13 +68,12 @@ namespace ClubDeportivoEmma21.Forms
                 using (var conn = _db.GetConnection())
                 {
                     conn.Open();
+                    string sql = @"SELECT s.id_socio, p.nombre, p.apellido, s.estado_membresia
+                                   FROM socio s 
+                                   JOIN persona p ON p.id_persona = s.id_socio 
+                                   WHERE p.dni = @dni";
 
-                    // Buscar datos del socio y su estado
-                    string sqlBuscar = @"SELECT s.id_socio, p.nombre, p.apellido, s.estado_membresia
-                                         FROM socio s 
-                                         JOIN persona p ON p.id_persona = s.id_socio 
-                                         WHERE p.dni = @dni";
-                    using (var cmd = new MySqlCommand(sqlBuscar, conn))
+                    using (var cmd = new MySqlCommand(sql, conn))
                     {
                         cmd.Parameters.AddWithValue("@dni", dni);
                         using (var reader = cmd.ExecuteReader())
@@ -94,15 +111,69 @@ namespace ClubDeportivoEmma21.Forms
                             }
                         }
                     }
+                }
 
-                    // Buscar cuota pendiente
-                    string sqlCuota = @"SELECT id_cuota, mes_a_pagar, valor_cuota 
-                                        FROM cuota 
-                                        WHERE id_socio = @id AND estado_pago = 'Pendiente' 
-                                        ORDER BY mes_a_pagar ASC LIMIT 1";
-                    using (var cmd = new MySqlCommand(sqlCuota, conn))
+                // Luego de validar, carga la cuota pendiente
+                CargarCuotaPendiente(idSocioActual);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al buscar socio: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        // Cargar socio si ya viene desde otro formulario
+        private void CargarDatosSocioPorId(int idSocio)
+        {
+            try
+            {
+                using (var conn = _db.GetConnection())
+                {
+                    conn.Open();
+                    string sql = @"SELECT p.nombre, p.apellido, s.estado_membresia
+                                   FROM socio s
+                                   JOIN persona p ON p.id_persona = s.id_socio
+                                   WHERE s.id_socio = @id";
+
+                    using (var cmd = new MySqlCommand(sql, conn))
                     {
-                        cmd.Parameters.AddWithValue("@id", idSocioActual);
+                        cmd.Parameters.AddWithValue("@id", idSocio);
+                        using (var reader = cmd.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                lblNombreSocio.Text = $"{reader["nombre"]} {reader["apellido"]}";
+                            }
+                        }
+                    }
+                }
+
+                // Cargar cuota pendiente automáticamente
+                CargarCuotaPendiente(idSocio);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar datos del socio: " + ex.Message,
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        // Cargar cuota pendiente
+        private void CargarCuotaPendiente(int idSocio)
+        {
+            try
+            {
+                using (var conn = _db.GetConnection())
+                {
+                    conn.Open();
+                    string sql = @"SELECT id_cuota, mes_a_pagar, valor_cuota 
+                                   FROM cuota 
+                                   WHERE id_socio = @id AND estado_pago = 'Pendiente' 
+                                   ORDER BY mes_a_pagar ASC LIMIT 1";
+
+                    using (var cmd = new MySqlCommand(sql, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@id", idSocio);
                         using (var reader = cmd.ExecuteReader())
                         {
                             if (reader.Read())
@@ -113,8 +184,8 @@ namespace ClubDeportivoEmma21.Forms
                             }
                             else
                             {
-                                MessageBox.Show("Este socio no tiene cuotas pendientes.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                LimpiarCampos();
+                                MessageBox.Show("Este socio no tiene cuotas pendientes.", "Información",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Information);
                             }
                         }
                     }
@@ -122,7 +193,8 @@ namespace ClubDeportivoEmma21.Forms
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al buscar socio: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error al cargar la cuota pendiente: " + ex.Message,
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -191,13 +263,9 @@ namespace ClubDeportivoEmma21.Forms
             for (int i = 0; i < clbOpcionDePagoSocio.Items.Count; i++)
                 clbOpcionDePagoSocio.SetItemChecked(i, false);
         }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-            
-        }
     }
 }
+
 
 
 

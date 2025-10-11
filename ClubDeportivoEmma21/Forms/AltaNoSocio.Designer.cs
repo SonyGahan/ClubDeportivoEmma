@@ -2,217 +2,176 @@
 {
     partial class AltaNoSocio
     {
-        /// <summary>
-        /// Required designer variable.
-        /// </summary>
         private System.ComponentModel.IContainer components = null;
-
-        /// <summary>
-        /// Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
-            {
                 components.Dispose();
-            }
             base.Dispose(disposing);
         }
 
-        #region Windows Form Designer generated code
-
-        /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
-        /// </summary>
         private void InitializeComponent()
         {
-            lblNoSocioNombre = new Label();
-            lblNoSocioApellido = new Label();
-            lblNoSocioDni = new Label();
-            lblNoSocioTelefono = new Label();
-            lblNoSocioDireccion = new Label();
-            lblNoSocioMail = new Label();
-            txtNoSocioNombre = new TextBox();
-            txtNoSocioApellido = new TextBox();
-            txtNoSocioDni = new TextBox();
-            txtNoSocioTelefono = new TextBox();
-            txtNoSocioDireccion = new TextBox();
-            txtNoSocioMail = new TextBox();
-            chbNoSocioAptoMedico = new CheckBox();
+            lblNombre = new Label();
+            lblApellido = new Label();
+            lblDni = new Label();
+            lblTelefono = new Label();
+            lblDireccion = new Label();
+            lblMail = new Label();
+            txtNombre = new TextBox();
+            txtApellido = new TextBox();
+            txtDni = new TextBox();
+            txtTelefono = new TextBox();
+            txtDireccion = new TextBox();
+            txtMail = new TextBox();
+            chbAptoMedico = new CheckBox();
             btnRegistrarNoSocio = new Button();
-            btnCancelarRegistroNoSocio = new Button();
+            btnCancelar = new Button();
             SuspendLayout();
             // 
-            // lblNoSocioNombre
+            // lblNombre
             // 
-            lblNoSocioNombre.AutoSize = true;
-            lblNoSocioNombre.Location = new Point(59, 29);
-            lblNoSocioNombre.Name = "lblNoSocioNombre";
-            lblNoSocioNombre.Size = new Size(54, 15);
-            lblNoSocioNombre.TabIndex = 0;
-            lblNoSocioNombre.Text = "Nombre:";
+            lblNombre.Location = new Point(40, 30);
+            lblNombre.Name = "lblNombre";
+            lblNombre.Size = new Size(74, 23);
+            lblNombre.TabIndex = 0;
+            lblNombre.Text = "Nombre:";
             // 
-            // lblNoSocioApellido
+            // lblApellido
             // 
-            lblNoSocioApellido.AutoSize = true;
-            lblNoSocioApellido.Location = new Point(59, 64);
-            lblNoSocioApellido.Name = "lblNoSocioApellido";
-            lblNoSocioApellido.Size = new Size(54, 15);
-            lblNoSocioApellido.TabIndex = 1;
-            lblNoSocioApellido.Text = "Apellido:";
+            lblApellido.Location = new Point(40, 65);
+            lblApellido.Name = "lblApellido";
+            lblApellido.Size = new Size(74, 23);
+            lblApellido.TabIndex = 2;
+            lblApellido.Text = "Apellido:";
             // 
-            // lblNoSocioDni
+            // lblDni
             // 
-            lblNoSocioDni.AutoSize = true;
-            lblNoSocioDni.Location = new Point(59, 95);
-            lblNoSocioDni.Name = "lblNoSocioDni";
-            lblNoSocioDni.Size = new Size(30, 15);
-            lblNoSocioDni.TabIndex = 2;
-            lblNoSocioDni.Text = "DNI:";
+            lblDni.Location = new Point(40, 100);
+            lblDni.Name = "lblDni";
+            lblDni.Size = new Size(74, 23);
+            lblDni.TabIndex = 4;
+            lblDni.Text = "DNI:";
             // 
-            // lblNoSocioTelefono
+            // lblTelefono
             // 
-            lblNoSocioTelefono.AutoSize = true;
-            lblNoSocioTelefono.Location = new Point(59, 130);
-            lblNoSocioTelefono.Name = "lblNoSocioTelefono";
-            lblNoSocioTelefono.Size = new Size(55, 15);
-            lblNoSocioTelefono.TabIndex = 3;
-            lblNoSocioTelefono.Text = "Teléfono:";
+            lblTelefono.Location = new Point(40, 135);
+            lblTelefono.Name = "lblTelefono";
+            lblTelefono.Size = new Size(74, 23);
+            lblTelefono.TabIndex = 6;
+            lblTelefono.Text = "Teléfono:";
             // 
-            // lblNoSocioDireccion
+            // lblDireccion
             // 
-            lblNoSocioDireccion.AutoSize = true;
-            lblNoSocioDireccion.Location = new Point(59, 162);
-            lblNoSocioDireccion.Name = "lblNoSocioDireccion";
-            lblNoSocioDireccion.Size = new Size(60, 15);
-            lblNoSocioDireccion.TabIndex = 4;
-            lblNoSocioDireccion.Text = "Dirección:";
+            lblDireccion.Location = new Point(40, 170);
+            lblDireccion.Name = "lblDireccion";
+            lblDireccion.Size = new Size(74, 23);
+            lblDireccion.TabIndex = 8;
+            lblDireccion.Text = "Dirección:";
             // 
-            // lblNoSocioMail
+            // lblMail
             // 
-            lblNoSocioMail.AutoSize = true;
-            lblNoSocioMail.Location = new Point(59, 195);
-            lblNoSocioMail.Name = "lblNoSocioMail";
-            lblNoSocioMail.Size = new Size(33, 15);
-            lblNoSocioMail.TabIndex = 5;
-            lblNoSocioMail.Text = "Mail:";
+            lblMail.Location = new Point(40, 205);
+            lblMail.Name = "lblMail";
+            lblMail.Size = new Size(74, 23);
+            lblMail.TabIndex = 10;
+            lblMail.Text = "Mail:";
             // 
-            // txtNoSocioNombre
+            // txtNombre
             // 
-            txtNoSocioNombre.Location = new Point(148, 23);
-            txtNoSocioNombre.Name = "txtNoSocioNombre";
-            txtNoSocioNombre.Size = new Size(160, 23);
-            txtNoSocioNombre.TabIndex = 6;
+            txtNombre.Location = new Point(122, 27);
+            txtNombre.Name = "txtNombre";
+            txtNombre.Size = new Size(131, 23);
+            txtNombre.TabIndex = 1;
             // 
-            // txtNoSocioApellido
+            // txtApellido
             // 
-            txtNoSocioApellido.Location = new Point(148, 56);
-            txtNoSocioApellido.Name = "txtNoSocioApellido";
-            txtNoSocioApellido.Size = new Size(160, 23);
-            txtNoSocioApellido.TabIndex = 7;
+            txtApellido.Location = new Point(122, 62);
+            txtApellido.Name = "txtApellido";
+            txtApellido.Size = new Size(131, 23);
+            txtApellido.TabIndex = 3;
             // 
-            // txtNoSocioDni
+            // txtDni
             // 
-            txtNoSocioDni.Location = new Point(148, 95);
-            txtNoSocioDni.Name = "txtNoSocioDni";
-            txtNoSocioDni.Size = new Size(160, 23);
-            txtNoSocioDni.TabIndex = 8;
+            txtDni.Location = new Point(122, 97);
+            txtDni.Name = "txtDni";
+            txtDni.Size = new Size(131, 23);
+            txtDni.TabIndex = 5;
             // 
-            // txtNoSocioTelefono
+            // txtTelefono
             // 
-            txtNoSocioTelefono.Location = new Point(148, 130);
-            txtNoSocioTelefono.Name = "txtNoSocioTelefono";
-            txtNoSocioTelefono.Size = new Size(160, 23);
-            txtNoSocioTelefono.TabIndex = 9;
+            txtTelefono.Location = new Point(122, 132);
+            txtTelefono.Name = "txtTelefono";
+            txtTelefono.Size = new Size(131, 23);
+            txtTelefono.TabIndex = 7;
             // 
-            // txtNoSocioDireccion
+            // txtDireccion
             // 
-            txtNoSocioDireccion.Location = new Point(148, 162);
-            txtNoSocioDireccion.Name = "txtNoSocioDireccion";
-            txtNoSocioDireccion.Size = new Size(160, 23);
-            txtNoSocioDireccion.TabIndex = 10;
+            txtDireccion.Location = new Point(122, 167);
+            txtDireccion.Name = "txtDireccion";
+            txtDireccion.Size = new Size(131, 23);
+            txtDireccion.TabIndex = 9;
             // 
-            // txtNoSocioMail
+            // txtMail
             // 
-            txtNoSocioMail.Location = new Point(148, 195);
-            txtNoSocioMail.Name = "txtNoSocioMail";
-            txtNoSocioMail.Size = new Size(160, 23);
-            txtNoSocioMail.TabIndex = 11;
+            txtMail.Location = new Point(122, 202);
+            txtMail.Name = "txtMail";
+            txtMail.Size = new Size(131, 23);
+            txtMail.TabIndex = 11;
             // 
-            // chbNoSocioAptoMedico
+            // chbAptoMedico
             // 
-            chbNoSocioAptoMedico.AutoSize = true;
-            chbNoSocioAptoMedico.Location = new Point(148, 244);
-            chbNoSocioAptoMedico.Name = "chbNoSocioAptoMedico";
-            chbNoSocioAptoMedico.Size = new Size(95, 19);
-            chbNoSocioAptoMedico.TabIndex = 12;
-            chbNoSocioAptoMedico.Text = "Apto Médico";
-            chbNoSocioAptoMedico.UseVisualStyleBackColor = true;
+            chbAptoMedico.Location = new Point(122, 235);
+            chbAptoMedico.Name = "chbAptoMedico";
+            chbAptoMedico.Size = new Size(104, 24);
+            chbAptoMedico.TabIndex = 12;
+            chbAptoMedico.Text = "Apto médico";
             // 
             // btnRegistrarNoSocio
             // 
-            btnRegistrarNoSocio.Location = new Point(337, 23);
+            btnRegistrarNoSocio.Location = new Point(296, 28);
             btnRegistrarNoSocio.Name = "btnRegistrarNoSocio";
-            btnRegistrarNoSocio.Size = new Size(122, 23);
+            btnRegistrarNoSocio.Size = new Size(75, 23);
             btnRegistrarNoSocio.TabIndex = 13;
-            btnRegistrarNoSocio.Text = "Registrar No Socio";
-            btnRegistrarNoSocio.UseVisualStyleBackColor = true;
+            btnRegistrarNoSocio.Text = "Registrar";
             btnRegistrarNoSocio.Click += btnRegistrarNoSocio_Click;
             // 
-            // btnCancelarRegistroNoSocio
+            // btnCancelar
             // 
-            btnCancelarRegistroNoSocio.Location = new Point(337, 54);
-            btnCancelarRegistroNoSocio.Name = "btnCancelarRegistroNoSocio";
-            btnCancelarRegistroNoSocio.Size = new Size(122, 24);
-            btnCancelarRegistroNoSocio.TabIndex = 14;
-            btnCancelarRegistroNoSocio.Text = "Cancelar";
-            btnCancelarRegistroNoSocio.UseVisualStyleBackColor = true;
+            btnCancelar.Location = new Point(296, 63);
+            btnCancelar.Name = "btnCancelar";
+            btnCancelar.Size = new Size(75, 23);
+            btnCancelar.TabIndex = 14;
+            btnCancelar.Text = "Cancelar";
+            btnCancelar.Click += btnCancelar_Click;
             // 
             // AltaNoSocio
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
-            AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(514, 292);
-            Controls.Add(btnCancelarRegistroNoSocio);
+            ClientSize = new Size(417, 280);
+            Controls.Add(lblNombre);
+            Controls.Add(txtNombre);
+            Controls.Add(lblApellido);
+            Controls.Add(txtApellido);
+            Controls.Add(lblDni);
+            Controls.Add(txtDni);
+            Controls.Add(lblTelefono);
+            Controls.Add(txtTelefono);
+            Controls.Add(lblDireccion);
+            Controls.Add(txtDireccion);
+            Controls.Add(lblMail);
+            Controls.Add(txtMail);
+            Controls.Add(chbAptoMedico);
             Controls.Add(btnRegistrarNoSocio);
-            Controls.Add(chbNoSocioAptoMedico);
-            Controls.Add(txtNoSocioMail);
-            Controls.Add(txtNoSocioDireccion);
-            Controls.Add(txtNoSocioTelefono);
-            Controls.Add(txtNoSocioDni);
-            Controls.Add(txtNoSocioApellido);
-            Controls.Add(txtNoSocioNombre);
-            Controls.Add(lblNoSocioMail);
-            Controls.Add(lblNoSocioDireccion);
-            Controls.Add(lblNoSocioTelefono);
-            Controls.Add(lblNoSocioDni);
-            Controls.Add(lblNoSocioApellido);
-            Controls.Add(lblNoSocioNombre);
+            Controls.Add(btnCancelar);
             Name = "AltaNoSocio";
             Text = "Alta No Socio";
-            Load += AltaNoSocio_Load;
             ResumeLayout(false);
             PerformLayout();
         }
 
-        #endregion
-
-        private Label lblNoSocioNombre;
-        private Label lblNoSocioApellido;
-        private Label lblNoSocioDni;
-        private Label lblNoSocioTelefono;
-        private Label lblNoSocioDireccion;
-        private Label lblNoSocioMail;
-        private TextBox txtNoSocioNombre;
-        private TextBox txtNoSocioApellido;
-        private TextBox txtNoSocioDni;
-        private TextBox txtNoSocioTelefono;
-        private TextBox txtNoSocioDireccion;
-        private TextBox txtNoSocioMail;
-        private CheckBox chbNoSocioAptoMedico;
-        private Button btnRegistrarNoSocio;
-        private Button btnCancelarRegistroNoSocio;
+        private Label lblNombre, lblApellido, lblDni, lblTelefono, lblDireccion, lblMail;
+        private TextBox txtNombre, txtApellido, txtDni, txtTelefono, txtDireccion, txtMail;
+        private CheckBox chbAptoMedico;
+        private Button btnRegistrarNoSocio, btnCancelar;
     }
 }

@@ -27,93 +27,88 @@ namespace ClubDeportivoEmma21.Forms
         private void btnBuscar_Click(object sender, EventArgs e)
         {
             string dni = txtConsultaDniPersona.Text.Trim();
-
-            if (string.IsNullOrWhiteSpace(dni))
+            if (string.IsNullOrEmpty(dni))
             {
-                MessageBox.Show("Por favor ingrese un DNI.", "Atención",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Por favor, ingrese un DNI válido.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
             try
             {
-                using (var conn = _db.GetConnection())
+                using (var conn = new DatabaseHelper().GetConnection())
                 {
                     conn.Open();
 
-                    // Verifica si existe en PERSONA
-                    string sqlPersona = "SELECT id_persona FROM persona WHERE dni = @dni";
-                    int? idPersona = null;
-
-                    using (var cmd = new MySqlCommand(sqlPersona, conn))
-                    {
-                        cmd.Parameters.AddWithValue("@dni", dni);
-                        var result = cmd.ExecuteScalar();
-                        if (result != null)
-                            idPersona = Convert.ToInt32(result);
-                    }
-
-                    if (idPersona == null)
-                    {
-                        // No existe, pregunta si quiere registrarse
-                        FormSeleccionTipoAlta selector = new FormSeleccionTipoAlta();
-                        DialogResult respuesta = selector.ShowDialog();
-
-                        if (respuesta == DialogResult.Yes)
-                        {
-                            AltaSocio alta = new AltaSocio();
-                            alta.ShowDialog();
-                        }
-                        else if (respuesta == DialogResult.No)
-                        {
-                            AltaNoSocio altaNo = new AltaNoSocio();
-                            altaNo.ShowDialog();
-                        }
-
-                        return;
-                    }
-
-                    // Si existe, verifica si es socio o no socio
-                    string sqlSocio = "SELECT id_socio FROM socio WHERE id_socio = @id";
-                    string sqlNoSocio = "SELECT id_no_socio FROM no_socio WHERE id_no_socio = @id";
-
-                    bool esSocio = false;
-                    bool esNoSocio = false;
-
+                    // Buscar si es socio
+                    string sqlSocio = @"SELECT s.id_socio 
+                                FROM socio s 
+                                JOIN persona p ON p.id_persona = s.id_socio
+                                WHERE p.dni = @dni";
                     using (var cmd = new MySqlCommand(sqlSocio, conn))
                     {
-                        cmd.Parameters.AddWithValue("@id", idPersona);
-                        esSocio = cmd.ExecuteScalar() != null;
+                        cmd.Parameters.AddWithValue("@dni", dni);
+                        object result = cmd.ExecuteScalar();
+
+                        if (result != null)
+                        {
+                            int idSocio = Convert.ToInt32(result);
+                            MessageBox.Show("El cliente es socio activo.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                            // Abrir directamente la gestión de socios con el DNI
+                            GestionSocios gestion = new GestionSocios(dni);
+                            this.Hide();
+                            gestion.ShowDialog();
+                            this.Close();
+                        }
                     }
 
+                    // Si no es socio, ver si es NoSocio
+                    string sqlNoSocio = @"SELECT n.id_nosocio 
+                                  FROM nosocio n 
+                                  JOIN persona p ON p.id_persona = n.id_nosocio
+                                  WHERE p.dni = @dni";
                     using (var cmd = new MySqlCommand(sqlNoSocio, conn))
                     {
-                        cmd.Parameters.AddWithValue("@id", idPersona);
-                        esNoSocio = cmd.ExecuteScalar() != null;
+                        cmd.Parameters.AddWithValue("@dni", dni);
+                        object result = cmd.ExecuteScalar();
+
+                        if (result != null)
+                        {
+                            int idNoSocio = Convert.ToInt32(result);
+                            MessageBox.Show("El cliente es No Socio.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            this.Hide();
+                            new GestionNoSocios(idNoSocio, dni).Show();
+                            return;
+                        }
                     }
 
-                    if (esSocio)
+                    // Si no existe ni en socio ni en no socio
+                    DialogResult opcion = MessageBox.Show(
+                        "El cliente no existe en el sistema.\n¿Desea registrarlo?",
+                        "Cliente no encontrado",
+                        MessageBoxButtons.YesNo,
+                        MessageBoxIcon.Question);
+
+                    if (opcion == DialogResult.Yes)
                     {
-                        GestionSocios g = new GestionSocios();
-                        g.ShowDialog();
-                    }
-                    else if (esNoSocio)
-                    {
-                        GestionNoSocios g = new GestionNoSocios();
-                        g.ShowDialog();
-                    }
-                    else
-                    {
-                        MessageBox.Show("El cliente existe en la base pero no tiene tipo asignado (socio/no socio).",
-                            "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        DialogResult tipo = MessageBox.Show(
+                            "¿Desea registrarlo como socio?",
+                            "Tipo de registro",
+                            MessageBoxButtons.YesNo,
+                            MessageBoxIcon.Question);
+
+                        if (tipo == DialogResult.Yes)
+                            new AltaSocio().ShowDialog();
+                        else
+                            new AltaNoSocio().ShowDialog();
                     }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al buscar cliente: " + ex.Message,
-                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error al consultar: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
     }
 }
