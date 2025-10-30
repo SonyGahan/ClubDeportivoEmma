@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 using ClubDeportivoEmma21.Data;
@@ -14,21 +15,14 @@ namespace ClubDeportivoEmma21.Forms
             InitializeComponent();
         }
 
-        private void FormLogin_Load(object sender, EventArgs e)
-        {
-            // No hace nada aún, evita errores de compilación
-        }
-
         private void btnLogin_Click(object sender, EventArgs e)
         {
             string usuario = txtUsuario.Text.Trim();
             string contrasena = txtContrasena.Text.Trim();
 
-            // Validación simple para conexion a la BD
             if (string.IsNullOrEmpty(usuario) || string.IsNullOrEmpty(contrasena))
             {
-                MessageBox.Show("Por favor complete ambos campos.",
-                    "Campos vacíos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                lblMensaje.Text = "Por favor complete ambos campos.";
                 return;
             }
 
@@ -37,8 +31,8 @@ namespace ClubDeportivoEmma21.Forms
                 using (var conn = _db.GetConnection())
                 {
                     conn.Open();
-
                     string query = "SELECT * FROM usuario WHERE nombre_usuario = @usuario AND contrasena = @contrasena";
+
                     using (var cmd = new MySqlCommand(query, conn))
                     {
                         cmd.Parameters.AddWithValue("@usuario", usuario);
@@ -48,16 +42,16 @@ namespace ClubDeportivoEmma21.Forms
                         {
                             if (reader.Read())
                             {
-                                MessageBox.Show("Inicio de sesión exitoso 🎉", "Bienvenido",
-                                    MessageBoxButtons.OK, MessageBoxIcon.Information);
-
                                 this.Hide();
-                                Form menu = new Form1(); // temporal, después se agrega el FormMenu
-                                menu.Show();
+                                new Form1().ShowDialog();
+                                this.Close();
                             }
                             else
                             {
-                                MostrarErrorYReiniciar("Usuario o contraseña incorrectos.\nPor favor, intente nuevamente.");
+                                lblMensaje.Text = "Usuario o contraseña incorrectos.";
+                                txtUsuario.Clear();
+                                txtContrasena.Clear();
+                                txtUsuario.Focus();
                             }
                         }
                     }
@@ -65,19 +59,47 @@ namespace ClubDeportivoEmma21.Forms
             }
             catch (Exception ex)
             {
-                MostrarErrorYReiniciar("Error al conectar con la base de datos:\n" + ex.Message);
+                MessageBox.Show("Error al conectar con la base de datos:\n" + ex.Message,
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        private void MostrarErrorYReiniciar(string mensaje)
+        private void btnSalir_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(mensaje, "Error de inicio de sesión",
-                MessageBoxButtons.OK, MessageBoxIcon.Error);
+            Application.Exit();
+        }
 
-            // Limpia los campos y coloca el foco en el usuario
-            txtUsuario.Clear();
-            txtContrasena.Clear();
-            txtUsuario.Focus();
+        private void BtnHoverEnter(object sender, EventArgs e)
+        {
+            var btn = sender as Button;
+            btn!.BackColor = Color.FromArgb(90, 113, 132);
+            btn.ForeColor = Color.White;
+        }
+
+        private void BtnHoverLeave(object sender, EventArgs e)
+        {
+            var btn = sender as Button;
+            if (btn == btnLogin)
+            {
+                btn.BackColor = Color.FromArgb(58, 80, 107);
+                btn.ForeColor = Color.WhiteSmoke;
+            }
+            else
+            {
+                btn.BackColor = Color.FromArgb(197, 208, 218);
+                btn.ForeColor = Color.FromArgb(47, 47, 47);
+            }
+        }
+
+        private void FormLogin_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panelFondo_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
+

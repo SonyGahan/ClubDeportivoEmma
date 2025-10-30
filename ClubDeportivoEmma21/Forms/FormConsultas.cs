@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 using ClubDeportivoEmma21.Data;
@@ -13,10 +14,17 @@ namespace ClubDeportivoEmma21.Forms
         {
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
+            this.Text = "Consulta de Clientes - Club Deportivo Emma 21";
         }
 
         private void FormConsultas_Load(object sender, EventArgs e)
         {
+            // Aplicar estilo visual a los elementos
+            EstilizarFormulario();
+            EstilizarBoton(btnBuscar);
+            EstilizarBotonVolver(btnVolver);
+            EstilizarTextBox(txtConsultaDniPersona);
+            EstilizarLabel(lblConsultaDniPersona);
         }
 
         private void btnVolver_Click(object sender, EventArgs e)
@@ -63,9 +71,9 @@ namespace ClubDeportivoEmma21.Forms
                     }
 
                     // Si no es socio, ver si es NoSocio
-                    string sqlNoSocio = @"SELECT n.id_nosocio 
-                                  FROM nosocio n 
-                                  JOIN persona p ON p.id_persona = n.id_nosocio
+                    string sqlNoSocio = @"SELECT n.id_no_socio 
+                                  FROM no_socio n 
+                                  JOIN persona p ON p.id_persona = n.id_no_socio
                                   WHERE p.dni = @dni";
                     using (var cmd = new MySqlCommand(sqlNoSocio, conn))
                     {
@@ -110,5 +118,74 @@ namespace ClubDeportivoEmma21.Forms
             }
         }
 
+        // 🎨 ===== MÉTODOS DE ESTILO =====
+
+        private void EstilizarFormulario()
+        {
+            this.BackColor = Color.FromArgb(232, 237, 242);
+            this.Font = new Font("Segoe UI", 10F, FontStyle.Regular);
+        }
+
+        private void EstilizarLabel(Label lbl)
+        {
+            lbl.Font = new Font("Segoe UI", 10.5F, FontStyle.Bold);
+            lbl.ForeColor = Color.FromArgb(47, 47, 47);
+        }
+
+        private void EstilizarTextBox(TextBox txt)
+        {
+            txt.BackColor = Color.White;
+            txt.BorderStyle = BorderStyle.FixedSingle;
+            txt.Font = new Font("Segoe UI", 10F);
+            txt.ForeColor = Color.FromArgb(47, 47, 47);
+        }
+
+        private void EstilizarBoton(Button b)
+        {
+            var colorPrincipal = Color.FromArgb(90, 113, 132); // Azul acero
+            var colorHover = Color.FromArgb(58, 80, 107);
+            var colorTexto = Color.White;
+
+            b.BackColor = colorPrincipal;
+            b.ForeColor = colorTexto;
+            b.FlatStyle = FlatStyle.Flat;
+            b.FlatAppearance.BorderSize = 0;
+            b.Font = new Font("Segoe UI", 10.5F, FontStyle.Bold);
+            b.Cursor = Cursors.Hand;
+
+            b.MouseEnter += (s, e) =>
+            {
+                b.BackColor = colorHover;
+                b.FlatAppearance.BorderColor = Color.WhiteSmoke;
+                b.FlatAppearance.BorderSize = 2;
+            };
+            b.MouseLeave += (s, e) =>
+            {
+                b.BackColor = colorPrincipal;
+                b.FlatAppearance.BorderSize = 0;
+            };
+        }
+
+        private void EstilizarBotonVolver(Button b)
+        {
+            b.BackColor = Color.FromArgb(231, 215, 193);
+            b.ForeColor = Color.FromArgb(47, 47, 47);
+            b.FlatStyle = FlatStyle.Flat;
+            b.FlatAppearance.BorderSize = 0;
+            b.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            b.Cursor = Cursors.Hand;
+
+            b.MouseEnter += (s, e) =>
+            {
+                b.BackColor = Color.FromArgb(212, 175, 55);
+                b.ForeColor = Color.White;
+            };
+            b.MouseLeave += (s, e) =>
+            {
+                b.BackColor = Color.FromArgb(231, 215, 193);
+                b.ForeColor = Color.FromArgb(47, 47, 47);
+            };
+        }
     }
 }
+

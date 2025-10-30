@@ -2,30 +2,17 @@
 {
     partial class FormMorosos
     {
-        /// <summary>
-        /// Required designer variable.
-        /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
-        /// Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
-            {
                 components.Dispose();
-            }
             base.Dispose(disposing);
         }
 
         #region Windows Form Designer generated code
 
-        /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
-        /// </summary>
         private void InitializeComponent()
         {
             btnMorososImprimir = new Button();
@@ -39,7 +26,7 @@
             // 
             btnMorososImprimir.Location = new Point(522, 94);
             btnMorososImprimir.Name = "btnMorososImprimir";
-            btnMorososImprimir.Size = new Size(70, 26);
+            btnMorososImprimir.Size = new Size(83, 26);
             btnMorososImprimir.TabIndex = 0;
             btnMorososImprimir.Text = "Imprimir";
             btnMorososImprimir.UseVisualStyleBackColor = true;
@@ -49,7 +36,7 @@
             // 
             btnMorososExportar.Location = new Point(522, 61);
             btnMorososExportar.Name = "btnMorososExportar";
-            btnMorososExportar.Size = new Size(70, 27);
+            btnMorososExportar.Size = new Size(83, 27);
             btnMorososExportar.TabIndex = 1;
             btnMorososExportar.Text = "Exportar";
             btnMorososExportar.UseVisualStyleBackColor = true;
@@ -59,7 +46,7 @@
             // 
             btnMorososVolver.Location = new Point(522, 126);
             btnMorososVolver.Name = "btnMorososVolver";
-            btnMorososVolver.Size = new Size(70, 28);
+            btnMorososVolver.Size = new Size(83, 28);
             btnMorososVolver.TabIndex = 2;
             btnMorososVolver.Text = "Volver";
             btnMorososVolver.UseVisualStyleBackColor = true;
@@ -77,7 +64,7 @@
             // 
             txtTituloMorosos.Location = new Point(40, 31);
             txtTituloMorosos.Name = "txtTituloMorosos";
-            txtTituloMorosos.Size = new Size(158, 23);
+            txtTituloMorosos.Size = new Size(187, 23);
             txtTituloMorosos.TabIndex = 4;
             txtTituloMorosos.Text = "Listado de Socios Morosos:";
             // 
@@ -85,14 +72,18 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(632, 366);
+            BackColor = Color.FromArgb(232, 237, 242);
+            ClientSize = new Size(677, 366);
             Controls.Add(txtTituloMorosos);
             Controls.Add(lstSociosMorosos);
             Controls.Add(btnMorososVolver);
             Controls.Add(btnMorososExportar);
             Controls.Add(btnMorososImprimir);
+            FormBorderStyle = FormBorderStyle.FixedDialog;
+            MaximizeBox = false;
             Name = "FormMorosos";
-            Text = "Reporte de Vencimientos";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Reporte de Vencimientos - Club Deportivo Emma 21";
             Load += FormMorosos_Load;
             ResumeLayout(false);
             PerformLayout();

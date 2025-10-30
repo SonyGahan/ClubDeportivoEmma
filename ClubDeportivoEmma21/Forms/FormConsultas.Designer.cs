@@ -2,15 +2,8 @@
 {
     partial class FormConsultas
     {
-        /// <summary>
-        /// Required designer variable.
-        /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
-        /// Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -22,10 +15,6 @@
 
         #region Windows Form Designer generated code
 
-        /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
-        /// </summary>
         private void InitializeComponent()
         {
             lblConsultaDniPersona = new Label();
@@ -45,7 +34,7 @@
             // 
             // txtConsultaDniPersona
             // 
-            txtConsultaDniPersona.Location = new Point(142, 23);
+            txtConsultaDniPersona.Location = new Point(174, 23);
             txtConsultaDniPersona.Name = "txtConsultaDniPersona";
             txtConsultaDniPersona.Size = new Size(140, 23);
             txtConsultaDniPersona.TabIndex = 1;
@@ -62,7 +51,7 @@
             // 
             // btnVolver
             // 
-            btnVolver.Location = new Point(193, 88);
+            btnVolver.Location = new Point(225, 88);
             btnVolver.Name = "btnVolver";
             btnVolver.Size = new Size(89, 31);
             btnVolver.TabIndex = 3;
@@ -74,13 +63,17 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(361, 169);
+            BackColor = Color.FromArgb(232, 237, 242);
+            ClientSize = new Size(398, 169);
             Controls.Add(btnVolver);
             Controls.Add(btnBuscar);
             Controls.Add(txtConsultaDniPersona);
             Controls.Add(lblConsultaDniPersona);
+            FormBorderStyle = FormBorderStyle.FixedDialog;
+            MaximizeBox = false;
             Name = "FormConsultas";
-            Text = "Consulta de Clientes";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Consulta de Clientes - Club Deportivo Emma 21";
             Load += FormConsultas_Load;
             ResumeLayout(false);
             PerformLayout();

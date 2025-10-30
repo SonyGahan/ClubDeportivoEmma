@@ -1,6 +1,6 @@
 ﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
-using ClubDeportivoEmma21.Forms;
 
 namespace ClubDeportivoEmma21.Forms
 {
@@ -40,7 +40,13 @@ namespace ClubDeportivoEmma21.Forms
                 );
             }
 
-            // Asignar eventos
+            // Aplicar estilos coherentes
+            EstilizarBoton(btnNoSociosRegistrar);
+            EstilizarBoton(btnNoSociosModificar);
+            EstilizarBoton(btnNoSociosInscribirActividad);
+            EstilizarBotonVolver(btnNoSociosVolver);
+
+            // Asignar eventos funcionales
             btnNoSociosRegistrar.Click += btnNoSociosRegistrar_Click;
             btnNoSociosModificar.Click += btnNoSociosModificar_Click;
             btnNoSociosInscribirActividad.Click += btnNoSociosInscribirActividad_Click;
@@ -78,7 +84,60 @@ namespace ClubDeportivoEmma21.Forms
             menu.ShowDialog();
             this.Close();
         }
+
+        // ======== MÉTODOS DE ESTILO UNIFICADO ========
+
+        private void EstilizarBoton(Button b)
+        {
+            var btnFont = new Font("Segoe UI", 11F, FontStyle.Bold);
+            var colorPrincipal = Color.FromArgb(90, 113, 132);   // Azul acero
+            var colorHover = Color.FromArgb(58, 80, 107);       // Azul petróleo
+            var colorTexto = Color.White;
+
+            b.BackColor = colorPrincipal;
+            b.FlatStyle = FlatStyle.Flat;
+            b.FlatAppearance.BorderSize = 0;
+            b.ForeColor = colorTexto;
+            b.Font = btnFont;
+            b.Size = new Size(200, 55);
+            b.Cursor = Cursors.Hand;
+
+            // Efectos hover dinámicos
+            b.MouseEnter += (s, e) =>
+            {
+                b.BackColor = colorHover;
+                b.FlatAppearance.BorderColor = Color.WhiteSmoke;
+                b.FlatAppearance.BorderSize = 2;
+            };
+            b.MouseLeave += (s, e) =>
+            {
+                b.BackColor = colorPrincipal;
+                b.FlatAppearance.BorderSize = 0;
+            };
+        }
+
+        private void EstilizarBotonVolver(Button b)
+        {
+            b.BackColor = Color.FromArgb(231, 215, 193);
+            b.ForeColor = Color.FromArgb(47, 47, 47);
+            b.FlatStyle = FlatStyle.Flat;
+            b.FlatAppearance.BorderSize = 0;
+            b.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            b.Cursor = Cursors.Hand;
+
+            b.MouseEnter += (s, e) =>
+            {
+                b.BackColor = Color.FromArgb(212, 175, 55);
+                b.ForeColor = Color.White;
+            };
+            b.MouseLeave += (s, e) =>
+            {
+                b.BackColor = Color.FromArgb(231, 215, 193);
+                b.ForeColor = Color.FromArgb(47, 47, 47);
+            };
+        }
     }
 }
+
 
 

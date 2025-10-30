@@ -18,12 +18,93 @@ namespace ClubDeportivoEmma21.Forms
         {
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
+            this.Text = "Reporte de Vencimientos - Club Deportivo Emma 21";
         }
 
         private void FormMorosos_Load(object sender, EventArgs e)
         {
             ConfigurarListView();
             CargarMorosos();
+            AplicarEstiloVisual();
+        }
+
+        // 🎨 Aplicar diseño coherente al formulario
+        private void AplicarEstiloVisual()
+        {
+            this.BackColor = Color.FromArgb(232, 237, 242);
+            this.Font = new Font("Segoe UI", 10F);
+
+            EstilizarBotonAzul(btnMorososImprimir);
+            EstilizarBotonAzul(btnMorososExportar);
+            EstilizarBotonDorado(btnMorososVolver);
+            EstilizarTitulo(txtTituloMorosos);
+            EstilizarListView(lstSociosMorosos);
+        }
+
+        private void EstilizarBotonAzul(Button b)
+        {
+            Color baseColor = Color.FromArgb(90, 113, 132);
+            Color hoverColor = Color.FromArgb(58, 80, 107);
+            b.BackColor = baseColor;
+            b.ForeColor = Color.White;
+            b.FlatStyle = FlatStyle.Flat;
+            b.FlatAppearance.BorderSize = 0;
+            b.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            b.Cursor = Cursors.Hand;
+
+            b.MouseEnter += (s, e) =>
+            {
+                b.BackColor = hoverColor;
+                b.FlatAppearance.BorderColor = Color.WhiteSmoke;
+                b.FlatAppearance.BorderSize = 2;
+            };
+            b.MouseLeave += (s, e) =>
+            {
+                b.BackColor = baseColor;
+                b.FlatAppearance.BorderSize = 0;
+            };
+        }
+
+        private void EstilizarBotonDorado(Button b)
+        {
+            Color baseColor = Color.FromArgb(231, 215, 193);
+            Color hoverColor = Color.FromArgb(212, 175, 55);
+            b.BackColor = baseColor;
+            b.ForeColor = Color.FromArgb(47, 47, 47);
+            b.FlatStyle = FlatStyle.Flat;
+            b.FlatAppearance.BorderSize = 0;
+            b.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            b.Cursor = Cursors.Hand;
+
+            b.MouseEnter += (s, e) =>
+            {
+                b.BackColor = hoverColor;
+                b.ForeColor = Color.White;
+            };
+            b.MouseLeave += (s, e) =>
+            {
+                b.BackColor = baseColor;
+                b.ForeColor = Color.FromArgb(47, 47, 47);
+            };
+        }
+
+        private void EstilizarTitulo(TextBox t)
+        {
+            t.BackColor = Color.FromArgb(214, 223, 232);
+            t.BorderStyle = BorderStyle.FixedSingle;
+            t.Font = new Font("Segoe UI", 10.5F, FontStyle.Bold);
+            t.ForeColor = Color.FromArgb(47, 47, 47);
+            t.ReadOnly = true;
+            t.TextAlign = HorizontalAlignment.Left;
+        }
+
+        private void EstilizarListView(ListView lst)
+        {
+            lst.BackColor = Color.White;
+            lst.ForeColor = Color.FromArgb(47, 47, 47);
+            lst.Font = new Font("Segoe UI", 9.5F);
+            lst.FullRowSelect = true;
+            lst.GridLines = true;
         }
 
         // Configurar columnas visuales del listado
@@ -51,7 +132,6 @@ namespace ClubDeportivoEmma21.Forms
                 {
                     conn.Open();
 
-                    // Primero se actualiza el estado de las cuotas vencidas
                     string sqlUpdate = @"UPDATE cuota 
                                          SET estado_pago = 'Vencido'
                                          WHERE mes_a_pagar < CURDATE()
@@ -61,7 +141,6 @@ namespace ClubDeportivoEmma21.Forms
                         updateCmd.ExecuteNonQuery();
                     }
 
-                    // Luego se genera el listado de morosos
                     string sqlSelect = @"SELECT s.id_socio, p.nombre, p.apellido, c.mes_a_pagar, c.valor_cuota
                                          FROM cuota c
                                          JOIN socio s ON s.id_socio = c.id_socio
@@ -169,7 +248,6 @@ namespace ClubDeportivoEmma21.Forms
             preview.ShowDialog();
         }
 
-        // Volver al menú principal
         private void btnMorososVolver_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -178,4 +256,5 @@ namespace ClubDeportivoEmma21.Forms
         }
     }
 }
+
 

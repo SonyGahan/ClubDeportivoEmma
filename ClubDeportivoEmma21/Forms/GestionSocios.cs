@@ -35,6 +35,15 @@ namespace ClubDeportivoEmma21.Forms
                 // Mostrar el DNI del socio en el título
                 this.Text = $"Gestión de Socios - DNI: {dniSocioActual}";
             }
+
+            // Aplicar estilo visual coherente a todos los botones
+            EstilizarBoton(btnSocioRegistrarSocio);
+            EstilizarBoton(btnSocioModificar);
+            EstilizarBoton(btnSocioPagoCuota);
+            EstilizarBoton(btnSocioCarnet);
+
+            // Botón volver con diseño especial (igual al de “Salir” del Form1)
+            EstilizarBotonVolver(btnSocioVolver);
         }
 
         private void btnSocioRegistrarSocio_Click(object sender, EventArgs e)
@@ -122,5 +131,59 @@ namespace ClubDeportivoEmma21.Forms
             menu.ShowDialog();
             this.Close();
         }
+
+        private void pnlMain_Paint(object sender, PaintEventArgs e)
+        {
+        }
+
+        // ======== MÉTODOS DE ESTILO UNIFICADO ========
+
+        private void EstilizarBoton(Button b)
+        {
+            var btnFont = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
+            var colorPrincipal = System.Drawing.Color.FromArgb(90, 113, 132);   // Azul acero
+            var colorHover = System.Drawing.Color.FromArgb(58, 80, 107);       // Azul petróleo
+            var colorTexto = System.Drawing.Color.White;
+
+            b.BackColor = colorPrincipal;
+            b.FlatStyle = FlatStyle.Flat;
+            b.FlatAppearance.BorderSize = 0;
+            b.ForeColor = colorTexto;
+            b.Font = btnFont;
+            b.Size = new System.Drawing.Size(180, 55);
+            b.Cursor = Cursors.Hand;
+
+            // Eventos de hover dinámico
+            b.MouseEnter += (s, e) => {
+                b.BackColor = colorHover;
+                b.FlatAppearance.BorderColor = System.Drawing.Color.WhiteSmoke;
+                b.FlatAppearance.BorderSize = 2;
+            };
+            b.MouseLeave += (s, e) => {
+                b.BackColor = colorPrincipal;
+                b.FlatAppearance.BorderSize = 0;
+            };
+        }
+
+        private void EstilizarBotonVolver(Button b)
+        {
+            // Mismo estilo del botón “Salir” del Form1 y Login
+            b.BackColor = System.Drawing.Color.FromArgb(231, 215, 193);
+            b.ForeColor = System.Drawing.Color.FromArgb(47, 47, 47);
+            b.FlatStyle = FlatStyle.Flat;
+            b.FlatAppearance.BorderSize = 0;
+            b.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            b.Cursor = Cursors.Hand;
+
+            b.MouseEnter += (s, e) => {
+                b.BackColor = System.Drawing.Color.FromArgb(212, 175, 55);
+                b.ForeColor = System.Drawing.Color.White;
+            };
+            b.MouseLeave += (s, e) => {
+                b.BackColor = System.Drawing.Color.FromArgb(231, 215, 193);
+                b.ForeColor = System.Drawing.Color.FromArgb(47, 47, 47);
+            };
+        }
     }
 }
+

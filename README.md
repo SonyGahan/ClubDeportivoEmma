@@ -149,8 +149,6 @@ Este proyecto está bajo la **Licencia MIT**. Consulta el archivo [LICENSE](LICE
 
 ### 💻 Agradecimientos
 
-🚀 Gracias por visitar nuestro repositorio y por tu interés en este proyecto. ¡Espero que te sea útil! 😄
+🚀 Gracias por visitar el repositorio y por tu interés en este proyecto. ¡Espero que te sea útil! 😄
 
-### ⌨️ Construido con ❤️ por Grupo 4 de DISEÑO DE SISTEMAS ORIENTADO A OBJETOS - COMISION A 😊
-
-Grupo 4 - El consejo de la Secta somos: Lorenzo Mariela - Juan Mendoza - Johana Navarro - Sonia Pereira - Sol Prinzen - Ariel Quiroga 
+### ⌨️ Construido con ❤️ por Sony Gahan 
