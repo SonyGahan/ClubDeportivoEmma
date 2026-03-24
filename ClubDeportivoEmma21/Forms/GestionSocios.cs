@@ -3,12 +3,15 @@ using System.Drawing;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 using ClubDeportivoEmma21.Data;
+using ClubDeportivoEmma21.Utils; // Asegurate de tener esta referencia para el Validador
 
 namespace ClubDeportivoEmma21.Forms
 {
     public partial class GestionSocios : Form
     {
         private readonly DatabaseHelper _db = new DatabaseHelper();
+        private readonly ValidadorNegocio _validador = new ValidadorNegocio();
+
         private int idSocioActual = 0;
         private string dniSocioActual = "";
 
@@ -52,6 +55,7 @@ namespace ClubDeportivoEmma21.Forms
                 using (var conn = _db.GetConnection())
                 {
                     conn.Open();
+                    // Consulta unificada entre Persona y Socio
                     string sql = @"SELECT s.id_socio, p.nombre, p.apellido, p.dni, s.estado_membresia, p.fecha_venc_apto 
                                  FROM socio s 
                                  JOIN persona p ON p.id_persona = s.id_socio 
@@ -90,32 +94,58 @@ namespace ClubDeportivoEmma21.Forms
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al cargar socio: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error al cargar los datos del socio: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        // --- MÉTODO MAESTRO DE VALIDACIÓN ---
+        private bool EsSocioAptoParaOperar()
+        {
+            string mensaje;
+
+            // 1. Validamos Apto Médico
+            if (!_validador.ValidarAptoMedico(idSocioActual, out mensaje))
+            {
+                MessageBox.Show("⛔ BLOQUEO MÉDICO: " + mensaje, "Validación de Seguridad", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                return false;
+            }
+
+            // 2. Validamos Morosidad
+            if (_validador.EsSocioMoroso(idSocioActual, out mensaje))
+            {
+                MessageBox.Show("💰 BLOQUEO POR DEUDA: " + mensaje, "Validación Administrativa", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                return false;
+            }
+
+            return true; // Si pasó ambos filtros, devuelve verdadero
+        }
+
+        // --- EVENTOS DE BOTONES ---
 
         private void btnPagarCuota_Click(object sender, EventArgs e)
         {
-            // Abrimos el formulario de PagoCuota pasando los datos del socio
+            // Para pagar NO bloqueamos, ya que es el medio para salir de la morosidad
             new PagoCuota(idSocioActual, dniSocioActual).ShowDialog();
-            CargarDatosSocio(); // Recargamos por si cambió el estado
-        }
-
-        private void btnEmitirCarnet_Click(object sender, EventArgs e)
-        {
-            // Solo emitimos si está activo
-            if (lblEstadoDato.Text != "Activo")
-            {
-                MessageBox.Show("No se puede emitir carnet a un socio inactivo.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-            new FormCarnet(lblNombreDato.Text, dniSocioActual, idSocioActual.ToString()).ShowDialog();
+            CargarDatosSocio(); // Recargamos para ver si el estado cambió
         }
 
         private void btnRenovarApto_Click(object sender, EventArgs e)
         {
+            // Para renovar apto NO bloqueamos, es el medio para corregir el estado médico
             new FormRenovarApto().ShowDialog();
             CargarDatosSocio(); // Recargamos para ver la nueva fecha
+        }
+
+        private void btnEmitirCarnet_Click(object sender, EventArgs e)
+        {
+            // BLINDAJE: Solo emitimos carnet si el socio está al día y con apto vigente
+            if (!EsSocioAptoParaOperar())
+            {
+                return; // Se detiene la ejecución si falla cualquier validación
+            }
+
+            // Si llegó acá, todo está correcto
+            new FormCarnet(lblNombreDato.Text, dniSocioActual, idSocioActual.ToString()).ShowDialog();
         }
 
         private void btnVolver_Click(object sender, EventArgs e)

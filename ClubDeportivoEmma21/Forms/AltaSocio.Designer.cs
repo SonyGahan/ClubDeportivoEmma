@@ -84,160 +84,89 @@
             this.pnlCuerpo.Name = "pnlCuerpo";
             this.pnlCuerpo.Size = new System.Drawing.Size(550, 520);
             this.pnlCuerpo.TabIndex = 1;
+            this.pnlCuerpo.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlCuerpo_Paint);
             // 
-            // lblSocioNombre
+            // Labels y Textbox (Posiciones corregidas)
             // 
             this.lblSocioNombre.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.lblSocioNombre.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(47)))), ((int)(((byte)(47)))));
             this.lblSocioNombre.Location = new System.Drawing.Point(50, 30);
             this.lblSocioNombre.Name = "lblSocioNombre";
             this.lblSocioNombre.Size = new System.Drawing.Size(120, 25);
             this.lblSocioNombre.Text = "Nombre:";
-            // 
-            // txtSocioNombre
-            // 
+
             this.txtSocioNombre.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtSocioNombre.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtSocioNombre.Location = new System.Drawing.Point(180, 27);
             this.txtSocioNombre.Name = "txtSocioNombre";
             this.txtSocioNombre.Size = new System.Drawing.Size(300, 25);
-            this.txtSocioNombre.TabIndex = 1;
-            // 
-            // lblSocioApellido
-            // 
+
             this.lblSocioApellido.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.lblSocioApellido.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(47)))), ((int)(((byte)(47)))));
             this.lblSocioApellido.Location = new System.Drawing.Point(50, 80);
-            this.lblSocioApellido.Name = "lblSocioApellido";
-            this.lblSocioApellido.Size = new System.Drawing.Size(120, 25);
             this.lblSocioApellido.Text = "Apellido:";
-            // 
-            // txtSocioApellido
-            // 
+
             this.txtSocioApellido.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtSocioApellido.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtSocioApellido.Location = new System.Drawing.Point(180, 77);
-            this.txtSocioApellido.Name = "txtSocioApellido";
             this.txtSocioApellido.Size = new System.Drawing.Size(300, 25);
-            this.txtSocioApellido.TabIndex = 2;
-            // 
-            // lblSocioDni
-            // 
+
             this.lblSocioDni.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.lblSocioDni.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(47)))), ((int)(((byte)(47)))));
             this.lblSocioDni.Location = new System.Drawing.Point(50, 130);
-            this.lblSocioDni.Name = "lblSocioDni";
-            this.lblSocioDni.Size = new System.Drawing.Size(120, 25);
             this.lblSocioDni.Text = "DNI:";
-            // 
-            // txtSocioDni
-            // 
+
             this.txtSocioDni.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtSocioDni.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtSocioDni.Location = new System.Drawing.Point(180, 127);
-            this.txtSocioDni.Name = "txtSocioDni";
             this.txtSocioDni.Size = new System.Drawing.Size(300, 25);
-            this.txtSocioDni.TabIndex = 3;
-            // 
-            // lblSocioTelefono
-            // 
+
             this.lblSocioTelefono.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.lblSocioTelefono.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(47)))), ((int)(((byte)(47)))));
             this.lblSocioTelefono.Location = new System.Drawing.Point(50, 180);
-            this.lblSocioTelefono.Name = "lblSocioTelefono";
-            this.lblSocioTelefono.Size = new System.Drawing.Size(120, 25);
             this.lblSocioTelefono.Text = "Teléfono:";
-            // 
-            // txtSocioTelefono
-            // 
+
             this.txtSocioTelefono.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtSocioTelefono.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtSocioTelefono.Location = new System.Drawing.Point(180, 177);
-            this.txtSocioTelefono.Name = "txtSocioTelefono";
             this.txtSocioTelefono.Size = new System.Drawing.Size(300, 25);
-            this.txtSocioTelefono.TabIndex = 4;
-            // 
-            // lblSocioDireccion
-            // 
+
             this.lblSocioDireccion.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.lblSocioDireccion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(47)))), ((int)(((byte)(47)))));
             this.lblSocioDireccion.Location = new System.Drawing.Point(50, 230);
-            this.lblSocioDireccion.Name = "lblSocioDireccion";
-            this.lblSocioDireccion.Size = new System.Drawing.Size(120, 25);
             this.lblSocioDireccion.Text = "Dirección:";
-            // 
-            // txtSocioDireccion
-            // 
+
             this.txtSocioDireccion.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtSocioDireccion.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtSocioDireccion.Location = new System.Drawing.Point(180, 227);
-            this.txtSocioDireccion.Name = "txtSocioDireccion";
             this.txtSocioDireccion.Size = new System.Drawing.Size(300, 25);
-            this.txtSocioDireccion.TabIndex = 5;
-            // 
-            // lblSocioMail
-            // 
+
             this.lblSocioMail.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.lblSocioMail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(47)))), ((int)(((byte)(47)))));
             this.lblSocioMail.Location = new System.Drawing.Point(50, 280);
-            this.lblSocioMail.Name = "lblSocioMail";
-            this.lblSocioMail.Size = new System.Drawing.Size(120, 25);
             this.lblSocioMail.Text = "Mail:";
-            // 
-            // txtSocioMail
-            // 
+
             this.txtSocioMail.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtSocioMail.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtSocioMail.Location = new System.Drawing.Point(180, 277);
-            this.txtSocioMail.Name = "txtSocioMail";
             this.txtSocioMail.Size = new System.Drawing.Size(300, 25);
-            this.txtSocioMail.TabIndex = 6;
-            // 
-            // chbSocioAptoMedico
-            // 
-            this.chbSocioAptoMedico.AutoSize = true;
+
             this.chbSocioAptoMedico.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.chbSocioAptoMedico.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(47)))), ((int)(((byte)(47)))));
             this.chbSocioAptoMedico.Location = new System.Drawing.Point(180, 325);
-            this.chbSocioAptoMedico.Name = "chbSocioAptoMedico";
-            this.chbSocioAptoMedico.Size = new System.Drawing.Size(220, 23);
-            this.chbSocioAptoMedico.TabIndex = 7;
+            this.chbSocioAptoMedico.Size = new System.Drawing.Size(218, 23);
             this.chbSocioAptoMedico.Text = "Presenta Apto Médico Físico";
-            this.chbSocioAptoMedico.UseVisualStyleBackColor = true;
-            // 
-            // btnRegistrarSocio
-            // 
+
+            // Botón Registrar
             this.btnRegistrarSocio.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(113)))), ((int)(((byte)(132)))));
-            this.btnRegistrarSocio.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnRegistrarSocio.FlatAppearance.BorderSize = 0;
             this.btnRegistrarSocio.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRegistrarSocio.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
             this.btnRegistrarSocio.ForeColor = System.Drawing.Color.White;
             this.btnRegistrarSocio.Location = new System.Drawing.Point(300, 400);
             this.btnRegistrarSocio.Name = "btnRegistrarSocio";
             this.btnRegistrarSocio.Size = new System.Drawing.Size(180, 50);
-            this.btnRegistrarSocio.TabIndex = 8;
             this.btnRegistrarSocio.Text = "REGISTRAR SOCIO";
-            this.btnRegistrarSocio.UseVisualStyleBackColor = false;
             this.btnRegistrarSocio.Click += new System.EventHandler(this.btnRegistrarSocio_Click);
-            // 
-            // btnCancelarAltaSocio
-            // 
+
+            // Botón Cancelar (CORREGIDO: Apunta a btnCancelarAltaSocio_Click)
             this.btnCancelarAltaSocio.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(215)))), ((int)(((byte)(193)))));
-            this.btnCancelarAltaSocio.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCancelarAltaSocio.FlatAppearance.BorderSize = 0;
             this.btnCancelarAltaSocio.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancelarAltaSocio.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
             this.btnCancelarAltaSocio.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(47)))), ((int)(((byte)(47)))));
             this.btnCancelarAltaSocio.Location = new System.Drawing.Point(70, 400);
             this.btnCancelarAltaSocio.Name = "btnCancelarAltaSocio";
             this.btnCancelarAltaSocio.Size = new System.Drawing.Size(180, 50);
-            this.btnCancelarAltaSocio.TabIndex = 9;
             this.btnCancelarAltaSocio.Text = "CANCELAR";
-            this.btnCancelarAltaSocio.UseVisualStyleBackColor = false;
-            this.btnCancelarAltaSocio.Click += new System.EventHandler(this.btnCancelar_Click);
+            this.btnCancelarAltaSocio.Click += new System.EventHandler(this.btnCancelarAltaSocio_Click);
             // 
-            // AltaSocio
+            // AltaSocio Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -254,7 +183,6 @@
             this.pnlCuerpo.ResumeLayout(false);
             this.pnlCuerpo.PerformLayout();
             this.ResumeLayout(false);
-
         }
 
         #endregion

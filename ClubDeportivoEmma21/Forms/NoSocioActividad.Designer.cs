@@ -17,202 +17,210 @@
 
         private void InitializeComponent()
         {
-            this.pnlHeader = new System.Windows.Forms.Panel();
-            this.lblTitulo = new System.Windows.Forms.Label();
-            this.pnlCuerpo = new System.Windows.Forms.Panel();
-            this.lblDniBusqueda = new System.Windows.Forms.Label();
-            this.txtDni = new System.Windows.Forms.TextBox();
-            this.btnBuscar = new System.Windows.Forms.Button();
-            this.lblNombreLabel = new System.Windows.Forms.Label();
-            this.lblNombreDato = new System.Windows.Forms.Label();
-            this.lblActividadLabel = new System.Windows.Forms.Label();
-            this.cmbActividad = new System.Windows.Forms.ComboBox();
-            this.lblMontoLabel = new System.Windows.Forms.Label();
-            this.lblMontoDato = new System.Windows.Forms.Label();
-            this.btnRegistrar = new System.Windows.Forms.Button();
-            this.btnCancelar = new System.Windows.Forms.Button();
-            this.pnlHeader.SuspendLayout();
-            this.pnlCuerpo.SuspendLayout();
-            this.SuspendLayout();
+            pnlHeader = new Panel();
+            lblTitulo = new Label();
+            pnlCuerpo = new Panel();
+            lblDniBusqueda = new Label();
+            txtDni = new TextBox();
+            btnBuscar = new Button();
+            lblNombreLabel = new Label();
+            lblNombreDato = new Label();
+            lblActividadLabel = new Label();
+            cmbActividad = new ComboBox();
+            lblMontoLabel = new Label();
+            lblMontoDato = new Label();
+            btnRegistrar = new Button();
+            btnCancelar = new Button();
+            pnlHeader.SuspendLayout();
+            pnlCuerpo.SuspendLayout();
+            SuspendLayout();
             // 
             // pnlHeader
             // 
-            this.pnlHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(80)))), ((int)(((byte)(107)))));
-            this.pnlHeader.Controls.Add(this.lblTitulo);
-            this.pnlHeader.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlHeader.Location = new System.Drawing.Point(0, 0);
-            this.pnlHeader.Name = "pnlHeader";
-            this.pnlHeader.Size = new System.Drawing.Size(550, 70);
-            this.pnlHeader.TabIndex = 0;
+            pnlHeader.BackColor = Color.FromArgb(58, 80, 107);
+            pnlHeader.Controls.Add(lblTitulo);
+            pnlHeader.Dock = DockStyle.Top;
+            pnlHeader.Location = new Point(0, 0);
+            pnlHeader.Name = "pnlHeader";
+            pnlHeader.Size = new Size(550, 70);
+            pnlHeader.TabIndex = 0;
             // 
             // lblTitulo
             // 
-            this.lblTitulo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblTitulo.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold);
-            this.lblTitulo.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.lblTitulo.Location = new System.Drawing.Point(0, 0);
-            this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(550, 70);
-            this.lblTitulo.TabIndex = 0;
-            this.lblTitulo.Text = "Inscripción Actividad Diaria";
-            this.lblTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            lblTitulo.Dock = DockStyle.Fill;
+            lblTitulo.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
+            lblTitulo.ForeColor = Color.WhiteSmoke;
+            lblTitulo.Location = new Point(0, 0);
+            lblTitulo.Name = "lblTitulo";
+            lblTitulo.Size = new Size(550, 70);
+            lblTitulo.TabIndex = 0;
+            lblTitulo.Text = "Inscripción Actividad Diaria";
+            lblTitulo.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // pnlCuerpo
             // 
-            this.pnlCuerpo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(237)))), ((int)(((byte)(242)))));
-            this.pnlCuerpo.Controls.Add(this.lblDniBusqueda);
-            this.pnlCuerpo.Controls.Add(this.txtDni);
-            this.pnlCuerpo.Controls.Add(this.btnBuscar);
-            this.pnlCuerpo.Controls.Add(this.lblNombreLabel);
-            this.pnlCuerpo.Controls.Add(this.lblNombreDato);
-            this.pnlCuerpo.Controls.Add(this.lblActividadLabel);
-            this.pnlCuerpo.Controls.Add(this.cmbActividad);
-            this.pnlCuerpo.Controls.Add(this.lblMontoLabel);
-            this.pnlCuerpo.Controls.Add(this.lblMontoDato);
-            this.pnlCuerpo.Controls.Add(this.btnRegistrar);
-            this.pnlCuerpo.Controls.Add(this.btnCancelar);
-            this.pnlCuerpo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlCuerpo.Location = new System.Drawing.Point(0, 70);
-            this.pnlCuerpo.Name = "pnlCuerpo";
-            this.pnlCuerpo.Size = new System.Drawing.Size(550, 380);
-            this.pnlCuerpo.TabIndex = 1;
+            pnlCuerpo.BackColor = Color.FromArgb(232, 237, 242);
+            pnlCuerpo.Controls.Add(lblDniBusqueda);
+            pnlCuerpo.Controls.Add(txtDni);
+            pnlCuerpo.Controls.Add(btnBuscar);
+            pnlCuerpo.Controls.Add(lblNombreLabel);
+            pnlCuerpo.Controls.Add(lblNombreDato);
+            pnlCuerpo.Controls.Add(lblActividadLabel);
+            pnlCuerpo.Controls.Add(cmbActividad);
+            pnlCuerpo.Controls.Add(lblMontoLabel);
+            pnlCuerpo.Controls.Add(lblMontoDato);
+            pnlCuerpo.Controls.Add(btnRegistrar);
+            pnlCuerpo.Controls.Add(btnCancelar);
+            pnlCuerpo.Dock = DockStyle.Fill;
+            pnlCuerpo.Location = new Point(0, 70);
+            pnlCuerpo.Name = "pnlCuerpo";
+            pnlCuerpo.Size = new Size(550, 360);
+            pnlCuerpo.TabIndex = 1;
+            pnlCuerpo.Paint += pnlCuerpo_Paint;
             // 
             // lblDniBusqueda
             // 
-            this.lblDniBusqueda.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.lblDniBusqueda.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(47)))), ((int)(((byte)(47)))));
-            this.lblDniBusqueda.Location = new System.Drawing.Point(40, 30);
-            this.lblDniBusqueda.Name = "lblDniBusqueda";
-            this.lblDniBusqueda.Size = new System.Drawing.Size(120, 25);
-            this.lblDniBusqueda.Text = "DNI No Socio:";
+            lblDniBusqueda.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            lblDniBusqueda.ForeColor = Color.FromArgb(47, 47, 47);
+            lblDniBusqueda.Location = new Point(40, 30);
+            lblDniBusqueda.Name = "lblDniBusqueda";
+            lblDniBusqueda.Size = new Size(120, 25);
+            lblDniBusqueda.TabIndex = 0;
+            lblDniBusqueda.Text = "DNI No Socio:";
             // 
             // txtDni
             // 
-            this.txtDni.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtDni.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.txtDni.Location = new System.Drawing.Point(170, 27);
-            this.txtDni.Name = "txtDni";
-            this.txtDni.Size = new System.Drawing.Size(180, 25);
-            this.txtDni.TabIndex = 1;
+            txtDni.BorderStyle = BorderStyle.FixedSingle;
+            txtDni.Font = new Font("Segoe UI", 10F);
+            txtDni.Location = new Point(170, 27);
+            txtDni.Name = "txtDni";
+            txtDni.Size = new Size(180, 25);
+            txtDni.TabIndex = 1;
             // 
             // btnBuscar
             // 
-            this.btnBuscar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(80)))), ((int)(((byte)(107)))));
-            this.btnBuscar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnBuscar.FlatAppearance.BorderSize = 0;
-            this.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBuscar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.btnBuscar.ForeColor = System.Drawing.Color.White;
-            this.btnBuscar.Location = new System.Drawing.Point(370, 25);
-            this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(120, 30);
-            this.btnBuscar.TabIndex = 2;
-            this.btnBuscar.Text = "BUSCAR";
-            this.btnBuscar.UseVisualStyleBackColor = false;
-            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
+            btnBuscar.BackColor = Color.FromArgb(58, 80, 107);
+            btnBuscar.Cursor = Cursors.Hand;
+            btnBuscar.FlatAppearance.BorderSize = 0;
+            btnBuscar.FlatStyle = FlatStyle.Flat;
+            btnBuscar.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            btnBuscar.ForeColor = Color.White;
+            btnBuscar.Location = new Point(370, 25);
+            btnBuscar.Name = "btnBuscar";
+            btnBuscar.Size = new Size(120, 30);
+            btnBuscar.TabIndex = 2;
+            btnBuscar.Text = "BUSCAR";
+            btnBuscar.UseVisualStyleBackColor = false;
+            btnBuscar.Click += btnBuscar_Click;
             // 
             // lblNombreLabel
             // 
-            this.lblNombreLabel.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.lblNombreLabel.Location = new System.Drawing.Point(40, 85);
-            this.lblNombreLabel.Name = "lblNombreLabel";
-            this.lblNombreLabel.Size = new System.Drawing.Size(120, 25);
-            this.lblNombreLabel.Text = "Nombre:";
+            lblNombreLabel.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            lblNombreLabel.Location = new Point(40, 85);
+            lblNombreLabel.Name = "lblNombreLabel";
+            lblNombreLabel.Size = new Size(120, 25);
+            lblNombreLabel.TabIndex = 3;
+            lblNombreLabel.Text = "Nombre:";
             // 
             // lblNombreDato
             // 
-            this.lblNombreDato.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
-            this.lblNombreDato.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(80)))), ((int)(((byte)(107)))));
-            this.lblNombreDato.Location = new System.Drawing.Point(170, 85);
-            this.lblNombreDato.Name = "lblNombreDato";
-            this.lblNombreDato.Size = new System.Drawing.Size(320, 25);
-            this.lblNombreDato.Text = "-";
+            lblNombreDato.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
+            lblNombreDato.ForeColor = Color.FromArgb(58, 80, 107);
+            lblNombreDato.Location = new Point(170, 85);
+            lblNombreDato.Name = "lblNombreDato";
+            lblNombreDato.Size = new Size(320, 25);
+            lblNombreDato.TabIndex = 4;
+            lblNombreDato.Text = "-";
             // 
             // lblActividadLabel
             // 
-            this.lblActividadLabel.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.lblActividadLabel.Location = new System.Drawing.Point(40, 140);
-            this.lblActividadLabel.Name = "lblActividadLabel";
-            this.lblActividadLabel.Size = new System.Drawing.Size(120, 25);
-            this.lblActividadLabel.Text = "Seleccione Actividad:";
+            lblActividadLabel.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            lblActividadLabel.Location = new Point(40, 140);
+            lblActividadLabel.Name = "lblActividadLabel";
+            lblActividadLabel.Size = new Size(120, 25);
+            lblActividadLabel.TabIndex = 5;
+            lblActividadLabel.Text = "Seleccione Actividad:";
             // 
             // cmbActividad
             // 
-            this.cmbActividad.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbActividad.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.cmbActividad.Location = new System.Drawing.Point(170, 137);
-            this.cmbActividad.Name = "cmbActividad";
-            this.cmbActividad.Size = new System.Drawing.Size(320, 25);
-            this.cmbActividad.TabIndex = 3;
-            this.cmbActividad.SelectedIndexChanged += new System.EventHandler(this.cmbActividad_SelectedIndexChanged);
+            cmbActividad.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbActividad.Font = new Font("Segoe UI", 10F);
+            cmbActividad.Location = new Point(170, 137);
+            cmbActividad.Name = "cmbActividad";
+            cmbActividad.Size = new Size(320, 25);
+            cmbActividad.TabIndex = 3;
+            cmbActividad.SelectedIndexChanged += cmbActividad_SelectedIndexChanged;
             // 
             // lblMontoLabel
             // 
-            this.lblMontoLabel.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.lblMontoLabel.Location = new System.Drawing.Point(40, 195);
-            this.lblMontoLabel.Name = "lblMontoLabel";
-            this.lblMontoLabel.Size = new System.Drawing.Size(120, 25);
-            this.lblMontoLabel.Text = "Costo del día:";
+            lblMontoLabel.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            lblMontoLabel.Location = new Point(40, 195);
+            lblMontoLabel.Name = "lblMontoLabel";
+            lblMontoLabel.Size = new Size(120, 25);
+            lblMontoLabel.TabIndex = 6;
+            lblMontoLabel.Text = "Costo del día:";
             // 
             // lblMontoDato
             // 
-            this.lblMontoDato.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
-            this.lblMontoDato.ForeColor = System.Drawing.Color.DarkGreen;
-            this.lblMontoDato.Location = new System.Drawing.Point(170, 190);
-            this.lblMontoDato.Name = "lblMontoDato";
-            this.lblMontoDato.Size = new System.Drawing.Size(320, 35);
-            this.lblMontoDato.Text = "$ 0.00";
+            lblMontoDato.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
+            lblMontoDato.ForeColor = Color.DarkGreen;
+            lblMontoDato.Location = new Point(170, 190);
+            lblMontoDato.Name = "lblMontoDato";
+            lblMontoDato.Size = new Size(320, 35);
+            lblMontoDato.TabIndex = 7;
+            lblMontoDato.Text = "$ 0.00";
+            lblMontoDato.Click += lblMontoDato_Click;
             // 
             // btnRegistrar
             // 
-            this.btnRegistrar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(113)))), ((int)(((byte)(132)))));
-            this.btnRegistrar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnRegistrar.Enabled = false;
-            this.btnRegistrar.FlatAppearance.BorderSize = 0;
-            this.btnRegistrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRegistrar.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
-            this.btnRegistrar.ForeColor = System.Drawing.Color.White;
-            this.btnRegistrar.Location = new System.Drawing.Point(300, 270);
-            this.btnRegistrar.Name = "btnRegistrar";
-            this.btnRegistrar.Size = new System.Drawing.Size(190, 55);
-            this.btnRegistrar.TabIndex = 4;
-            this.btnRegistrar.Text = "REGISTRAR PAGO";
-            this.btnRegistrar.UseVisualStyleBackColor = false;
-            this.btnRegistrar.Click += new System.EventHandler(this.btnRegistrar_Click);
+            btnRegistrar.BackColor = Color.FromArgb(90, 113, 132);
+            btnRegistrar.Cursor = Cursors.Hand;
+            btnRegistrar.Enabled = false;
+            btnRegistrar.FlatAppearance.BorderSize = 0;
+            btnRegistrar.FlatStyle = FlatStyle.Flat;
+            btnRegistrar.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
+            btnRegistrar.ForeColor = Color.White;
+            btnRegistrar.Location = new Point(300, 270);
+            btnRegistrar.Name = "btnRegistrar";
+            btnRegistrar.Size = new Size(190, 55);
+            btnRegistrar.TabIndex = 4;
+            btnRegistrar.Text = "REGISTRAR PAGO";
+            btnRegistrar.UseVisualStyleBackColor = false;
+            btnRegistrar.Click += btnRegistrar_Click;
             // 
             // btnCancelar
             // 
-            this.btnCancelar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(215)))), ((int)(((byte)(193)))));
-            this.btnCancelar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCancelar.FlatAppearance.BorderSize = 0;
-            this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancelar.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
-            this.btnCancelar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(47)))), ((int)(((byte)(47)))));
-            this.btnCancelar.Location = new System.Drawing.Point(40, 270);
-            this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(190, 55);
-            this.btnCancelar.TabIndex = 5;
-            this.btnCancelar.Text = "CANCELAR";
-            this.btnCancelar.UseVisualStyleBackColor = false;
-            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
+            btnCancelar.BackColor = Color.FromArgb(231, 215, 193);
+            btnCancelar.Cursor = Cursors.Hand;
+            btnCancelar.FlatAppearance.BorderSize = 0;
+            btnCancelar.FlatStyle = FlatStyle.Flat;
+            btnCancelar.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
+            btnCancelar.ForeColor = Color.FromArgb(47, 47, 47);
+            btnCancelar.Location = new Point(40, 270);
+            btnCancelar.Name = "btnCancelar";
+            btnCancelar.Size = new Size(190, 55);
+            btnCancelar.TabIndex = 5;
+            btnCancelar.Text = "CANCELAR";
+            btnCancelar.UseVisualStyleBackColor = false;
+            btnCancelar.Click += btnCancelar_Click;
             // 
             // NoSocioActividad
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(550, 430);
-            this.Controls.Add(this.pnlCuerpo);
-            this.Controls.Add(this.pnlHeader);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.MaximizeBox = false;
-            this.Name = "NoSocioActividad";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Inscripción Diaria - Club Emma 21";
-            this.Load += new System.EventHandler(this.NoSocioActividad_Load);
-            this.pnlHeader.ResumeLayout(false);
-            this.pnlCuerpo.ResumeLayout(false);
-            this.pnlCuerpo.PerformLayout();
-            this.ResumeLayout(false);
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(550, 430);
+            Controls.Add(pnlCuerpo);
+            Controls.Add(pnlHeader);
+            FormBorderStyle = FormBorderStyle.FixedDialog;
+            MaximizeBox = false;
+            Name = "NoSocioActividad";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Inscripción Diaria - Club Emma 21";
+            Load += NoSocioActividad_Load;
+            pnlHeader.ResumeLayout(false);
+            pnlCuerpo.ResumeLayout(false);
+            pnlCuerpo.PerformLayout();
+            ResumeLayout(false);
 
         }
 

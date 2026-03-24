@@ -28,11 +28,37 @@ namespace ClubDeportivoEmma21.Forms
 
         private void PagoCuota_Load(object sender, EventArgs e)
         {
+            // 1. LLAMADA AL BLINDAJE: Actualizamos estados de cuenta en la BD
+            ActualizarEstadosDeCuenta();
+
             ConfigurarMediosDePago();
 
             if (idSocioActual > 0)
             {
                 CargarDatosSocioPorId(idSocioActual);
+            }
+        }
+
+        // Nuevo método para llamar al Stored Procedure
+        private void ActualizarEstadosDeCuenta()
+        {
+            try
+            {
+                using (var conn = _db.GetConnection())
+                {
+                    conn.Open();
+                    // Ejecutamos el procedimiento almacenado que creamos en MySQL
+                    using (var cmd = new MySqlCommand("sp_ActualizarMorosos", conn))
+                    {
+                        cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Log de error silencioso o aviso al usuario
+                Console.WriteLine("Error al actualizar morosos: " + ex.Message);
             }
         }
 
@@ -45,7 +71,8 @@ namespace ClubDeportivoEmma21.Forms
             clbOpcionDePagoSocio.CheckOnClick = true;
 
             // Aseguramos selección única
-            clbOpcionDePagoSocio.ItemCheck += (s, ev) => {
+            clbOpcionDePagoSocio.ItemCheck += (s, ev) =>
+            {
                 if (ev.NewValue == CheckState.Checked)
                 {
                     for (int i = 0; i < clbOpcionDePagoSocio.Items.Count; i++)
@@ -66,11 +93,13 @@ namespace ClubDeportivoEmma21.Forms
             this.btnPagoSocio.MouseLeave += (s, e) => this.btnPagoSocio.BackColor = Color.FromArgb(90, 113, 132);
 
             // Botón Cancelar (Dorado)
-            this.btnPagoSocioCancelar.MouseEnter += (s, e) => {
+            this.btnPagoSocioCancelar.MouseEnter += (s, e) =>
+            {
                 this.btnPagoSocioCancelar.BackColor = Color.FromArgb(212, 175, 55);
                 this.btnPagoSocioCancelar.ForeColor = Color.White;
             };
-            this.btnPagoSocioCancelar.MouseLeave += (s, e) => {
+            this.btnPagoSocioCancelar.MouseLeave += (s, e) =>
+            {
                 this.btnPagoSocioCancelar.BackColor = Color.FromArgb(231, 215, 193);
                 this.btnPagoSocioCancelar.ForeColor = Color.Black;
             };
@@ -223,6 +252,11 @@ namespace ClubDeportivoEmma21.Forms
             txtVencimiento.Clear();
             txtMontoCuota.Clear();
             btnPagoSocio.Enabled = false;
+        }
+
+        private void pnlCuerpo_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

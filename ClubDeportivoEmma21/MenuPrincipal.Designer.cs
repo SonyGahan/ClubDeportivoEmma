@@ -127,6 +127,7 @@
             picFondo.SizeMode = PictureBoxSizeMode.StretchImage;
             picFondo.TabIndex = 1;
             picFondo.TabStop = false;
+            picFondo.Click += picFondo_Click;
             // 
             // MenuPrincipal
             // 

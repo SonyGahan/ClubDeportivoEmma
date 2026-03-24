@@ -13,119 +13,120 @@
         #region Windows Form Designer generated code
         private void InitializeComponent()
         {
-            this.pnlHeader = new System.Windows.Forms.Panel();
-            this.lblTitulo = new System.Windows.Forms.Label();
-            this.pnlCuerpo = new System.Windows.Forms.Panel();
-            this.lblDniBusqueda = new System.Windows.Forms.Label();
-            this.txtConsultaDniPersona = new System.Windows.Forms.TextBox();
-            this.btnBuscar = new System.Windows.Forms.Button();
-            this.btnVolver = new System.Windows.Forms.Button();
-            this.pnlHeader.SuspendLayout();
-            this.pnlCuerpo.SuspendLayout();
-            this.SuspendLayout();
+            pnlHeader = new Panel();
+            lblTitulo = new Label();
+            pnlCuerpo = new Panel();
+            lblDniBusqueda = new Label();
+            txtConsultaDniPersona = new TextBox();
+            btnBuscar = new Button();
+            btnVolver = new Button();
+            pnlHeader.SuspendLayout();
+            pnlCuerpo.SuspendLayout();
+            SuspendLayout();
             // 
             // pnlHeader
             // 
-            this.pnlHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(80)))), ((int)(((byte)(107)))));
-            this.pnlHeader.Controls.Add(this.lblTitulo);
-            this.pnlHeader.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlHeader.Location = new System.Drawing.Point(0, 0);
-            this.pnlHeader.Name = "pnlHeader";
-            this.pnlHeader.Size = new System.Drawing.Size(500, 70);
-            this.pnlHeader.TabIndex = 0;
+            pnlHeader.BackColor = Color.FromArgb(58, 80, 107);
+            pnlHeader.Controls.Add(lblTitulo);
+            pnlHeader.Dock = DockStyle.Top;
+            pnlHeader.Location = new Point(0, 0);
+            pnlHeader.Name = "pnlHeader";
+            pnlHeader.Size = new Size(500, 70);
+            pnlHeader.TabIndex = 0;
             // 
             // lblTitulo
             // 
-            this.lblTitulo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblTitulo.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold);
-            this.lblTitulo.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.lblTitulo.Location = new System.Drawing.Point(0, 0);
-            this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(500, 70);
-            this.lblTitulo.TabIndex = 0;
-            this.lblTitulo.Text = "Consulta de Clientes";
-            this.lblTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            lblTitulo.Dock = DockStyle.Fill;
+            lblTitulo.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
+            lblTitulo.ForeColor = Color.WhiteSmoke;
+            lblTitulo.Location = new Point(0, 0);
+            lblTitulo.Name = "lblTitulo";
+            lblTitulo.Size = new Size(500, 70);
+            lblTitulo.TabIndex = 0;
+            lblTitulo.Text = "Consulta de Clientes";
+            lblTitulo.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // pnlCuerpo
             // 
-            this.pnlCuerpo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(237)))), ((int)(((byte)(242)))));
-            this.pnlCuerpo.Controls.Add(this.lblDniBusqueda);
-            this.pnlCuerpo.Controls.Add(this.txtConsultaDniPersona);
-            this.pnlCuerpo.Controls.Add(this.btnBuscar);
-            this.pnlCuerpo.Controls.Add(this.btnVolver);
-            this.pnlCuerpo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlCuerpo.Location = new System.Drawing.Point(0, 70);
-            this.pnlCuerpo.Name = "pnlCuerpo";
-            this.pnlCuerpo.Size = new System.Drawing.Size(500, 230);
-            this.pnlCuerpo.TabIndex = 1;
+            pnlCuerpo.BackColor = Color.FromArgb(232, 237, 242);
+            pnlCuerpo.Controls.Add(lblDniBusqueda);
+            pnlCuerpo.Controls.Add(txtConsultaDniPersona);
+            pnlCuerpo.Controls.Add(btnBuscar);
+            pnlCuerpo.Controls.Add(btnVolver);
+            pnlCuerpo.Dock = DockStyle.Fill;
+            pnlCuerpo.Location = new Point(0, 70);
+            pnlCuerpo.Name = "pnlCuerpo";
+            pnlCuerpo.Size = new Size(500, 230);
+            pnlCuerpo.TabIndex = 1;
+            pnlCuerpo.Paint += pnlCuerpo_Paint;
             // 
             // lblDniBusqueda
             // 
-            this.lblDniBusqueda.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
-            this.lblDniBusqueda.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(47)))), ((int)(((byte)(47)))));
-            this.lblDniBusqueda.Location = new System.Drawing.Point(50, 40);
-            this.lblDniBusqueda.Name = "lblDniBusqueda";
-            this.lblDniBusqueda.Size = new System.Drawing.Size(120, 25);
-            this.lblDniBusqueda.TabIndex = 0;
-            this.lblDniBusqueda.Text = "DNI Cliente:";
+            lblDniBusqueda.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
+            lblDniBusqueda.ForeColor = Color.FromArgb(47, 47, 47);
+            lblDniBusqueda.Location = new Point(50, 40);
+            lblDniBusqueda.Name = "lblDniBusqueda";
+            lblDniBusqueda.Size = new Size(120, 25);
+            lblDniBusqueda.TabIndex = 0;
+            lblDniBusqueda.Text = "DNI Cliente:";
             // 
             // txtConsultaDniPersona
             // 
-            this.txtConsultaDniPersona.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtConsultaDniPersona.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.txtConsultaDniPersona.Location = new System.Drawing.Point(170, 37);
-            this.txtConsultaDniPersona.Name = "txtConsultaDniPersona";
-            this.txtConsultaDniPersona.Size = new System.Drawing.Size(250, 27);
-            this.txtConsultaDniPersona.TabIndex = 1;
+            txtConsultaDniPersona.BorderStyle = BorderStyle.FixedSingle;
+            txtConsultaDniPersona.Font = new Font("Segoe UI", 11F);
+            txtConsultaDniPersona.Location = new Point(170, 37);
+            txtConsultaDniPersona.Name = "txtConsultaDniPersona";
+            txtConsultaDniPersona.Size = new Size(250, 27);
+            txtConsultaDniPersona.TabIndex = 1;
             // 
             // btnBuscar
             // 
-            this.btnBuscar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(113)))), ((int)(((byte)(132)))));
-            this.btnBuscar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnBuscar.FlatAppearance.BorderSize = 0;
-            this.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBuscar.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
-            this.btnBuscar.ForeColor = System.Drawing.Color.White;
-            this.btnBuscar.Location = new System.Drawing.Point(260, 110);
-            this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(160, 50);
-            this.btnBuscar.TabIndex = 2;
-            this.btnBuscar.Text = "BUSCAR";
-            this.btnBuscar.UseVisualStyleBackColor = false;
-            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
+            btnBuscar.BackColor = Color.FromArgb(90, 113, 132);
+            btnBuscar.Cursor = Cursors.Hand;
+            btnBuscar.FlatAppearance.BorderSize = 0;
+            btnBuscar.FlatStyle = FlatStyle.Flat;
+            btnBuscar.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
+            btnBuscar.ForeColor = Color.White;
+            btnBuscar.Location = new Point(260, 110);
+            btnBuscar.Name = "btnBuscar";
+            btnBuscar.Size = new Size(160, 50);
+            btnBuscar.TabIndex = 2;
+            btnBuscar.Text = "BUSCAR";
+            btnBuscar.UseVisualStyleBackColor = false;
+            btnBuscar.Click += btnBuscar_Click;
             // 
             // btnVolver
             // 
-            this.btnVolver.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(215)))), ((int)(((byte)(193)))));
-            this.btnVolver.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnVolver.FlatAppearance.BorderSize = 0;
-            this.btnVolver.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnVolver.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
-            this.btnVolver.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(47)))), ((int)(((byte)(47)))));
-            this.btnVolver.Location = new System.Drawing.Point(80, 110);
-            this.btnVolver.Name = "btnVolver";
-            this.btnVolver.Size = new System.Drawing.Size(160, 50);
-            this.btnVolver.TabIndex = 3;
-            this.btnVolver.Text = "VOLVER";
-            this.btnVolver.UseVisualStyleBackColor = false;
-            this.btnVolver.Click += new System.EventHandler(this.btnVolver_Click);
+            btnVolver.BackColor = Color.FromArgb(231, 215, 193);
+            btnVolver.Cursor = Cursors.Hand;
+            btnVolver.FlatAppearance.BorderSize = 0;
+            btnVolver.FlatStyle = FlatStyle.Flat;
+            btnVolver.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
+            btnVolver.ForeColor = Color.FromArgb(47, 47, 47);
+            btnVolver.Location = new Point(80, 110);
+            btnVolver.Name = "btnVolver";
+            btnVolver.Size = new Size(160, 50);
+            btnVolver.TabIndex = 3;
+            btnVolver.Text = "VOLVER";
+            btnVolver.UseVisualStyleBackColor = false;
+            btnVolver.Click += btnVolver_Click;
             // 
             // FormConsultas
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(500, 300);
-            this.Controls.Add(this.pnlCuerpo);
-            this.Controls.Add(this.pnlHeader);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.MaximizeBox = false;
-            this.Name = "FormConsultas";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Consulta de Clientes";
-            this.pnlHeader.ResumeLayout(false);
-            this.pnlCuerpo.ResumeLayout(false);
-            this.pnlCuerpo.PerformLayout();
-            this.ResumeLayout(false);
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(500, 300);
+            Controls.Add(pnlCuerpo);
+            Controls.Add(pnlHeader);
+            FormBorderStyle = FormBorderStyle.FixedDialog;
+            MaximizeBox = false;
+            Name = "FormConsultas";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Consulta de Clientes";
+            pnlHeader.ResumeLayout(false);
+            pnlCuerpo.ResumeLayout(false);
+            pnlCuerpo.PerformLayout();
+            ResumeLayout(false);
         }
         #endregion
 

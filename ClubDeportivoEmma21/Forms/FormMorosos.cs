@@ -34,11 +34,13 @@ namespace ClubDeportivoEmma21.Forms
             btnMorososExportar.MouseEnter += (s, ev) => btnMorososExportar.BackColor = Color.FromArgb(58, 80, 107);
             btnMorososExportar.MouseLeave += (s, ev) => btnMorososExportar.BackColor = Color.FromArgb(90, 113, 132);
 
-            btnMorososVolver.MouseEnter += (s, ev) => {
+            btnMorososVolver.MouseEnter += (s, ev) =>
+            {
                 btnMorososVolver.BackColor = Color.FromArgb(212, 175, 55);
                 btnMorososVolver.ForeColor = Color.White;
             };
-            btnMorososVolver.MouseLeave += (s, ev) => {
+            btnMorososVolver.MouseLeave += (s, ev) =>
+            {
                 btnMorososVolver.BackColor = Color.FromArgb(231, 215, 193);
                 btnMorososVolver.ForeColor = Color.Black;
             };
@@ -52,17 +54,30 @@ namespace ClubDeportivoEmma21.Forms
                 using (var conn = _db.GetConnection())
                 {
                     conn.Open();
-                    string sqlUpdate = @"UPDATE cuota SET estado_pago = 'Vencido' 
-                                       WHERE mes_a_pagar < CURDATE() AND estado_pago = 'Pendiente'";
-                    using (var cmd = new MySqlCommand(sqlUpdate, conn)) { cmd.ExecuteNonQuery(); }
 
-                    string sqlSelect = @"SELECT s.id_socio, p.nombre, p.apellido, p.telefono, c.mes_a_pagar, c.valor_cuota 
-                                       FROM cuota c JOIN socio s ON s.id_socio = c.id_socio 
-                                       JOIN persona p ON p.id_persona = s.id_socio 
-                                       WHERE c.estado_pago = 'Vencido' ORDER BY c.mes_a_pagar ASC";
-                    using (var da = new MySqlDataAdapter(sqlSelect, conn)) { da.Fill(morososTable); }
+                    // Primero aseguramos que la lista esté fresca llamando al procedimiento
+                    using (var cmdSp = new MySqlCommand("sp_ActualizarMorosos", conn))
+                    {
+                        cmdSp.CommandType = System.Data.CommandType.StoredProcedure;
+                        cmdSp.ExecuteNonQuery();
+                    }
+
+                    // Ahora traemos solo a los que tienen cuotas con estado 'Vencido'
+                    string sqlSelect = @"SELECT DISTINCT s.id_socio, p.nombre, p.apellido, p.telefono, 
+                                       c.mes_a_pagar, c.valor_cuota 
+                                FROM cuota c 
+                                JOIN socio s ON s.id_socio = c.id_socio 
+                                JOIN persona p ON p.id_persona = s.id_socio 
+                                WHERE c.estado_pago = 'Vencido' 
+                                ORDER BY c.mes_a_pagar ASC";
+
+                    using (var da = new MySqlDataAdapter(sqlSelect, conn))
+                    {
+                        da.Fill(morososTable);
+                    }
                 }
 
+                // Llenamos el ListView
                 lstSociosMorosos.Items.Clear();
                 foreach (DataRow row in morososTable.Rows)
                 {
@@ -70,12 +85,15 @@ namespace ClubDeportivoEmma21.Forms
                     item.SubItems.Add(row["nombre"].ToString());
                     item.SubItems.Add(row["apellido"].ToString());
                     item.SubItems.Add(row["telefono"].ToString());
-                    item.SubItems.Add(Convert.ToDateTime(row["mes_a_pagar"]).ToString("dd/MM/yyyy"));
-                    item.SubItems.Add(Convert.ToDecimal(row["valor_cuota"]).ToString("N2"));
+                    item.SubItems.Add(Convert.ToDateTime(row["mes_a_pagar"]).ToString("MM/yyyy"));
+                    item.SubItems.Add("$ " + Convert.ToDecimal(row["valor_cuota"]).ToString("N2"));
                     lstSociosMorosos.Items.Add(item);
                 }
             }
-            catch (Exception ex) { MessageBox.Show("Error: " + ex.Message); }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar listado: " + ex.Message);
+            }
         }
 
         private void btnMorososExportar_Click(object sender, EventArgs e)
@@ -106,5 +124,10 @@ namespace ClubDeportivoEmma21.Forms
         }
 
         private void btnMorososVolver_Click(object sender, EventArgs e) => this.Close();
+
+        private void pnlCuerpo_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

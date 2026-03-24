@@ -72,6 +72,7 @@
             pnlCuerpo.Name = "pnlCuerpo";
             pnlCuerpo.Size = new Size(550, 380);
             pnlCuerpo.TabIndex = 1;
+            pnlCuerpo.Paint += pnlCuerpo_Paint;
             // 
             // lblDniTitulo
             // 

@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Drawing;
+using System.Collections.Generic;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 using ClubDeportivoEmma21.Data;
@@ -13,97 +13,76 @@ namespace ClubDeportivoEmma21.Forms
         public AltaNoSocio()
         {
             InitializeComponent();
-            AsignarEfectosHover();
+            CargarComboActividades();
         }
 
-        private void AltaNoSocio_Load(object sender, EventArgs e)
+        private void CargarComboActividades()
         {
-            // El diseño se carga automáticamente desde el Designer.cs
-        }
-
-        private void AsignarEfectosHover()
-        {
-            // Botón Registrar (Azul)
-            btnRegistrarNoSocio.MouseEnter += (s, e) => btnRegistrarNoSocio.BackColor = Color.FromArgb(58, 80, 107);
-            btnRegistrarNoSocio.MouseLeave += (s, e) => btnRegistrarNoSocio.BackColor = Color.FromArgb(90, 113, 132);
-
-            // Botón Cancelar (Beige/Dorado)
-            btnCancelar.MouseEnter += (s, e) =>
-            {
-                btnCancelar.BackColor = Color.FromArgb(212, 175, 55);
-                btnCancelar.ForeColor = Color.White;
-            };
-            btnCancelar.MouseLeave += (s, e) =>
-            {
-                btnCancelar.BackColor = Color.FromArgb(231, 215, 193);
-                btnCancelar.ForeColor = Color.Black;
-            };
-        }
-
-        private void btnRegistrarNoSocio_Click(object sender, EventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace(txtNombre.Text) || string.IsNullOrWhiteSpace(txtDni.Text))
-            {
-                MessageBox.Show("Por favor complete los campos obligatorios (Nombre y DNI).", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
             try
             {
                 using (var conn = _db.GetConnection())
                 {
                     conn.Open();
-                    using (var trans = conn.BeginTransaction())
+                    string sql = "SELECT id_actividad, nombre_actividad, valor_actividad FROM actividad";
+                    using (var cmd = new MySqlCommand(sql, conn))
                     {
-                        try
+                        using (var reader = cmd.ExecuteReader())
                         {
-                            // 1. Insertar en tabla PERSONA
-                            string sqlPersona = @"INSERT INTO persona (nombre, apellido, dni, telefono, direccion, mail, apto_medico) 
-                                                 VALUES (@nom, @ape, @dni, @tel, @dir, @mail, @apto)";
-                            int idPersona;
-                            using (var cmd = new MySqlCommand(sqlPersona, conn, trans))
+                            while (reader.Read())
                             {
-                                cmd.Parameters.AddWithValue("@nom", txtNombre.Text.Trim());
-                                cmd.Parameters.AddWithValue("@ape", txtApellido.Text.Trim());
-                                cmd.Parameters.AddWithValue("@dni", txtDni.Text.Trim());
-                                cmd.Parameters.AddWithValue("@tel", txtTelefono.Text.Trim());
-                                cmd.Parameters.AddWithValue("@dir", txtDireccion.Text.Trim());
-                                cmd.Parameters.AddWithValue("@mail", txtMail.Text.Trim());
-                                cmd.Parameters.AddWithValue("@apto", chbAptoMedico.Checked);
-                                cmd.ExecuteNonQuery();
-                                idPersona = (int)cmd.LastInsertedId;
+                                // Agregamos un objeto anónimo al combo
+                                cmbActividad.Items.Add(new
+                                {
+                                    Text = reader["nombre_actividad"].ToString() + " ($" + reader["costo_actividad"] + ")",
+                                    Value = reader["id_actividad"],
+                                    Costo = reader["costo_actividad"]
+                                });
                             }
-
-                            // 2. Insertar en tabla NO_SOCIO
-                            string sqlNoSocio = "INSERT INTO no_socio (id_no_socio, fecha_ingreso) VALUES (@id, NOW())";
-                            using (var cmd = new MySqlCommand(sqlNoSocio, conn, trans))
-                            {
-                                cmd.Parameters.AddWithValue("@id", idPersona);
-                                cmd.ExecuteNonQuery();
-                            }
-
-                            trans.Commit();
-                            MessageBox.Show("No Socio registrado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            this.Close();
-                        }
-                        catch (Exception)
-                        {
-                            trans.Rollback();
-                            throw;
                         }
                     }
                 }
+                cmbActividad.DisplayMember = "Text";
+                cmbActividad.ValueMember = "Value";
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al registrar: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            catch (Exception ex) { MessageBox.Show("Error al cargar actividades: " + ex.Message); }
         }
 
-        private void btnCancelar_Click(object sender, EventArgs e)
+        private void btnRegistrar_Click(object sender, EventArgs e)
         {
-            this.Close();
+            if (string.IsNullOrWhiteSpace(txtNombre.Text) || cmbActividad.SelectedItem == null) return;
+
+            try
+            {
+                dynamic act = cmbActividad.SelectedItem;
+                string[] partes = txtNombre.Text.Trim().Split(' ');
+                string nom = partes[0];
+                string ape = partes.Length > 1 ? partes[1] : "";
+
+                using (var conn = _db.GetConnection())
+                {
+                    conn.Open();
+                    using (var cmd = new MySqlCommand("sp_AltaNuevoNoSocio", conn))
+                    {
+                        cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("_nom", nom);
+                        cmd.Parameters.AddWithValue("_ape", ape);
+                        cmd.Parameters.AddWithValue("_dni", Convert.ToInt32(txtDni.Text));
+                        cmd.Parameters.AddWithValue("_tel", ""); // Opcional
+                        cmd.Parameters.AddWithValue("_dir", ""); // Opcional
+                        cmd.Parameters.AddWithValue("_mail", ""); // Opcional
+                        cmd.Parameters.AddWithValue("_idAct", act.Value);
+                        cmd.Parameters.AddWithValue("_monto", act.Costo);
+
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+                MessageBox.Show("💰 Pago diario registrado con éxito.", "Éxito");
+                this.Close();
+            }
+            catch (Exception ex) { MessageBox.Show("Error: " + ex.Message); }
         }
+
+        private void btnCancelar_Click(object sender, EventArgs e) => this.Close();
 
         private void pnlCuerpo_Paint(object sender, PaintEventArgs e)
         {

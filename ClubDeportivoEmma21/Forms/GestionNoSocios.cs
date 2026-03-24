@@ -28,11 +28,13 @@ namespace ClubDeportivoEmma21.Forms
 
         private void AsignarEfectosHover()
         {
-            btnCerrar.MouseEnter += (s, e) => {
+            btnCerrar.MouseEnter += (s, e) =>
+            {
                 btnCerrar.BackColor = Color.FromArgb(212, 175, 55);
                 btnCerrar.ForeColor = Color.White;
             };
-            btnCerrar.MouseLeave += (s, e) => {
+            btnCerrar.MouseLeave += (s, e) =>
+            {
                 btnCerrar.BackColor = Color.FromArgb(231, 215, 193);
                 btnCerrar.ForeColor = Color.Black;
             };
@@ -46,13 +48,13 @@ namespace ClubDeportivoEmma21.Forms
                 {
                     conn.Open();
 
-                    // CORRECCIÓN: Se cambió pd.monto_pagado por pd.monto
-                    // OJO: Si la tabla pago_diario no tiene id_actividad, esta consulta fallará en el JOIN.
-                    string sql = @"SELECT p.nombre, p.apellido, p.dni, pd.monto 
-                                 FROM persona p 
-                                 JOIN no_socio n ON p.id_persona = n.id_no_socio 
-                                 LEFT JOIN pago_diario pd ON n.id_no_socio = pd.id_no_socio AND pd.fecha_pago = CURDATE() 
-                                 WHERE p.dni = @dni";
+                    // JOIN entre persona, pago_diario y actividad para traer el nombre del deporte
+                    string sql = @"SELECT p.nombre, p.apellido, p.dni, pd.monto, act.nombre_actividad 
+                         FROM persona p 
+                         JOIN no_socio n ON p.id_persona = n.id_no_socio 
+                         LEFT JOIN pago_diario pd ON n.id_no_socio = pd.id_no_socio AND pd.fecha_pago = CURDATE() 
+                         LEFT JOIN actividad act ON pd.id_actividad = act.id_actividad
+                         WHERE p.dni = @dni";
 
                     using (var cmd = new MySqlCommand(sql, conn))
                     {
@@ -65,16 +67,18 @@ namespace ClubDeportivoEmma21.Forms
                                 lblDniDato.Text = reader["dni"].ToString();
                                 lblNombreDato.Text = reader["nombre"].ToString() + " " + reader["apellido"].ToString();
 
-                                // Si hay un pago hoy, mostramos el monto
                                 if (reader["monto"] != DBNull.Value)
                                 {
-                                    lblActividadDato.Text = "Pase Diario Activo"; // Simplificado por falta de id_actividad
+                                    // Ahora sí mostramos el nombre real de la actividad
+                                    lblActividadDato.Text = reader["nombre_actividad"].ToString();
                                     lblMontoDato.Text = "$ " + Convert.ToDecimal(reader["monto"]).ToString("N2");
+                                    lblActividadDato.ForeColor = Color.DarkBlue;
                                 }
                                 else
                                 {
                                     lblActividadDato.Text = "Sin actividad el día de hoy";
                                     lblMontoDato.Text = "$ 0.00";
+                                    lblActividadDato.ForeColor = Color.Gray;
                                 }
                             }
                         }
@@ -83,13 +87,18 @@ namespace ClubDeportivoEmma21.Forms
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al cargar datos del No Socio: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error al cargar datos: " + ex.Message, "Error");
             }
         }
 
         private void btnCerrar_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void pnlCuerpo_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

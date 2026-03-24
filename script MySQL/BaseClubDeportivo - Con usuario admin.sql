@@ -108,3 +108,113 @@ ADD COLUMN num_cuotas INT NOT NULL DEFAULT 1;
 -- 4. Agregar SOLO la cantidad de cuotas a PAGO_DIARIO
 ALTER TABLE PAGO_DIARIO
 ADD COLUMN num_cuotas INT NOT NULL DEFAULT 1;
+
+-- 5. Agregar la columna para la actividad
+ALTER TABLE baseclubdeportivo.pago_diario 
+ADD COLUMN id_actividad INT NOT NULL AFTER id_no_socio;
+
+-- 6. Crea la relación (Foreign Key) para asegurar la integridad
+ALTER TABLE baseclubdeportivo.pago_diario 
+ADD CONSTRAINT fk_pago_actividad 
+FOREIGN KEY (id_actividad) REFERENCES actividad(id_actividad);
+
+-- 7. Crea StoreProcedures para Generación Masiva de Cuotas y el Control de Morosidad
+USE BaseClubDeportivo;
+
+DELIMITER //
+
+-- 7.1. Procedimiento para generar las cuotas de todos los socios para el mes actual
+CREATE PROCEDURE sp_GenerarCuotasMensuales(IN monto_cuota DECIMAL(10,2))
+BEGIN
+    INSERT INTO CUOTA (id_socio, mes_a_pagar, valor_cuota, estado_pago)
+    SELECT id_socio, 
+           LAST_DAY(CURDATE()), -- Vencimiento al último día del mes actual
+           monto_cuota, 
+           'Pendiente'
+    FROM SOCIO
+    WHERE estado_membresia = 'Activo'
+    AND NOT EXISTS (
+        SELECT 1 FROM CUOTA 
+        WHERE id_socio = SOCIO.id_socio 
+        AND MONTH(mes_a_pagar) = MONTH(CURDATE()) 
+        AND YEAR(mes_a_pagar) = YEAR(CURDATE())
+    );
+END //
+
+-- 7.2. Procedimiento para marcar automáticamente como Morosos a quienes vencieron ayer
+CREATE PROCEDURE sp_ActualizarMorosos()
+BEGIN
+    UPDATE CUOTA 
+    SET estado_pago = 'Vencido' 
+    WHERE mes_a_pagar < CURDATE() 
+    AND estado_pago = 'Pendiente';
+END //
+
+DELIMITER ;
+
+-- 8 Crear un Stored Procedure que maneje la inserción en las tres tablas involucradas: PERSONA, SOCIO y la primera CUOTA.
+USE BaseClubDeportivo;
+
+DELIMITER //
+
+CREATE PROCEDURE sp_AltaNuevoSocio(
+    IN _nom VARCHAR(50), IN _ape VARCHAR(50), IN _dni INT, 
+    IN _tel VARCHAR(20), IN _dir VARCHAR(100), IN _mail VARCHAR(100),
+    IN _valorCuota DECIMAL(10,2)
+)
+BEGIN
+    DECLARE _lastID INT;
+
+    -- 1. Insertamos en la tabla base (Persona)
+    INSERT INTO PERSONA (nombre, apellido, dni, telefono, direccion, mail, apto_medico)
+    VALUES (_nom, _ape, _dni, _tel, _dir, _mail, 0);
+
+    -- Obtenemos el ID generado automáticamente
+    SET _lastID = LAST_INSERT_ID();
+
+    -- 2. Insertamos en la tabla Socio (Vinculada por el ID)
+    INSERT INTO SOCIO (id_socio, fecha_alta, estado_membresia, carnet_entregado)
+    VALUES (_lastID, CURDATE(), 'Activo', 0);
+
+    -- 3. Generamos la primera cuota (mes actual)
+    INSERT INTO CUOTA (id_socio, mes_a_pagar, valor_cuota, estado_pago)
+    VALUES (_lastID, LAST_DAY(CURDATE()), _valorCuota, 'Pendiente');
+    
+    -- Devolvemos el ID por si C# lo necesita
+    SELECT _lastID;
+END //
+
+DELIMITER ;
+
+-- 9. Procedimiento que registra a la persona, la marca como No Socio y le genera su primer pago diario (asociado a una actividad específica).
+USE BaseClubDeportivo;
+
+DELIMITER //
+
+CREATE PROCEDURE sp_AltaNuevoNoSocio(
+    IN _nom VARCHAR(50), IN _ape VARCHAR(50), IN _dni INT, 
+    IN _tel VARCHAR(20), IN _dir VARCHAR(100), IN _mail VARCHAR(100),
+    IN _idAct INT, IN _monto DECIMAL(10,2)
+)
+BEGIN
+    DECLARE _lastID INT;
+
+    -- 1. Insertamos en Persona
+    INSERT INTO PERSONA (nombre, apellido, dni, telefono, direccion, mail, apto_medico)
+    VALUES (_nom, _ape, _dni, _tel, _dir, _mail, 0);
+
+    SET _lastID = LAST_INSERT_ID();
+
+    -- 2. Insertamos en No Socio
+    INSERT INTO NO_SOCIO (id_no_socio) VALUES (_lastID);
+
+    -- 3. Insertamos el primer Pago Diario
+    -- Usamos la columna 'monto' que verificamos en el Workbench
+    INSERT INTO PAGO_DIARIO (id_no_socio, id_actividad, fecha_pago, monto, forma_de_pago)
+    VALUES (_lastID, _idAct, CURDATE(), _monto, 'Efectivo');
+    
+    SELECT _lastID;
+END //
+
+DELIMITER ;
+

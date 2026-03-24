@@ -28,11 +28,13 @@ namespace ClubDeportivoEmma21.Forms
             btnBuscar.MouseLeave += (s, e) => btnBuscar.BackColor = Color.FromArgb(90, 113, 132);
 
             // Botón Volver
-            btnVolver.MouseEnter += (s, e) => {
+            btnVolver.MouseEnter += (s, e) =>
+            {
                 btnVolver.BackColor = Color.FromArgb(212, 175, 55);
                 btnVolver.ForeColor = Color.White;
             };
-            btnVolver.MouseLeave += (s, e) => {
+            btnVolver.MouseLeave += (s, e) =>
+            {
                 btnVolver.BackColor = Color.FromArgb(231, 215, 193);
                 btnVolver.ForeColor = Color.Black;
             };
@@ -83,9 +85,12 @@ namespace ClubDeportivoEmma21.Forms
                         {
                             int idNoSocio = Convert.ToInt32(result);
                             MessageBox.Show("El cliente está registrado como No Socio.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            this.Hide();
-                            new GestionNoSocios(idNoSocio, dni).Show();
-                            this.Close();
+                            this.Hide(); // Oculta la búsqueda
+                            using (GestionNoSocios formNS = new GestionNoSocios(idNoSocio, dni))
+                            {
+                                formNS.ShowDialog(); // Bloquea el Menú hasta que se cierre esta ficha
+                            }
+                            this.Close(); // Cierra definitivamente la consulta al terminar
                             return;
                         }
                     }
@@ -109,6 +114,11 @@ namespace ClubDeportivoEmma21.Forms
         private void btnVolver_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void pnlCuerpo_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

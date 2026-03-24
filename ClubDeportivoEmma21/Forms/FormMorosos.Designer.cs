@@ -13,155 +13,175 @@
         #region Windows Form Designer generated code
         private void InitializeComponent()
         {
-            this.pnlHeader = new System.Windows.Forms.Panel();
-            this.lblTitulo = new System.Windows.Forms.Label();
-            this.pnlCuerpo = new System.Windows.Forms.Panel();
-            this.txtTituloMorosos = new System.Windows.Forms.TextBox();
-            this.lstSociosMorosos = new System.Windows.Forms.ListView();
-            this.colId = new System.Windows.Forms.ColumnHeader();
-            this.colNom = new System.Windows.Forms.ColumnHeader();
-            this.colApe = new System.Windows.Forms.ColumnHeader();
-            this.colTel = new System.Windows.Forms.ColumnHeader();
-            this.colVenc = new System.Windows.Forms.ColumnHeader();
-            this.colMonto = new System.Windows.Forms.ColumnHeader();
-            this.btnMorososImprimir = new System.Windows.Forms.Button();
-            this.btnMorososExportar = new System.Windows.Forms.Button();
-            this.btnMorososVolver = new System.Windows.Forms.Button();
-            this.pnlHeader.SuspendLayout();
-            this.pnlCuerpo.SuspendLayout();
-            this.SuspendLayout();
+            pnlHeader = new Panel();
+            lblTitulo = new Label();
+            pnlCuerpo = new Panel();
+            txtTituloMorosos = new TextBox();
+            lstSociosMorosos = new ListView();
+            colId = new ColumnHeader();
+            colNom = new ColumnHeader();
+            colApe = new ColumnHeader();
+            colTel = new ColumnHeader();
+            colVenc = new ColumnHeader();
+            colMonto = new ColumnHeader();
+            btnMorososImprimir = new Button();
+            btnMorososExportar = new Button();
+            btnMorososVolver = new Button();
+            pnlHeader.SuspendLayout();
+            pnlCuerpo.SuspendLayout();
+            SuspendLayout();
             // 
             // pnlHeader
             // 
-            this.pnlHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(80)))), ((int)(((byte)(107)))));
-            this.pnlHeader.Controls.Add(this.lblTitulo);
-            this.pnlHeader.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlHeader.Location = new System.Drawing.Point(0, 0);
-            this.pnlHeader.Name = "pnlHeader";
-            this.pnlHeader.Size = new System.Drawing.Size(750, 80);
-            this.pnlHeader.TabIndex = 0;
+            pnlHeader.BackColor = Color.FromArgb(58, 80, 107);
+            pnlHeader.Controls.Add(lblTitulo);
+            pnlHeader.Dock = DockStyle.Top;
+            pnlHeader.Location = new Point(0, 0);
+            pnlHeader.Name = "pnlHeader";
+            pnlHeader.Size = new Size(750, 80);
+            pnlHeader.TabIndex = 0;
             // 
             // lblTitulo
             // 
-            this.lblTitulo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblTitulo.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold);
-            this.lblTitulo.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.lblTitulo.Location = new System.Drawing.Point(0, 0);
-            this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(750, 80);
-            this.lblTitulo.TabIndex = 0;
-            this.lblTitulo.Text = "Reporte de Vencimientos";
-            this.lblTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            lblTitulo.Dock = DockStyle.Fill;
+            lblTitulo.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
+            lblTitulo.ForeColor = Color.WhiteSmoke;
+            lblTitulo.Location = new Point(0, 0);
+            lblTitulo.Name = "lblTitulo";
+            lblTitulo.Size = new Size(750, 80);
+            lblTitulo.TabIndex = 0;
+            lblTitulo.Text = "Reporte de Vencimientos";
+            lblTitulo.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // pnlCuerpo
             // 
-            this.pnlCuerpo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(237)))), ((int)(((byte)(242)))));
-            this.pnlCuerpo.Controls.Add(this.txtTituloMorosos);
-            this.pnlCuerpo.Controls.Add(this.lstSociosMorosos);
-            this.pnlCuerpo.Controls.Add(this.btnMorososImprimir);
-            this.pnlCuerpo.Controls.Add(this.btnMorososExportar);
-            this.pnlCuerpo.Controls.Add(this.btnMorososVolver);
-            this.pnlCuerpo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlCuerpo.Location = new System.Drawing.Point(0, 80);
-            this.pnlCuerpo.Name = "pnlCuerpo";
-            this.pnlCuerpo.Size = new System.Drawing.Size(750, 470);
-            this.pnlCuerpo.TabIndex = 1;
+            pnlCuerpo.BackColor = Color.FromArgb(232, 237, 242);
+            pnlCuerpo.Controls.Add(txtTituloMorosos);
+            pnlCuerpo.Controls.Add(lstSociosMorosos);
+            pnlCuerpo.Controls.Add(btnMorososImprimir);
+            pnlCuerpo.Controls.Add(btnMorososExportar);
+            pnlCuerpo.Controls.Add(btnMorososVolver);
+            pnlCuerpo.Dock = DockStyle.Fill;
+            pnlCuerpo.Location = new Point(0, 80);
+            pnlCuerpo.Name = "pnlCuerpo";
+            pnlCuerpo.Size = new Size(750, 470);
+            pnlCuerpo.TabIndex = 1;
+            pnlCuerpo.Paint += pnlCuerpo_Paint;
             // 
             // txtTituloMorosos
             // 
-            this.txtTituloMorosos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(223)))), ((int)(((byte)(232)))));
-            this.txtTituloMorosos.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtTituloMorosos.Font = new System.Drawing.Font("Segoe UI", 10.5F, System.Drawing.FontStyle.Bold);
-            this.txtTituloMorosos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(47)))), ((int)(((byte)(47)))));
-            this.txtTituloMorosos.Location = new System.Drawing.Point(40, 25);
-            this.txtTituloMorosos.Name = "txtTituloMorosos";
-            this.txtTituloMorosos.ReadOnly = true;
-            this.txtTituloMorosos.Size = new System.Drawing.Size(250, 26);
-            this.txtTituloMorosos.TabIndex = 0;
-            this.txtTituloMorosos.Text = "Listado de Socios Morosos:";
-            this.txtTituloMorosos.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            txtTituloMorosos.BackColor = Color.FromArgb(214, 223, 232);
+            txtTituloMorosos.BorderStyle = BorderStyle.FixedSingle;
+            txtTituloMorosos.Font = new Font("Segoe UI", 10.5F, FontStyle.Bold);
+            txtTituloMorosos.ForeColor = Color.FromArgb(47, 47, 47);
+            txtTituloMorosos.Location = new Point(40, 25);
+            txtTituloMorosos.Name = "txtTituloMorosos";
+            txtTituloMorosos.ReadOnly = true;
+            txtTituloMorosos.Size = new Size(250, 26);
+            txtTituloMorosos.TabIndex = 0;
+            txtTituloMorosos.Text = "Listado de Socios Morosos:";
+            txtTituloMorosos.TextAlign = HorizontalAlignment.Center;
             // 
             // lstSociosMorosos
             // 
-            this.lstSociosMorosos.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.colId, this.colNom, this.colApe, this.colTel, this.colVenc, this.colMonto});
-            this.lstSociosMorosos.Font = new System.Drawing.Font("Segoe UI", 9.5F);
-            this.lstSociosMorosos.FullRowSelect = true;
-            this.lstSociosMorosos.GridLines = true;
-            this.lstSociosMorosos.Location = new System.Drawing.Point(40, 65);
-            this.lstSociosMorosos.Name = "lstSociosMorosos";
-            this.lstSociosMorosos.Size = new System.Drawing.Size(520, 350);
-            this.lstSociosMorosos.TabIndex = 1;
-            this.lstSociosMorosos.UseCompatibleStateImageBehavior = false;
-            this.lstSociosMorosos.View = System.Windows.Forms.View.Details;
+            lstSociosMorosos.Columns.AddRange(new ColumnHeader[] { colId, colNom, colApe, colTel, colVenc, colMonto });
+            lstSociosMorosos.Font = new Font("Segoe UI", 9.5F);
+            lstSociosMorosos.FullRowSelect = true;
+            lstSociosMorosos.GridLines = true;
+            lstSociosMorosos.Location = new Point(40, 65);
+            lstSociosMorosos.Name = "lstSociosMorosos";
+            lstSociosMorosos.Size = new Size(520, 350);
+            lstSociosMorosos.TabIndex = 1;
+            lstSociosMorosos.UseCompatibleStateImageBehavior = false;
+            lstSociosMorosos.View = View.Details;
             // 
-            // ColumnHeaders
+            // colId
             // 
-            this.colId.Text = "ID"; this.colId.Width = 60;
-            this.colNom.Text = "Nombre"; this.colNom.Width = 100;
-            this.colApe.Text = "Apellido"; this.colApe.Width = 100;
-            this.colTel.Text = "Teléfono"; this.colTel.Width = 90;
-            this.colVenc.Text = "Vencimiento"; this.colVenc.Width = 90;
-            this.colMonto.Text = "Monto"; this.colMonto.Width = 70;
+            colId.Text = "ID";
             // 
-            // btnMorososExportar
+            // colNom
             // 
-            this.btnMorososExportar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(113)))), ((int)(((byte)(132)))));
-            this.btnMorososExportar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMorososExportar.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.btnMorososExportar.ForeColor = System.Drawing.Color.White;
-            this.btnMorososExportar.Location = new System.Drawing.Point(580, 65);
-            this.btnMorososExportar.Name = "btnMorososExportar";
-            this.btnMorososExportar.Size = new System.Drawing.Size(130, 45);
-            this.btnMorososExportar.TabIndex = 2;
-            this.btnMorososExportar.Text = "EXPORTAR CSV";
-            this.btnMorososExportar.UseVisualStyleBackColor = false;
-            this.btnMorososExportar.Click += new System.EventHandler(this.btnMorososExportar_Click);
+            colNom.Text = "Nombre";
+            colNom.Width = 100;
+            // 
+            // colApe
+            // 
+            colApe.Text = "Apellido";
+            colApe.Width = 100;
+            // 
+            // colTel
+            // 
+            colTel.Text = "Teléfono";
+            colTel.Width = 90;
+            // 
+            // colVenc
+            // 
+            colVenc.Text = "Vencimiento";
+            colVenc.Width = 90;
+            // 
+            // colMonto
+            // 
+            colMonto.Text = "Monto";
+            colMonto.Width = 70;
             // 
             // btnMorososImprimir
             // 
-            this.btnMorososImprimir.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(113)))), ((int)(((byte)(132)))));
-            this.btnMorososImprimir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMorososImprimir.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.btnMorososImprimir.ForeColor = System.Drawing.Color.White;
-            this.btnMorososImprimir.Location = new System.Drawing.Point(580, 125);
-            this.btnMorososImprimir.Name = "btnMorososImprimir";
-            this.btnMorososImprimir.Size = new System.Drawing.Size(130, 45);
-            this.btnMorososImprimir.TabIndex = 3;
-            this.btnMorososImprimir.Text = "IMPRIMIR";
-            this.btnMorososImprimir.UseVisualStyleBackColor = false;
-            this.btnMorososImprimir.Click += new System.EventHandler(this.btnMorososImprimir_Click);
+            btnMorososImprimir.BackColor = Color.FromArgb(90, 113, 132);
+            btnMorososImprimir.FlatStyle = FlatStyle.Flat;
+            btnMorososImprimir.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            btnMorososImprimir.ForeColor = Color.White;
+            btnMorososImprimir.Location = new Point(580, 125);
+            btnMorososImprimir.Name = "btnMorososImprimir";
+            btnMorososImprimir.Size = new Size(130, 45);
+            btnMorososImprimir.TabIndex = 3;
+            btnMorososImprimir.Text = "IMPRIMIR";
+            btnMorososImprimir.UseVisualStyleBackColor = false;
+            btnMorososImprimir.Click += btnMorososImprimir_Click;
+            // 
+            // btnMorososExportar
+            // 
+            btnMorososExportar.BackColor = Color.FromArgb(90, 113, 132);
+            btnMorososExportar.FlatStyle = FlatStyle.Flat;
+            btnMorososExportar.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            btnMorososExportar.ForeColor = Color.White;
+            btnMorososExportar.Location = new Point(580, 65);
+            btnMorososExportar.Name = "btnMorososExportar";
+            btnMorososExportar.Size = new Size(130, 45);
+            btnMorososExportar.TabIndex = 2;
+            btnMorososExportar.Text = "EXPORTAR CSV";
+            btnMorososExportar.UseVisualStyleBackColor = false;
+            btnMorososExportar.Click += btnMorososExportar_Click;
             // 
             // btnMorososVolver
             // 
-            this.btnMorososVolver.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(215)))), ((int)(((byte)(193)))));
-            this.btnMorososVolver.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMorososVolver.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.btnMorososVolver.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(47)))), ((int)(((byte)(47)))));
-            this.btnMorososVolver.Location = new System.Drawing.Point(580, 370);
-            this.btnMorososVolver.Name = "btnMorososVolver";
-            this.btnMorososVolver.Size = new System.Drawing.Size(130, 45);
-            this.btnMorososVolver.TabIndex = 4;
-            this.btnMorososVolver.Text = "VOLVER";
-            this.btnMorososVolver.UseVisualStyleBackColor = false;
-            this.btnMorososVolver.Click += new System.EventHandler(this.btnMorososVolver_Click);
+            btnMorososVolver.BackColor = Color.FromArgb(231, 215, 193);
+            btnMorososVolver.FlatStyle = FlatStyle.Flat;
+            btnMorososVolver.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            btnMorososVolver.ForeColor = Color.FromArgb(47, 47, 47);
+            btnMorososVolver.Location = new Point(580, 370);
+            btnMorososVolver.Name = "btnMorososVolver";
+            btnMorososVolver.Size = new Size(130, 45);
+            btnMorososVolver.TabIndex = 4;
+            btnMorososVolver.Text = "VOLVER";
+            btnMorososVolver.UseVisualStyleBackColor = false;
+            btnMorososVolver.Click += btnMorososVolver_Click;
             // 
             // FormMorosos
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(750, 550);
-            this.Controls.Add(this.pnlCuerpo);
-            this.Controls.Add(this.pnlHeader);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.MaximizeBox = false;
-            this.Name = "FormMorosos";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Reporte de Morosos";
-            this.pnlHeader.ResumeLayout(false);
-            this.pnlCuerpo.ResumeLayout(false);
-            this.pnlCuerpo.PerformLayout();
-            this.ResumeLayout(false);
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(750, 550);
+            Controls.Add(pnlCuerpo);
+            Controls.Add(pnlHeader);
+            FormBorderStyle = FormBorderStyle.FixedDialog;
+            MaximizeBox = false;
+            Name = "FormMorosos";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Reporte de Morosos";
+            pnlHeader.ResumeLayout(false);
+            pnlCuerpo.ResumeLayout(false);
+            pnlCuerpo.PerformLayout();
+            ResumeLayout(false);
         }
         #endregion
 

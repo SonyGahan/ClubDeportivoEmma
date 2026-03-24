@@ -2,11 +2,16 @@
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
+using MySql.Data.MySqlClient; // Referencia necesaria para los comandos de base de datos
+using ClubDeportivoEmma21.Data; // Referencia a tu DatabaseHelper
 
 namespace ClubDeportivoEmma21.Forms
 {
     public partial class MenuPrincipal : Form
     {
+        // Instancia para conectar a la base de datos
+        private readonly DatabaseHelper _db = new DatabaseHelper();
+
         public MenuPrincipal(string rol, string usuario)
         {
             InitializeComponent();
@@ -24,6 +29,32 @@ namespace ClubDeportivoEmma21.Forms
         private void MenuPrincipal_Load(object sender, EventArgs e)
         {
             CargarImagenFondo();
+
+            // LLAMADA AL BLINDAJE: 
+            // Cada vez que entramos al menú, actualizamos quién debe y quién no.
+            RefrescarEstadoMorosos();
+        }
+
+        private void RefrescarEstadoMorosos()
+        {
+            try
+            {
+                using (var conn = _db.GetConnection())
+                {
+                    conn.Open();
+                    // Ejecutamos el Stored Procedure que definimos en MySQL
+                    using (var cmd = new MySqlCommand("sp_ActualizarMorosos", conn))
+                    {
+                        cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Un error aquí no debe detener el programa, solo lo registramos en la consola
+                Console.WriteLine("Aviso: No se pudo actualizar morosos automáticamente: " + ex.Message);
+            }
         }
 
         private void CargarImagenFondo()
@@ -36,7 +67,7 @@ namespace ClubDeportivoEmma21.Forms
                     picFondo.Image = Image.FromFile(path);
                 }
             }
-            catch { /* Failsafe */ }
+            catch { /* Failsafe: Si no está la imagen, el sistema sigue funcionando */ }
         }
 
         private void AsignarEfectosHover()
@@ -50,11 +81,13 @@ namespace ClubDeportivoEmma21.Forms
             }
 
             // Botón LogOut (Dorado)
-            btnLogOut.MouseEnter += (s, e) => {
+            btnLogOut.MouseEnter += (s, e) =>
+            {
                 btnLogOut.BackColor = Color.FromArgb(212, 175, 55);
                 btnLogOut.ForeColor = Color.White;
             };
-            btnLogOut.MouseLeave += (s, e) => {
+            btnLogOut.MouseLeave += (s, e) =>
+            {
                 btnLogOut.BackColor = Color.FromArgb(231, 215, 193);
                 btnLogOut.ForeColor = Color.FromArgb(47, 47, 47);
             };
@@ -78,11 +111,13 @@ namespace ClubDeportivoEmma21.Forms
         private void btnLogOut_Click(object sender, EventArgs e)
         {
             this.Close();
-            // Esto asume que el Login es el formulario inicial que quedó oculto
+            // Mostramos el login nuevamente
             foreach (Form f in Application.OpenForms)
             {
                 if (f is FormLogin) { f.Show(); break; }
             }
         }
+
+        private void picFondo_Click(object sender, EventArgs e) { }
     }
 }
