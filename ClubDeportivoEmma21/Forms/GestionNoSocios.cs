@@ -1,143 +1,95 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
+using MySql.Data.MySqlClient;
+using ClubDeportivoEmma21.Data;
 
 namespace ClubDeportivoEmma21.Forms
 {
     public partial class GestionNoSocios : Form
     {
-        private int idNoSocioActual = 0;
-        private string dniNoSocioActual = string.Empty;
-        private bool desdeConsulta = false;
+        private readonly DatabaseHelper _db = new DatabaseHelper();
+        private int idNoSocioActual;
+        private string dniActual;
 
-        public GestionNoSocios()
+        public GestionNoSocios(int id, string dni)
         {
             InitializeComponent();
-            this.StartPosition = FormStartPosition.CenterScreen;
-            this.Text = "Gestión de No Socios - Club Deportivo Emma 21";
-        }
+            this.idNoSocioActual = id;
+            this.dniActual = dni;
 
-        public GestionNoSocios(int idNoSocio, string dni)
-        {
-            InitializeComponent();
-            this.StartPosition = FormStartPosition.CenterScreen;
-            this.Text = "Gestión de No Socios - Club Deportivo Emma 21";
-
-            this.idNoSocioActual = idNoSocio;
-            this.dniNoSocioActual = dni;
-            this.desdeConsulta = true;
+            AsignarEfectosHover();
         }
 
         private void GestionNoSocios_Load(object sender, EventArgs e)
         {
-            if (desdeConsulta)
+            CargarDatosNoSocio();
+        }
+
+        private void AsignarEfectosHover()
+        {
+            btnCerrar.MouseEnter += (s, e) => {
+                btnCerrar.BackColor = Color.FromArgb(212, 175, 55);
+                btnCerrar.ForeColor = Color.White;
+            };
+            btnCerrar.MouseLeave += (s, e) => {
+                btnCerrar.BackColor = Color.FromArgb(231, 215, 193);
+                btnCerrar.ForeColor = Color.Black;
+            };
+        }
+
+        private void CargarDatosNoSocio()
+        {
+            try
             {
-                MessageBox.Show(
-                    $"No socio encontrado con DNI: {dniNoSocioActual}",
-                    "Información",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information
-                );
+                using (var conn = _db.GetConnection())
+                {
+                    conn.Open();
+
+                    // CORRECCIÓN: Se cambió pd.monto_pagado por pd.monto
+                    // OJO: Si la tabla pago_diario no tiene id_actividad, esta consulta fallará en el JOIN.
+                    string sql = @"SELECT p.nombre, p.apellido, p.dni, pd.monto 
+                                 FROM persona p 
+                                 JOIN no_socio n ON p.id_persona = n.id_no_socio 
+                                 LEFT JOIN pago_diario pd ON n.id_no_socio = pd.id_no_socio AND pd.fecha_pago = CURDATE() 
+                                 WHERE p.dni = @dni";
+
+                    using (var cmd = new MySqlCommand(sql, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@dni", dniActual);
+
+                        using (var reader = cmd.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                lblDniDato.Text = reader["dni"].ToString();
+                                lblNombreDato.Text = reader["nombre"].ToString() + " " + reader["apellido"].ToString();
+
+                                // Si hay un pago hoy, mostramos el monto
+                                if (reader["monto"] != DBNull.Value)
+                                {
+                                    lblActividadDato.Text = "Pase Diario Activo"; // Simplificado por falta de id_actividad
+                                    lblMontoDato.Text = "$ " + Convert.ToDecimal(reader["monto"]).ToString("N2");
+                                }
+                                else
+                                {
+                                    lblActividadDato.Text = "Sin actividad el día de hoy";
+                                    lblMontoDato.Text = "$ 0.00";
+                                }
+                            }
+                        }
+                    }
+                }
             }
-
-            // Aplicar estilos coherentes
-            EstilizarBoton(btnNoSociosRegistrar);
-            EstilizarBoton(btnNoSociosModificar);
-            EstilizarBoton(btnNoSociosInscribirActividad);
-            EstilizarBotonVolver(btnNoSociosVolver);
-
-            // Asignar eventos funcionales
-            btnNoSociosRegistrar.Click += btnNoSociosRegistrar_Click;
-            btnNoSociosModificar.Click += btnNoSociosModificar_Click;
-            btnNoSociosInscribirActividad.Click += btnNoSociosInscribirActividad_Click;
-            btnNoSociosVolver.Click += btnNoSociosVolver_Click;
-        }
-
-        private void btnNoSociosRegistrar_Click(object? sender, EventArgs e)
-        {
-            AltaNoSocio alta = new AltaNoSocio();
-            this.Hide();
-            alta.ShowDialog();
-            this.Close();
-        }
-
-        private void btnNoSociosModificar_Click(object? sender, EventArgs e)
-        {
-            ModificarNoSocio mod = new ModificarNoSocio();
-            this.Hide();
-            mod.ShowDialog();
-            this.Close();
-        }
-
-        private void btnNoSociosInscribirActividad_Click(object? sender, EventArgs e)
-        {
-            NoSocioActividad inscripcion = new NoSocioActividad(idNoSocioActual, dniNoSocioActual);
-            this.Hide();
-            inscripcion.ShowDialog();
-            this.Close();
-        }
-
-        private void btnNoSociosVolver_Click(object? sender, EventArgs e)
-        {
-            Form1 menu = new Form1();
-            this.Hide();
-            menu.ShowDialog();
-            this.Close();
-        }
-
-        // ======== MÉTODOS DE ESTILO UNIFICADO ========
-
-        private void EstilizarBoton(Button b)
-        {
-            var btnFont = new Font("Segoe UI", 11F, FontStyle.Bold);
-            var colorPrincipal = Color.FromArgb(90, 113, 132);   // Azul acero
-            var colorHover = Color.FromArgb(58, 80, 107);       // Azul petróleo
-            var colorTexto = Color.White;
-
-            b.BackColor = colorPrincipal;
-            b.FlatStyle = FlatStyle.Flat;
-            b.FlatAppearance.BorderSize = 0;
-            b.ForeColor = colorTexto;
-            b.Font = btnFont;
-            b.Size = new Size(200, 55);
-            b.Cursor = Cursors.Hand;
-
-            // Efectos hover dinámicos
-            b.MouseEnter += (s, e) =>
+            catch (Exception ex)
             {
-                b.BackColor = colorHover;
-                b.FlatAppearance.BorderColor = Color.WhiteSmoke;
-                b.FlatAppearance.BorderSize = 2;
-            };
-            b.MouseLeave += (s, e) =>
-            {
-                b.BackColor = colorPrincipal;
-                b.FlatAppearance.BorderSize = 0;
-            };
+                MessageBox.Show("Error al cargar datos del No Socio: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
-        private void EstilizarBotonVolver(Button b)
+        private void btnCerrar_Click(object sender, EventArgs e)
         {
-            b.BackColor = Color.FromArgb(231, 215, 193);
-            b.ForeColor = Color.FromArgb(47, 47, 47);
-            b.FlatStyle = FlatStyle.Flat;
-            b.FlatAppearance.BorderSize = 0;
-            b.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            b.Cursor = Cursors.Hand;
-
-            b.MouseEnter += (s, e) =>
-            {
-                b.BackColor = Color.FromArgb(212, 175, 55);
-                b.ForeColor = Color.White;
-            };
-            b.MouseLeave += (s, e) =>
-            {
-                b.BackColor = Color.FromArgb(231, 215, 193);
-                b.ForeColor = Color.FromArgb(47, 47, 47);
-            };
+            this.Close();
         }
     }
 }
-
-
-

@@ -7,204 +7,286 @@
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
+            {
                 components.Dispose();
+            }
             base.Dispose(disposing);
         }
 
+        #region Windows Form Designer generated code
+
         private void InitializeComponent()
         {
-            lblModificarNoSocioNombre = new Label();
-            lblModificarNoSocioApellido = new Label();
-            lblModificarNoSocioDni = new Label();
-            lblModificarNoSocioTelefono = new Label();
-            lblModificarNoSocioDireccion = new Label();
-            lblModificarNoSocioMail = new Label();
-            txtModificarNoSocioNombre = new TextBox();
-            txtModificarNoSocioApellido = new TextBox();
-            txtModificarNoSocioDni = new TextBox();
-            txtModificarNoSocioTelefono = new TextBox();
-            txtModificarNoSocioDireccion = new TextBox();
-            txtModificarNoSocioMail = new TextBox();
-            chbModificarNoSocioAptoMedico = new CheckBox();
-            btnModificarNoSocio = new Button();
-            lblIngresoDni = new Label();
-            txtIngresoDni = new TextBox();
-            btnBuscarNoSocio = new Button();
-            btnCancelar = new Button();
-            SuspendLayout();
+            this.pnlHeader = new System.Windows.Forms.Panel();
+            this.lblTitulo = new System.Windows.Forms.Label();
+            this.pnlCuerpo = new System.Windows.Forms.Panel();
+            this.lblDniBusqueda = new System.Windows.Forms.Label();
+            this.txtDniBusqueda = new System.Windows.Forms.TextBox();
+            this.btnBuscar = new System.Windows.Forms.Button();
+            this.lblNombre = new System.Windows.Forms.Label();
+            this.txtNombre = new System.Windows.Forms.TextBox();
+            this.lblApellido = new System.Windows.Forms.Label();
+            this.txtApellido = new System.Windows.Forms.TextBox();
+            this.lblTelefono = new System.Windows.Forms.Label();
+            this.txtTelefono = new System.Windows.Forms.TextBox();
+            this.lblDireccion = new System.Windows.Forms.Label();
+            this.txtDireccion = new System.Windows.Forms.TextBox();
+            this.lblMail = new System.Windows.Forms.Label();
+            this.txtMail = new System.Windows.Forms.TextBox();
+            this.btnGuardar = new System.Windows.Forms.Button();
+            this.btnCancelar = new System.Windows.Forms.Button();
+            this.pnlHeader.SuspendLayout();
+            this.pnlCuerpo.SuspendLayout();
+            this.SuspendLayout();
             // 
-            // lblModificarNoSocioNombre
+            // pnlHeader
             // 
-            lblModificarNoSocioNombre.Location = new Point(40, 100);
-            lblModificarNoSocioNombre.Name = "lblModificarNoSocioNombre";
-            lblModificarNoSocioNombre.Size = new Size(84, 23);
-            lblModificarNoSocioNombre.TabIndex = 4;
-            lblModificarNoSocioNombre.Text = "Nombre:";
+            this.pnlHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(80)))), ((int)(((byte)(107)))));
+            this.pnlHeader.Controls.Add(this.lblTitulo);
+            this.pnlHeader.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlHeader.Location = new System.Drawing.Point(0, 0);
+            this.pnlHeader.Name = "pnlHeader";
+            this.pnlHeader.Size = new System.Drawing.Size(550, 80);
+            this.pnlHeader.TabIndex = 0;
             // 
-            // lblModificarNoSocioApellido
+            // lblTitulo
             // 
-            lblModificarNoSocioApellido.Location = new Point(40, 130);
-            lblModificarNoSocioApellido.Name = "lblModificarNoSocioApellido";
-            lblModificarNoSocioApellido.Size = new Size(84, 23);
-            lblModificarNoSocioApellido.TabIndex = 6;
-            lblModificarNoSocioApellido.Text = "Apellido:";
+            this.lblTitulo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblTitulo.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold);
+            this.lblTitulo.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.lblTitulo.Location = new System.Drawing.Point(0, 0);
+            this.lblTitulo.Name = "lblTitulo";
+            this.lblTitulo.Size = new System.Drawing.Size(550, 80);
+            this.lblTitulo.TabIndex = 0;
+            this.lblTitulo.Text = "Modificar No Socio";
+            this.lblTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // lblModificarNoSocioDni
+            // pnlCuerpo
             // 
-            lblModificarNoSocioDni.Location = new Point(40, 160);
-            lblModificarNoSocioDni.Name = "lblModificarNoSocioDni";
-            lblModificarNoSocioDni.Size = new Size(84, 23);
-            lblModificarNoSocioDni.TabIndex = 8;
-            lblModificarNoSocioDni.Text = "DNI:";
+            this.pnlCuerpo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(237)))), ((int)(((byte)(242)))));
+            this.pnlCuerpo.Controls.Add(this.lblDniBusqueda);
+            this.pnlCuerpo.Controls.Add(this.txtDniBusqueda);
+            this.pnlCuerpo.Controls.Add(this.btnBuscar);
+            this.pnlCuerpo.Controls.Add(this.lblNombre);
+            this.pnlCuerpo.Controls.Add(this.txtNombre);
+            this.pnlCuerpo.Controls.Add(this.lblApellido);
+            this.pnlCuerpo.Controls.Add(this.txtApellido);
+            this.pnlCuerpo.Controls.Add(this.lblTelefono);
+            this.pnlCuerpo.Controls.Add(this.txtTelefono);
+            this.pnlCuerpo.Controls.Add(this.lblDireccion);
+            this.pnlCuerpo.Controls.Add(this.txtDireccion);
+            this.pnlCuerpo.Controls.Add(this.lblMail);
+            this.pnlCuerpo.Controls.Add(this.txtMail);
+            this.pnlCuerpo.Controls.Add(this.btnGuardar);
+            this.pnlCuerpo.Controls.Add(this.btnCancelar);
+            this.pnlCuerpo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlCuerpo.Location = new System.Drawing.Point(0, 80);
+            this.pnlCuerpo.Name = "pnlCuerpo";
+            this.pnlCuerpo.Size = new System.Drawing.Size(550, 470);
+            this.pnlCuerpo.TabIndex = 1;
             // 
-            // lblModificarNoSocioTelefono
+            // lblDniBusqueda
             // 
-            lblModificarNoSocioTelefono.Location = new Point(40, 190);
-            lblModificarNoSocioTelefono.Name = "lblModificarNoSocioTelefono";
-            lblModificarNoSocioTelefono.Size = new Size(84, 23);
-            lblModificarNoSocioTelefono.TabIndex = 10;
-            lblModificarNoSocioTelefono.Text = "Teléfono:";
+            this.lblDniBusqueda.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.lblDniBusqueda.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(47)))), ((int)(((byte)(47)))));
+            this.lblDniBusqueda.Location = new System.Drawing.Point(40, 30);
+            this.lblDniBusqueda.Name = "lblDniBusqueda";
+            this.lblDniBusqueda.Size = new System.Drawing.Size(120, 25);
+            this.lblDniBusqueda.TabIndex = 0;
+            this.lblDniBusqueda.Text = "DNI del Cliente:";
             // 
-            // lblModificarNoSocioDireccion
+            // txtDniBusqueda
             // 
-            lblModificarNoSocioDireccion.Location = new Point(40, 220);
-            lblModificarNoSocioDireccion.Name = "lblModificarNoSocioDireccion";
-            lblModificarNoSocioDireccion.Size = new Size(84, 23);
-            lblModificarNoSocioDireccion.TabIndex = 12;
-            lblModificarNoSocioDireccion.Text = "Dirección:";
+            this.txtDniBusqueda.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtDniBusqueda.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.txtDniBusqueda.Location = new System.Drawing.Point(170, 27);
+            this.txtDniBusqueda.Name = "txtDniBusqueda";
+            this.txtDniBusqueda.Size = new System.Drawing.Size(180, 25);
+            this.txtDniBusqueda.TabIndex = 1;
             // 
-            // lblModificarNoSocioMail
+            // btnBuscar
             // 
-            lblModificarNoSocioMail.Location = new Point(40, 250);
-            lblModificarNoSocioMail.Name = "lblModificarNoSocioMail";
-            lblModificarNoSocioMail.Size = new Size(84, 23);
-            lblModificarNoSocioMail.TabIndex = 14;
-            lblModificarNoSocioMail.Text = "Mail:";
+            this.btnBuscar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(80)))), ((int)(((byte)(107)))));
+            this.btnBuscar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnBuscar.FlatAppearance.BorderSize = 0;
+            this.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBuscar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.btnBuscar.ForeColor = System.Drawing.Color.White;
+            this.btnBuscar.Location = new System.Drawing.Point(370, 25);
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.Size = new System.Drawing.Size(120, 30);
+            this.btnBuscar.TabIndex = 2;
+            this.btnBuscar.Text = "BUSCAR";
+            this.btnBuscar.UseVisualStyleBackColor = false;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
-            // txtModificarNoSocioNombre
+            // lblNombre
             // 
-            txtModificarNoSocioNombre.Location = new Point(130, 97);
-            txtModificarNoSocioNombre.Name = "txtModificarNoSocioNombre";
-            txtModificarNoSocioNombre.Size = new Size(120, 23);
-            txtModificarNoSocioNombre.TabIndex = 5;
+            this.lblNombre.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.lblNombre.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(47)))), ((int)(((byte)(47)))));
+            this.lblNombre.Location = new System.Drawing.Point(40, 100);
+            this.lblNombre.Name = "lblNombre";
+            this.lblNombre.Size = new System.Drawing.Size(120, 25);
+            this.lblNombre.TabIndex = 3;
+            this.lblNombre.Text = "Nombre:";
             // 
-            // txtModificarNoSocioApellido
+            // txtNombre
             // 
-            txtModificarNoSocioApellido.Location = new Point(130, 127);
-            txtModificarNoSocioApellido.Name = "txtModificarNoSocioApellido";
-            txtModificarNoSocioApellido.Size = new Size(120, 23);
-            txtModificarNoSocioApellido.TabIndex = 7;
+            this.txtNombre.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtNombre.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.txtNombre.Location = new System.Drawing.Point(170, 97);
+            this.txtNombre.Name = "txtNombre";
+            this.txtNombre.Size = new System.Drawing.Size(320, 25);
+            this.txtNombre.TabIndex = 4;
             // 
-            // txtModificarNoSocioDni
+            // lblApellido
             // 
-            txtModificarNoSocioDni.Location = new Point(130, 157);
-            txtModificarNoSocioDni.Name = "txtModificarNoSocioDni";
-            txtModificarNoSocioDni.Size = new Size(120, 23);
-            txtModificarNoSocioDni.TabIndex = 9;
+            this.lblApellido.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.lblApellido.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(47)))), ((int)(((byte)(47)))));
+            this.lblApellido.Location = new System.Drawing.Point(40, 150);
+            this.lblApellido.Name = "lblApellido";
+            this.lblApellido.Size = new System.Drawing.Size(120, 25);
+            this.lblApellido.TabIndex = 5;
+            this.lblApellido.Text = "Apellido:";
             // 
-            // txtModificarNoSocioTelefono
+            // txtApellido
             // 
-            txtModificarNoSocioTelefono.Location = new Point(130, 187);
-            txtModificarNoSocioTelefono.Name = "txtModificarNoSocioTelefono";
-            txtModificarNoSocioTelefono.Size = new Size(120, 23);
-            txtModificarNoSocioTelefono.TabIndex = 11;
+            this.txtApellido.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtApellido.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.txtApellido.Location = new System.Drawing.Point(170, 147);
+            this.txtApellido.Name = "txtApellido";
+            this.txtApellido.Size = new System.Drawing.Size(320, 25);
+            this.txtApellido.TabIndex = 6;
             // 
-            // txtModificarNoSocioDireccion
+            // lblTelefono
             // 
-            txtModificarNoSocioDireccion.Location = new Point(130, 217);
-            txtModificarNoSocioDireccion.Name = "txtModificarNoSocioDireccion";
-            txtModificarNoSocioDireccion.Size = new Size(120, 23);
-            txtModificarNoSocioDireccion.TabIndex = 13;
+            this.lblTelefono.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.lblTelefono.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(47)))), ((int)(((byte)(47)))));
+            this.lblTelefono.Location = new System.Drawing.Point(40, 200);
+            this.lblTelefono.Name = "lblTelefono";
+            this.lblTelefono.Size = new System.Drawing.Size(120, 25);
+            this.lblTelefono.TabIndex = 7;
+            this.lblTelefono.Text = "Teléfono:";
             // 
-            // txtModificarNoSocioMail
+            // txtTelefono
             // 
-            txtModificarNoSocioMail.Location = new Point(130, 247);
-            txtModificarNoSocioMail.Name = "txtModificarNoSocioMail";
-            txtModificarNoSocioMail.Size = new Size(120, 23);
-            txtModificarNoSocioMail.TabIndex = 15;
+            this.txtTelefono.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtTelefono.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.txtTelefono.Location = new System.Drawing.Point(170, 197);
+            this.txtTelefono.Name = "txtTelefono";
+            this.txtTelefono.Size = new System.Drawing.Size(320, 25);
+            this.txtTelefono.TabIndex = 8;
             // 
-            // chbModificarNoSocioAptoMedico
+            // lblDireccion
             // 
-            chbModificarNoSocioAptoMedico.Location = new Point(130, 280);
-            chbModificarNoSocioAptoMedico.Name = "chbModificarNoSocioAptoMedico";
-            chbModificarNoSocioAptoMedico.Size = new Size(104, 24);
-            chbModificarNoSocioAptoMedico.TabIndex = 16;
-            chbModificarNoSocioAptoMedico.Text = "Apto médico";
+            this.lblDireccion.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.lblDireccion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(47)))), ((int)(((byte)(47)))));
+            this.lblDireccion.Location = new System.Drawing.Point(40, 250);
+            this.lblDireccion.Name = "lblDireccion";
+            this.lblDireccion.Size = new System.Drawing.Size(120, 25);
+            this.lblDireccion.TabIndex = 9;
+            this.lblDireccion.Text = "Dirección:";
             // 
-            // btnModificarNoSocio
+            // txtDireccion
             // 
-            btnModificarNoSocio.Location = new Point(270, 59);
-            btnModificarNoSocio.Name = "btnModificarNoSocio";
-            btnModificarNoSocio.Size = new Size(75, 23);
-            btnModificarNoSocio.TabIndex = 17;
-            btnModificarNoSocio.Text = "Guardar";
-            btnModificarNoSocio.Click += btnModificarNoSocio_Click;
+            this.txtDireccion.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtDireccion.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.txtDireccion.Location = new System.Drawing.Point(170, 247);
+            this.txtDireccion.Name = "txtDireccion";
+            this.txtDireccion.Size = new System.Drawing.Size(320, 25);
+            this.txtDireccion.TabIndex = 10;
             // 
-            // lblIngresoDni
+            // lblMail
             // 
-            lblIngresoDni.Location = new Point(40, 35);
-            lblIngresoDni.Name = "lblIngresoDni";
-            lblIngresoDni.Size = new Size(84, 23);
-            lblIngresoDni.TabIndex = 0;
-            lblIngresoDni.Text = "Ingrese DNI:";
+            this.lblMail.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.lblMail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(47)))), ((int)(((byte)(47)))));
+            this.lblMail.Location = new System.Drawing.Point(40, 300);
+            this.lblMail.Name = "lblMail";
+            this.lblMail.Size = new System.Drawing.Size(120, 25);
+            this.lblMail.TabIndex = 11;
+            this.lblMail.Text = "E-mail:";
             // 
-            // txtIngresoDni
+            // txtMail
             // 
-            txtIngresoDni.Location = new Point(130, 32);
-            txtIngresoDni.Name = "txtIngresoDni";
-            txtIngresoDni.Size = new Size(120, 23);
-            txtIngresoDni.TabIndex = 1;
+            this.txtMail.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtMail.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.txtMail.Location = new System.Drawing.Point(170, 297);
+            this.txtMail.Name = "txtMail";
+            this.txtMail.Size = new System.Drawing.Size(320, 25);
+            this.txtMail.TabIndex = 12;
             // 
-            // btnBuscarNoSocio
+            // btnGuardar
             // 
-            btnBuscarNoSocio.Location = new Point(270, 30);
-            btnBuscarNoSocio.Name = "btnBuscarNoSocio";
-            btnBuscarNoSocio.Size = new Size(75, 23);
-            btnBuscarNoSocio.TabIndex = 2;
-            btnBuscarNoSocio.Text = "Buscar";
-            btnBuscarNoSocio.Click += btnBuscarNoSocio_Click;
+            this.btnGuardar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(113)))), ((int)(((byte)(132)))));
+            this.btnGuardar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnGuardar.Enabled = false;
+            this.btnGuardar.FlatAppearance.BorderSize = 0;
+            this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGuardar.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
+            this.btnGuardar.ForeColor = System.Drawing.Color.White;
+            this.btnGuardar.Location = new System.Drawing.Point(300, 380);
+            this.btnGuardar.Name = "btnGuardar";
+            this.btnGuardar.Size = new System.Drawing.Size(190, 50);
+            this.btnGuardar.TabIndex = 13;
+            this.btnGuardar.Text = "GUARDAR CAMBIOS";
+            this.btnGuardar.UseVisualStyleBackColor = false;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // btnCancelar
             // 
-            btnCancelar.Location = new Point(270, 88);
-            btnCancelar.Name = "btnCancelar";
-            btnCancelar.Size = new Size(75, 23);
-            btnCancelar.TabIndex = 3;
-            btnCancelar.Text = "Cancelar";
-            btnCancelar.Click += btnCancelar_Click;
+            this.btnCancelar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(215)))), ((int)(((byte)(193)))));
+            this.btnCancelar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCancelar.FlatAppearance.BorderSize = 0;
+            this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancelar.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
+            this.btnCancelar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(47)))), ((int)(((byte)(47)))));
+            this.btnCancelar.Location = new System.Drawing.Point(40, 380);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(190, 50);
+            this.btnCancelar.TabIndex = 14;
+            this.btnCancelar.Text = "CANCELAR";
+            this.btnCancelar.UseVisualStyleBackColor = false;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // ModificarNoSocio
             // 
-            ClientSize = new Size(393, 323);
-            Controls.Add(lblIngresoDni);
-            Controls.Add(txtIngresoDni);
-            Controls.Add(btnBuscarNoSocio);
-            Controls.Add(btnCancelar);
-            Controls.Add(lblModificarNoSocioNombre);
-            Controls.Add(txtModificarNoSocioNombre);
-            Controls.Add(lblModificarNoSocioApellido);
-            Controls.Add(txtModificarNoSocioApellido);
-            Controls.Add(lblModificarNoSocioDni);
-            Controls.Add(txtModificarNoSocioDni);
-            Controls.Add(lblModificarNoSocioTelefono);
-            Controls.Add(txtModificarNoSocioTelefono);
-            Controls.Add(lblModificarNoSocioDireccion);
-            Controls.Add(txtModificarNoSocioDireccion);
-            Controls.Add(lblModificarNoSocioMail);
-            Controls.Add(txtModificarNoSocioMail);
-            Controls.Add(chbModificarNoSocioAptoMedico);
-            Controls.Add(btnModificarNoSocio);
-            Name = "ModificarNoSocio";
-            Text = "Modificar No Socio";
-            ResumeLayout(false);
-            PerformLayout();
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(550, 550);
+            this.Controls.Add(this.pnlCuerpo);
+            this.Controls.Add(this.pnlHeader);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
+            this.Name = "ModificarNoSocio";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Editar No Socio - Club Emma 21";
+            this.Load += new System.EventHandler(this.ModificarNoSocio_Load);
+            this.pnlHeader.ResumeLayout(false);
+            this.pnlCuerpo.ResumeLayout(false);
+            this.pnlCuerpo.PerformLayout();
+            this.ResumeLayout(false);
+
         }
 
-        private Label lblModificarNoSocioNombre, lblModificarNoSocioApellido, lblModificarNoSocioDni,
-            lblModificarNoSocioTelefono, lblModificarNoSocioDireccion, lblModificarNoSocioMail, lblIngresoDni;
-        private TextBox txtModificarNoSocioNombre, txtModificarNoSocioApellido, txtModificarNoSocioDni,
-            txtModificarNoSocioTelefono, txtModificarNoSocioDireccion, txtModificarNoSocioMail, txtIngresoDni;
-        private CheckBox chbModificarNoSocioAptoMedico;
-        private Button btnModificarNoSocio, btnBuscarNoSocio, btnCancelar;
+        #endregion
+
+        private System.Windows.Forms.Panel pnlHeader;
+        private System.Windows.Forms.Label lblTitulo;
+        private System.Windows.Forms.Panel pnlCuerpo;
+        private System.Windows.Forms.Label lblDniBusqueda;
+        private System.Windows.Forms.TextBox txtDniBusqueda;
+        private System.Windows.Forms.Button btnBuscar;
+        private System.Windows.Forms.Label lblNombre;
+        private System.Windows.Forms.TextBox txtNombre;
+        private System.Windows.Forms.Label lblApellido;
+        private System.Windows.Forms.TextBox txtApellido;
+        private System.Windows.Forms.Label lblTelefono;
+        private System.Windows.Forms.TextBox txtTelefono;
+        private System.Windows.Forms.Label lblDireccion;
+        private System.Windows.Forms.TextBox txtDireccion;
+        private System.Windows.Forms.Label lblMail;
+        private System.Windows.Forms.TextBox txtMail;
+        private System.Windows.Forms.Button btnGuardar;
+        private System.Windows.Forms.Button btnCancelar;
     }
 }

@@ -2,196 +2,185 @@
 {
     partial class FormLogin
     {
-        /// <summary>
-        /// Required designer variable.
-        /// </summary>
         private System.ComponentModel.IContainer components = null;
-        /// <summary>
-        /// Clean up any resources being used.
-        /// </summary>
 
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
+            {
                 components.Dispose();
+            }
             base.Dispose(disposing);
         }
 
         #region Windows Form Designer generated code
-
         private void InitializeComponent()
         {
-            panelFondo = new Panel();
-            panelLogin = new Panel();
-            lblLogo = new Label();
-            lblTitulo = new Label();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormLogin));
+            pnlLogoContainer = new Panel();
+            lblTituloClub = new Label();
+            picLogo = new PictureBox();
+            pnlCuerpo = new Panel();
             lblUsuario = new Label();
-            lblContrasena = new Label();
             txtUsuario = new TextBox();
-            txtContrasena = new TextBox();
-            btnLogin = new Button();
+            lblPassword = new Label();
+            txtPassword = new TextBox();
+            btnIngresar = new Button();
             btnSalir = new Button();
-            lblMensaje = new Label();
-            panelFondo.SuspendLayout();
-            panelLogin.SuspendLayout();
+            pnlLogoContainer.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)picLogo).BeginInit();
+            pnlCuerpo.SuspendLayout();
             SuspendLayout();
             // 
-            // panelFondo
+            // pnlLogoContainer
             // 
-            panelFondo.BackColor = Color.FromArgb(58, 80, 107);
-            panelFondo.Controls.Add(panelLogin);
-            panelFondo.Dock = DockStyle.Fill;
-            panelFondo.Location = new Point(0, 0);
-            panelFondo.Name = "panelFondo";
-            panelFondo.Size = new Size(570, 558);
-            panelFondo.TabIndex = 0;
-            panelFondo.Paint += panelFondo_Paint;
+            pnlLogoContainer.BackColor = Color.White;
+            pnlLogoContainer.Controls.Add(lblTituloClub);
+            pnlLogoContainer.Controls.Add(picLogo);
+            pnlLogoContainer.Dock = DockStyle.Top;
+            pnlLogoContainer.Location = new Point(0, 0);
+            pnlLogoContainer.Name = "pnlLogoContainer";
+            pnlLogoContainer.Size = new Size(450, 240);
+            pnlLogoContainer.TabIndex = 0;
             // 
-            // panelLogin
+            // lblTituloClub
             // 
-            panelLogin.BackColor = Color.WhiteSmoke;
-            panelLogin.BorderStyle = BorderStyle.FixedSingle;
-            panelLogin.Controls.Add(lblLogo);
-            panelLogin.Controls.Add(lblTitulo);
-            panelLogin.Controls.Add(lblUsuario);
-            panelLogin.Controls.Add(lblContrasena);
-            panelLogin.Controls.Add(txtUsuario);
-            panelLogin.Controls.Add(txtContrasena);
-            panelLogin.Controls.Add(btnLogin);
-            panelLogin.Controls.Add(btnSalir);
-            panelLogin.Controls.Add(lblMensaje);
-            panelLogin.Location = new Point(110, 65);
-            panelLogin.Name = "panelLogin";
-            panelLogin.Size = new Size(340, 405);
-            panelLogin.TabIndex = 0;
+            lblTituloClub.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
+            lblTituloClub.ForeColor = Color.FromArgb(58, 80, 107);
+            lblTituloClub.Location = new Point(0, 180);
+            lblTituloClub.Name = "lblTituloClub";
+            lblTituloClub.Size = new Size(450, 40);
+            lblTituloClub.TabIndex = 1;
+            lblTituloClub.Text = "Club Deportivo Emma 21";
+            lblTituloClub.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // lblLogo
+            // picLogo
             // 
-            lblLogo.Font = new Font("Segoe UI", 28F, FontStyle.Bold);
-            lblLogo.ForeColor = Color.FromArgb(212, 175, 55);
-            lblLogo.Location = new Point(0, 10);
-            lblLogo.Name = "lblLogo";
-            lblLogo.Size = new Size(339, 50);
-            lblLogo.TabIndex = 0;
-            lblLogo.Text = "E21";
-            lblLogo.TextAlign = ContentAlignment.MiddleCenter;
+            picLogo.Image = (Image)resources.GetObject("picLogo.Image");
+            picLogo.Location = new Point(125, 20);
+            picLogo.Name = "picLogo";
+            picLogo.Size = new Size(200, 150);
+            picLogo.SizeMode = PictureBoxSizeMode.Zoom;
+            picLogo.TabIndex = 0;
+            picLogo.TabStop = false;
             // 
-            // lblTitulo
+            // pnlCuerpo
             // 
-            lblTitulo.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
-            lblTitulo.ForeColor = Color.FromArgb(47, 47, 47);
-            lblTitulo.Location = new Point(0, 84);
-            lblTitulo.Name = "lblTitulo";
-            lblTitulo.Size = new Size(340, 23);
-            lblTitulo.TabIndex = 1;
-            lblTitulo.Text = "Acceso al Sistema de Gestión";
-            lblTitulo.TextAlign = ContentAlignment.MiddleCenter;
+            pnlCuerpo.BackColor = Color.FromArgb(232, 237, 242);
+            pnlCuerpo.Controls.Add(lblUsuario);
+            pnlCuerpo.Controls.Add(txtUsuario);
+            pnlCuerpo.Controls.Add(lblPassword);
+            pnlCuerpo.Controls.Add(txtPassword);
+            pnlCuerpo.Controls.Add(btnIngresar);
+            pnlCuerpo.Controls.Add(btnSalir);
+            pnlCuerpo.Dock = DockStyle.Fill;
+            pnlCuerpo.Location = new Point(0, 240);
+            pnlCuerpo.Name = "pnlCuerpo";
+            pnlCuerpo.Size = new Size(450, 410);
+            pnlCuerpo.TabIndex = 1;
+            pnlCuerpo.Paint += pnlCuerpo_Paint;
             // 
             // lblUsuario
             // 
-            lblUsuario.Font = new Font("Segoe UI", 10F);
-            lblUsuario.Location = new Point(50, 130);
+            lblUsuario.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            lblUsuario.ForeColor = Color.FromArgb(47, 47, 47);
+            lblUsuario.Location = new Point(75, 40);
             lblUsuario.Name = "lblUsuario";
-            lblUsuario.Size = new Size(100, 23);
-            lblUsuario.TabIndex = 2;
-            lblUsuario.Text = "Usuario:";
-            // 
-            // lblContrasena
-            // 
-            lblContrasena.Font = new Font("Segoe UI", 10F);
-            lblContrasena.Location = new Point(50, 200);
-            lblContrasena.Name = "lblContrasena";
-            lblContrasena.Size = new Size(100, 23);
-            lblContrasena.TabIndex = 3;
-            lblContrasena.Text = "Contraseña:";
+            lblUsuario.Size = new Size(100, 25);
+            lblUsuario.TabIndex = 0;
+            lblUsuario.Text = "USUARIO";
             // 
             // txtUsuario
             // 
-            txtUsuario.Font = new Font("Segoe UI", 10F);
-            txtUsuario.Location = new Point(50, 155);
+            txtUsuario.BorderStyle = BorderStyle.FixedSingle;
+            txtUsuario.Font = new Font("Segoe UI", 12F);
+            txtUsuario.Location = new Point(75, 70);
             txtUsuario.Name = "txtUsuario";
-            txtUsuario.Size = new Size(240, 25);
-            txtUsuario.TabIndex = 4;
+            txtUsuario.Size = new Size(300, 29);
+            txtUsuario.TabIndex = 2;
             // 
-            // txtContrasena
+            // lblPassword
             // 
-            txtContrasena.Font = new Font("Segoe UI", 10F);
-            txtContrasena.Location = new Point(50, 225);
-            txtContrasena.Name = "txtContrasena";
-            txtContrasena.PasswordChar = '•';
-            txtContrasena.Size = new Size(240, 25);
-            txtContrasena.TabIndex = 5;
+            lblPassword.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            lblPassword.ForeColor = Color.FromArgb(47, 47, 47);
+            lblPassword.Location = new Point(75, 120);
+            lblPassword.Name = "lblPassword";
+            lblPassword.Size = new Size(114, 25);
+            lblPassword.TabIndex = 3;
+            lblPassword.Text = "CONTRASEÑA";
             // 
-            // btnLogin
+            // txtPassword
             // 
-            btnLogin.BackColor = Color.FromArgb(58, 80, 107);
-            btnLogin.FlatAppearance.BorderSize = 0;
-            btnLogin.FlatStyle = FlatStyle.Flat;
-            btnLogin.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            btnLogin.ForeColor = Color.WhiteSmoke;
-            btnLogin.Location = new Point(50, 280);
-            btnLogin.Name = "btnLogin";
-            btnLogin.Size = new Size(240, 35);
-            btnLogin.TabIndex = 6;
-            btnLogin.Text = "Iniciar Sesión";
-            btnLogin.UseVisualStyleBackColor = false;
-            btnLogin.Click += btnLogin_Click;
-            btnLogin.MouseEnter += BtnHoverEnter;
-            btnLogin.MouseLeave += BtnHoverLeave;
+            txtPassword.BorderStyle = BorderStyle.FixedSingle;
+            txtPassword.Font = new Font("Segoe UI", 12F);
+            txtPassword.Location = new Point(75, 150);
+            txtPassword.Name = "txtPassword";
+            txtPassword.PasswordChar = '●';
+            txtPassword.Size = new Size(300, 29);
+            txtPassword.TabIndex = 3;
+            // 
+            // btnIngresar
+            // 
+            btnIngresar.BackColor = Color.FromArgb(58, 80, 107);
+            btnIngresar.Cursor = Cursors.Hand;
+            btnIngresar.FlatAppearance.BorderSize = 0;
+            btnIngresar.FlatStyle = FlatStyle.Flat;
+            btnIngresar.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
+            btnIngresar.ForeColor = Color.White;
+            btnIngresar.Location = new Point(75, 230);
+            btnIngresar.Name = "btnIngresar";
+            btnIngresar.Size = new Size(300, 55);
+            btnIngresar.TabIndex = 4;
+            btnIngresar.Text = "ACCEDER";
+            btnIngresar.UseVisualStyleBackColor = false;
+            btnIngresar.Click += btnIngresar_Click;
             // 
             // btnSalir
             // 
-            btnSalir.BackColor = Color.FromArgb(197, 208, 218);
+            btnSalir.BackColor = Color.FromArgb(231, 215, 193);
+            btnSalir.Cursor = Cursors.Hand;
             btnSalir.FlatAppearance.BorderSize = 0;
             btnSalir.FlatStyle = FlatStyle.Flat;
-            btnSalir.Font = new Font("Segoe UI", 10F);
+            btnSalir.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             btnSalir.ForeColor = Color.FromArgb(47, 47, 47);
-            btnSalir.Location = new Point(50, 325);
+            btnSalir.Location = new Point(150, 310);
             btnSalir.Name = "btnSalir";
-            btnSalir.Size = new Size(240, 30);
-            btnSalir.TabIndex = 7;
-            btnSalir.Text = "Salir";
+            btnSalir.Size = new Size(150, 45);
+            btnSalir.TabIndex = 5;
+            btnSalir.Text = "SALIR";
             btnSalir.UseVisualStyleBackColor = false;
             btnSalir.Click += btnSalir_Click;
-            btnSalir.MouseEnter += BtnHoverEnter;
-            btnSalir.MouseLeave += BtnHoverLeave;
-            // 
-            // lblMensaje
-            // 
-            lblMensaje.Font = new Font("Segoe UI", 9F, FontStyle.Italic);
-            lblMensaje.ForeColor = Color.DarkRed;
-            lblMensaje.Location = new Point(0, 260);
-            lblMensaje.Name = "lblMensaje";
-            lblMensaje.Size = new Size(340, 23);
-            lblMensaje.TabIndex = 8;
-            lblMensaje.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // FormLogin
             // 
-            ClientSize = new Size(570, 558);
-            Controls.Add(panelFondo);
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(450, 650);
+            Controls.Add(pnlCuerpo);
+            Controls.Add(pnlLogoContainer);
+            FormBorderStyle = FormBorderStyle.FixedDialog;
+            MaximizeBox = false;
             Name = "FormLogin";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Inicio de Sesión - Club Deportivo Emma 21";
+            Text = "Club Emma 21 - Ingreso al Sistema";
             Load += FormLogin_Load;
-            panelFondo.ResumeLayout(false);
-            panelLogin.ResumeLayout(false);
-            panelLogin.PerformLayout();
+            pnlLogoContainer.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)picLogo).EndInit();
+            pnlCuerpo.ResumeLayout(false);
+            pnlCuerpo.PerformLayout();
             ResumeLayout(false);
         }
-
         #endregion
 
-        private System.Windows.Forms.Panel panelFondo;
-        private System.Windows.Forms.Panel panelLogin;
-        private System.Windows.Forms.Label lblLogo;
-        private System.Windows.Forms.Label lblTitulo;
+        private System.Windows.Forms.Panel pnlLogoContainer;
+        private System.Windows.Forms.PictureBox picLogo;
+        private System.Windows.Forms.Label lblTituloClub;
+        private System.Windows.Forms.Panel pnlCuerpo;
         private System.Windows.Forms.Label lblUsuario;
-        private System.Windows.Forms.Label lblContrasena;
         private System.Windows.Forms.TextBox txtUsuario;
-        private System.Windows.Forms.TextBox txtContrasena;
-        private System.Windows.Forms.Button btnLogin;
+        private System.Windows.Forms.Label lblPassword;
+        private System.Windows.Forms.TextBox txtPassword;
+        private System.Windows.Forms.Button btnIngresar;
         private System.Windows.Forms.Button btnSalir;
-        private System.Windows.Forms.Label lblMensaje;
     }
 }

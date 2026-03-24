@@ -12,260 +12,217 @@ namespace ClubDeportivoEmma21.Forms
         private int idSocioActual = 0;
         private int idCuotaPendiente = 0;
 
-        // Constructor vacío desde Gestión Socios
         public PagoCuota()
         {
             InitializeComponent();
-            this.StartPosition = FormStartPosition.CenterScreen;
+            AsignarEfectosHover();
         }
 
-        // Constructor sobrecargado desde Consultas o Gestion con socio predefinido
-        public PagoCuota(int idSocio, string dni)
+        public PagoCuota(int idSocio, string dni) : this()
         {
-            InitializeComponent();
-            this.StartPosition = FormStartPosition.CenterScreen;
-
-            idSocioActual = idSocio;
-            txtDniCuotaSocio.Text = dni;
-
-            // Ocultar los elementos de búsqueda (ya tenemos el socio)
-            lblDniSocio.Visible = false;
-            txtDniCuotaSocio.Visible = false;
-            btnPagoSocioBuscar.Visible = false;
+            this.idSocioActual = idSocio;
+            this.txtDniCuotaSocio.Text = dni;
+            this.txtDniCuotaSocio.Enabled = false;
+            this.btnPagoSocioBuscar.Visible = false;
         }
 
         private void PagoCuota_Load(object sender, EventArgs e)
         {
-            // Cargar opciones de pago
-            clbOpcionDePagoSocio.Items.Clear();
-            clbOpcionDePagoSocio.Items.AddRange(new object[] { "Efectivo", "Transferencia", "Tarjeta" });
-            clbOpcionDePagoSocio.CheckOnClick = true;
+            ConfigurarMediosDePago();
 
-            clbOpcionDePagoSocio.ItemCheck += (s, ev) =>
-            {
-                for (int i = 0; i < clbOpcionDePagoSocio.Items.Count; i++)
-                    if (i != ev.Index)
-                        clbOpcionDePagoSocio.SetItemChecked(i, false);
-            };
-
-            // Si el socio ya viene cargado desde otro formulario
             if (idSocioActual > 0)
+            {
                 CargarDatosSocioPorId(idSocioActual);
+            }
         }
 
-        // Método para buscar socio manualmente, si entra sin datos
+        private void ConfigurarMediosDePago()
+        {
+            clbOpcionDePagoSocio.Items.Clear();
+            clbOpcionDePagoSocio.Items.Add("Efectivo");
+            clbOpcionDePagoSocio.Items.Add("Transferencia");
+            clbOpcionDePagoSocio.Items.Add("Tarjeta");
+            clbOpcionDePagoSocio.CheckOnClick = true;
+
+            // Aseguramos selección única
+            clbOpcionDePagoSocio.ItemCheck += (s, ev) => {
+                if (ev.NewValue == CheckState.Checked)
+                {
+                    for (int i = 0; i < clbOpcionDePagoSocio.Items.Count; i++)
+                    {
+                        if (i != ev.Index) clbOpcionDePagoSocio.SetItemChecked(i, false);
+                    }
+                }
+            };
+        }
+
+        private void AsignarEfectosHover()
+        {
+            // Botones principales (Azul)
+            this.btnPagoSocioBuscar.MouseEnter += (s, e) => this.btnPagoSocioBuscar.BackColor = Color.FromArgb(90, 113, 132);
+            this.btnPagoSocioBuscar.MouseLeave += (s, e) => this.btnPagoSocioBuscar.BackColor = Color.FromArgb(58, 80, 107);
+
+            this.btnPagoSocio.MouseEnter += (s, e) => this.btnPagoSocio.BackColor = Color.FromArgb(58, 80, 107);
+            this.btnPagoSocio.MouseLeave += (s, e) => this.btnPagoSocio.BackColor = Color.FromArgb(90, 113, 132);
+
+            // Botón Cancelar (Dorado)
+            this.btnPagoSocioCancelar.MouseEnter += (s, e) => {
+                this.btnPagoSocioCancelar.BackColor = Color.FromArgb(212, 175, 55);
+                this.btnPagoSocioCancelar.ForeColor = Color.White;
+            };
+            this.btnPagoSocioCancelar.MouseLeave += (s, e) => {
+                this.btnPagoSocioCancelar.BackColor = Color.FromArgb(231, 215, 193);
+                this.btnPagoSocioCancelar.ForeColor = Color.Black;
+            };
+        }
+
         private void btnPagoSocioBuscar_Click(object sender, EventArgs e)
         {
             string dni = txtDniCuotaSocio.Text.Trim();
-            if (string.IsNullOrEmpty(dni))
-            {
-                MessageBox.Show("Por favor, ingrese el DNI del socio.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
+            if (string.IsNullOrEmpty(dni)) return;
 
             try
             {
                 using (var conn = _db.GetConnection())
                 {
                     conn.Open();
-                    string sql = @"SELECT s.id_socio, p.nombre, p.apellido, s.estado_membresia
-                                   FROM socio s 
-                                   JOIN persona p ON p.id_persona = s.id_socio 
-                                   WHERE p.dni = @dni";
+                    string sql = @"SELECT s.id_socio, p.nombre, p.apellido, s.estado_membresia 
+                                 FROM socio s JOIN persona p ON p.id_persona = s.id_socio 
+                                 WHERE p.dni = @dni";
 
                     using (var cmd = new MySqlCommand(sql, conn))
                     {
                         cmd.Parameters.AddWithValue("@dni", dni);
                         using (var reader = cmd.ExecuteReader())
                         {
-                            if (!reader.Read())
+                            if (reader.Read())
                             {
-                                DialogResult opcion = MessageBox.Show(
-                                    "No se encontró ningún socio con ese DNI.\n¿Desea intentar nuevamente?",
-                                    "Socio no encontrado",
-                                    MessageBoxButtons.RetryCancel,
-                                    MessageBoxIcon.Information);
+                                idSocioActual = reader.GetInt32("id_socio");
+                                lblNombreSocio.Text = reader["nombre"].ToString() + " " + reader["apellido"].ToString();
 
-                                if (opcion == DialogResult.Retry)
-                                    LimpiarCampos();
-                                else
+                                if (reader.GetString("estado_membresia") != "Activo")
                                 {
-                                    this.Close();
-                                    new GestionSocios().Show();
+                                    MessageBox.Show("El socio no se encuentra en estado Activo.", "Atención");
+                                    Limpiar();
+                                    return;
                                 }
-                                return;
-                            }
-
-                            idSocioActual = reader.GetInt32("id_socio");
-                            string nombre = reader.GetString("nombre");
-                            string apellido = reader.GetString("apellido");
-                            string estado = reader.GetString("estado_membresia");
-
-                            lblNombreSocio.Text = $"{nombre} {apellido}";
-
-                            if (!estado.Equals("Activo", StringComparison.OrdinalIgnoreCase))
-                            {
-                                MessageBox.Show("Este socio no está activo. No puede realizar pagos.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                                LimpiarCampos();
-                                return;
-                            }
-                        }
-                    }
-                }
-
-                // Luego de validar, carga la cuota pendiente
-                CargarCuotaPendiente(idSocioActual);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al buscar socio: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        // Cargar socio si ya viene desde otro formulario
-        private void CargarDatosSocioPorId(int idSocio)
-        {
-            try
-            {
-                using (var conn = _db.GetConnection())
-                {
-                    conn.Open();
-                    string sql = @"SELECT p.nombre, p.apellido, s.estado_membresia
-                                   FROM socio s
-                                   JOIN persona p ON p.id_persona = s.id_socio
-                                   WHERE s.id_socio = @id";
-
-                    using (var cmd = new MySqlCommand(sql, conn))
-                    {
-                        cmd.Parameters.AddWithValue("@id", idSocio);
-                        using (var reader = cmd.ExecuteReader())
-                        {
-                            if (reader.Read())
-                            {
-                                lblNombreSocio.Text = $"{reader["nombre"]} {reader["apellido"]}";
-                            }
-                        }
-                    }
-                }
-
-                // Cargar cuota pendiente automáticamente
-                CargarCuotaPendiente(idSocio);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al cargar datos del socio: " + ex.Message,
-                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        // Cargar cuota pendiente
-        private void CargarCuotaPendiente(int idSocio)
-        {
-            try
-            {
-                using (var conn = _db.GetConnection())
-                {
-                    conn.Open();
-                    string sql = @"SELECT id_cuota, mes_a_pagar, valor_cuota 
-                                   FROM cuota 
-                                   WHERE id_socio = @id AND estado_pago = 'Pendiente' 
-                                   ORDER BY mes_a_pagar ASC LIMIT 1";
-
-                    using (var cmd = new MySqlCommand(sql, conn))
-                    {
-                        cmd.Parameters.AddWithValue("@id", idSocio);
-                        using (var reader = cmd.ExecuteReader())
-                        {
-                            if (reader.Read())
-                            {
-                                idCuotaPendiente = reader.GetInt32("id_cuota");
-                                txtVencimiento.Text = reader.GetDateTime("mes_a_pagar").ToString("dd/MM/yyyy");
-                                txtMontoCuota.Text = reader.GetDecimal("valor_cuota").ToString("N2");
                             }
                             else
                             {
-                                MessageBox.Show("Este socio no tiene cuotas pendientes.", "Información",
-                                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                MessageBox.Show("No se encontró el socio.");
+                                Limpiar();
+                                return;
                             }
                         }
                     }
                 }
+                CargarCuotaPendiente(idSocioActual);
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al cargar la cuota pendiente: " + ex.Message,
-                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            catch (Exception ex) { MessageBox.Show("Error: " + ex.Message); }
         }
 
-        // Registrar pago
-        private void btnPagoSocio_Click(object sender, EventArgs e)
+        private void CargarDatosSocioPorId(int id)
         {
-            if (idSocioActual == 0 || idCuotaPendiente == 0)
-            {
-                MessageBox.Show("Primero busque un socio con una cuota pendiente.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            if (clbOpcionDePagoSocio.CheckedItems.Count == 0)
-            {
-                MessageBox.Show("Seleccione una forma de pago.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            string formaPago = clbOpcionDePagoSocio.CheckedItems[0].ToString();
-
             try
             {
                 using (var conn = _db.GetConnection())
                 {
                     conn.Open();
-
-                    string sqlPagar = @"UPDATE cuota 
-                                        SET estado_pago = 'Pagado', 
-                                            fecha_pago = NOW(), 
-                                            forma_de_pago = @forma 
-                                        WHERE id_cuota = @id";
-                    using (var cmd = new MySqlCommand(sqlPagar, conn))
+                    string sql = "SELECT nombre, apellido FROM persona WHERE id_persona = @id";
+                    using (var cmd = new MySqlCommand(sql, conn))
                     {
-                        cmd.Parameters.AddWithValue("@forma", formaPago);
+                        cmd.Parameters.AddWithValue("@id", id);
+                        using (var r = cmd.ExecuteReader())
+                        {
+                            if (r.Read()) lblNombreSocio.Text = r["nombre"].ToString() + " " + r["apellido"].ToString();
+                        }
+                    }
+                }
+                CargarCuotaPendiente(id);
+            }
+            catch { }
+        }
+
+        private void CargarCuotaPendiente(int id)
+        {
+            try
+            {
+                using (var conn = _db.GetConnection())
+                {
+                    conn.Open();
+                    // Traemos la cuota más antigua pendiente o vencida
+                    string sql = @"SELECT id_cuota, mes_a_pagar, valor_cuota FROM cuota 
+                                 WHERE id_socio = @id AND (estado_pago = 'Pendiente' OR estado_pago = 'Vencido') 
+                                 ORDER BY mes_a_pagar ASC LIMIT 1";
+
+                    using (var cmd = new MySqlCommand(sql, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@id", id);
+                        using (var r = cmd.ExecuteReader())
+                        {
+                            if (r.Read())
+                            {
+                                idCuotaPendiente = r.GetInt32("id_cuota");
+                                txtVencimiento.Text = Convert.ToDateTime(r["mes_a_pagar"]).ToString("MMMM yyyy").ToUpper();
+                                txtMontoCuota.Text = "$ " + Convert.ToDecimal(r["valor_cuota"]).ToString("N2");
+                                btnPagoSocio.Enabled = true;
+                            }
+                            else
+                            {
+                                MessageBox.Show("El socio no tiene cuotas pendientes.", "Información");
+                                btnPagoSocio.Enabled = false;
+                            }
+                        }
+                    }
+                }
+            }
+            catch { }
+        }
+
+        private void btnPagoSocio_Click(object sender, EventArgs e)
+        {
+            if (idCuotaPendiente == 0) return;
+            if (clbOpcionDePagoSocio.CheckedItems.Count == 0)
+            {
+                MessageBox.Show("Por favor, seleccione un medio de pago.", "Aviso");
+                return;
+            }
+
+            try
+            {
+                string medio = clbOpcionDePagoSocio.CheckedItems[0].ToString();
+                using (var conn = _db.GetConnection())
+                {
+                    conn.Open();
+                    string sql = @"UPDATE cuota SET estado_pago = 'Pagado', fecha_pago = NOW(), forma_de_pago = @f 
+                                 WHERE id_cuota = @id";
+
+                    using (var cmd = new MySqlCommand(sql, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@f", medio);
                         cmd.Parameters.AddWithValue("@id", idCuotaPendiente);
                         cmd.ExecuteNonQuery();
                     }
                 }
-
-                txtMontoCuota.BackColor = Color.LightGreen;
-                MessageBox.Show("💰 Pago registrado con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                LimpiarCampos();
+                MessageBox.Show("💰 Pago registrado con éxito.", "Éxito");
+                this.Close();
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al registrar el pago: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            catch (Exception ex) { MessageBox.Show("Error al registrar pago: " + ex.Message); }
         }
 
         private void btnPagoSocioCancelar_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            new GestionSocios().Show();
+            this.Close();
         }
 
-        private void LimpiarCampos()
+        private void Limpiar()
         {
-            txtDniCuotaSocio.Clear();
-            txtMontoCuota.Clear();
-            txtVencimiento.Clear();
-            lblNombreSocio.Text = "";
             idSocioActual = 0;
             idCuotaPendiente = 0;
-            txtMontoCuota.BackColor = Color.Beige;
-
-            for (int i = 0; i < clbOpcionDePagoSocio.Items.Count; i++)
-                clbOpcionDePagoSocio.SetItemChecked(i, false);
+            lblNombreSocio.Text = "-";
+            txtVencimiento.Clear();
+            txtMontoCuota.Clear();
+            btnPagoSocio.Enabled = false;
         }
     }
 }
-
-
-
-

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.IO;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 using ClubDeportivoEmma21.Data;
@@ -15,14 +16,34 @@ namespace ClubDeportivoEmma21.Forms
             InitializeComponent();
         }
 
-        private void btnLogin_Click(object sender, EventArgs e)
+        private void FormLogin_Load(object sender, EventArgs e)
         {
-            string usuario = txtUsuario.Text.Trim();
-            string contrasena = txtContrasena.Text.Trim();
+            CargarLogo();
+        }
 
-            if (string.IsNullOrEmpty(usuario) || string.IsNullOrEmpty(contrasena))
+        private void CargarLogo()
+        {
+            try
             {
-                lblMensaje.Text = "Por favor complete ambos campos.";
+                // Busca la imagen en la subcarpeta img del directorio de ejecución
+                string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "img", "Logo_gym_1.jpeg");
+
+                if (File.Exists(path))
+                {
+                    picLogo.Image = Image.FromFile(path);
+                }
+            }
+            catch (Exception)
+            {
+                // En caso de error, el PictureBox queda vacío pero el programa no se detiene
+            }
+        }
+
+        private void btnIngresar_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtUsuario.Text) || string.IsNullOrWhiteSpace(txtPassword.Text))
+            {
+                MessageBox.Show("Por favor, ingrese usuario y contraseña.", "Campos vacíos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -31,36 +52,32 @@ namespace ClubDeportivoEmma21.Forms
                 using (var conn = _db.GetConnection())
                 {
                     conn.Open();
-                    string query = "SELECT * FROM usuario WHERE nombre_usuario = @usuario AND contrasena = @contrasena";
+                    // Usamos los nombres de tabla y campos que vimos en tu MySQL Workbench
+                    string sql = "SELECT rol FROM usuario WHERE nombre_usuario = @u AND contrasena = @p";
 
-                    using (var cmd = new MySqlCommand(query, conn))
+                    using (var cmd = new MySqlCommand(sql, conn))
                     {
-                        cmd.Parameters.AddWithValue("@usuario", usuario);
-                        cmd.Parameters.AddWithValue("@contrasena", contrasena);
+                        cmd.Parameters.AddWithValue("@u", txtUsuario.Text.Trim());
+                        cmd.Parameters.AddWithValue("@p", txtPassword.Text.Trim());
 
-                        using (var reader = cmd.ExecuteReader())
+                        object rol = cmd.ExecuteScalar();
+
+                        if (rol != null)
                         {
-                            if (reader.Read())
-                            {
-                                this.Hide();
-                                new Form1().ShowDialog();
-                                this.Close();
-                            }
-                            else
-                            {
-                                lblMensaje.Text = "Usuario o contraseña incorrectos.";
-                                txtUsuario.Clear();
-                                txtContrasena.Clear();
-                                txtUsuario.Focus();
-                            }
+                            this.Hide();
+                            // Pasamos el rol y el nombre a la ventana principal
+                            new MenuPrincipal(rol.ToString(), txtUsuario.Text).Show();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Usuario o contraseña incorrectos.", "Acceso Denegado", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                         }
                     }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al conectar con la base de datos:\n" + ex.Message,
-                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error de conexión: " + ex.Message, "Error de Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -69,37 +86,10 @@ namespace ClubDeportivoEmma21.Forms
             Application.Exit();
         }
 
-        private void BtnHoverEnter(object sender, EventArgs e)
+        // Este método evita el error CS0103 del Designer
+        private void pnlCuerpo_Paint(object sender, PaintEventArgs e)
         {
-            var btn = sender as Button;
-            btn!.BackColor = Color.FromArgb(90, 113, 132);
-            btn.ForeColor = Color.White;
-        }
-
-        private void BtnHoverLeave(object sender, EventArgs e)
-        {
-            var btn = sender as Button;
-            if (btn == btnLogin)
-            {
-                btn.BackColor = Color.FromArgb(58, 80, 107);
-                btn.ForeColor = Color.WhiteSmoke;
-            }
-            else
-            {
-                btn.BackColor = Color.FromArgb(197, 208, 218);
-                btn.ForeColor = Color.FromArgb(47, 47, 47);
-            }
-        }
-
-        private void FormLogin_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panelFondo_Paint(object sender, PaintEventArgs e)
-        {
-
+            // Sin lógica de dibujo personalizada necesaria por ahora
         }
     }
 }
-

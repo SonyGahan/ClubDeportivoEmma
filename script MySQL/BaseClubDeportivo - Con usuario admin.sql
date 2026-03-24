@@ -82,3 +82,29 @@ CREATE TABLE USUARIO (
 -- Insertar un usuario administrador pre-cargado (para pruebas)
 INSERT INTO USUARIO (nombre_usuario, contrasena, rol, activo)
 VALUES ('admin', 'admin123', 'Admin', TRUE);
+
+-- Insertar la forma en que paga el cliente
+USE BaseClubDeportivo;
+ALTER TABLE PAGO_DIARIO
+ADD COLUMN forma_de_pago VARCHAR(50) NOT NULL DEFAULT 'Efectivo';
+
+-- Ultimas modificaciones para incorporar a la estructura
+USE BaseClubDeportivo;
+
+-- 1. Agregar vencimiento del apto médico a la tabla PERSONA
+ALTER TABLE PERSONA
+ADD COLUMN fecha_venc_apto DATE NULL DEFAULT NULL AFTER apto_medico;
+
+-- 2. Agregar detalles de pago a la tabla PAGO_DIARIO
+ALTER TABLE PAGO_DIARIO
+ADD COLUMN forma_de_pago VARCHAR(50) NOT NULL DEFAULT 'Efectivo',
+ADD COLUMN num_cuotas INT NOT NULL DEFAULT 1;
+
+-- 3. Agregar cantidad de cuotas a la tabla CUOTA (para pagos con tarjeta)
+ALTER TABLE CUOTA
+ADD COLUMN num_cuotas INT NOT NULL DEFAULT 1;
+
+
+-- 4. Agregar SOLO la cantidad de cuotas a PAGO_DIARIO
+ALTER TABLE PAGO_DIARIO
+ADD COLUMN num_cuotas INT NOT NULL DEFAULT 1;

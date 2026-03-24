@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace ClubDeportivoEmma21.Forms
@@ -11,32 +9,52 @@ namespace ClubDeportivoEmma21.Forms
         public FormSeleccionTipoAlta()
         {
             InitializeComponent();
-            this.StartPosition = FormStartPosition.CenterParent;
-            this.Text = "Seleccionar tipo de registro";
+            AsignarEfectosHover();
         }
 
-        private void btnSocio_Click(object sender, EventArgs e)
+        private void AsignarEfectosHover()
         {
-            this.DialogResult = DialogResult.Yes;
+            // Efectos para botones de Alta (Azul Acero)
+            this.btnAltaSocio.MouseEnter += (s, e) => this.btnAltaSocio.BackColor = Color.FromArgb(58, 80, 107);
+            this.btnAltaSocio.MouseLeave += (s, e) => this.btnAltaSocio.BackColor = Color.FromArgb(90, 113, 132);
+
+            this.btnAltaNoSocio.MouseEnter += (s, e) => this.btnAltaNoSocio.BackColor = Color.FromArgb(58, 80, 107);
+            this.btnAltaNoSocio.MouseLeave += (s, e) => this.btnAltaNoSocio.BackColor = Color.FromArgb(90, 113, 132);
+
+            // Efecto para botón Volver (Dorado)
+            this.btnVolver.MouseEnter += (s, e) => {
+                this.btnVolver.BackColor = Color.FromArgb(212, 175, 55);
+                this.btnVolver.ForeColor = Color.White;
+            };
+            this.btnVolver.MouseLeave += (s, e) => {
+                this.btnVolver.BackColor = Color.FromArgb(231, 215, 193);
+                this.btnVolver.ForeColor = Color.FromArgb(47, 47, 47);
+            };
+        }
+
+        private void btnAltaSocio_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            using (AltaSocio form = new AltaSocio())
+            {
+                form.ShowDialog();
+            }
             this.Close();
         }
 
-        private void btnNoSocio_Click(object sender, EventArgs e)
+        private void btnAltaNoSocio_Click(object sender, EventArgs e)
         {
-            this.DialogResult = DialogResult.No;
+            this.Hide();
+            using (AltaNoSocio form = new AltaNoSocio())
+            {
+                form.ShowDialog();
+            }
             this.Close();
         }
 
-        private void btnCancelar_Click(object sender, EventArgs e)
+        private void btnVolver_Click(object sender, EventArgs e)
         {
-            this.DialogResult = DialogResult.Cancel;
             this.Close();
-        }
-
-        private void FormSeleccionTipoAlta_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }
-
