@@ -30,7 +30,7 @@ namespace ClubDeportivoEmma21.Forms
                         {
                             while (reader.Read())
                             {
-                                // Agregamos un objeto anónimo al combo
+                                // Agrega un objeto anónimo al combo
                                 cmbActividad.Items.Add(new
                                 {
                                     Text = reader["nombre_actividad"].ToString() + " ($" + reader["costo_actividad"] + ")",

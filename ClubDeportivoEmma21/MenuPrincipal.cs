@@ -2,14 +2,14 @@
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
-using MySql.Data.MySqlClient; // Referencia necesaria para los comandos de base de datos
-using ClubDeportivoEmma21.Data; // Referencia a tu DatabaseHelper
+using MySql.Data.MySqlClient; // Referencia necesaria para los comandos de base de datos.
+using ClubDeportivoEmma21.Data; // Referencia al DatabaseHelper.
 
 namespace ClubDeportivoEmma21.Forms
 {
     public partial class MenuPrincipal : Form
     {
-        // Instancia para conectar a la base de datos
+        // Instancia para conectar a la base de datos.
         private readonly DatabaseHelper _db = new DatabaseHelper();
 
         public MenuPrincipal(string rol, string usuario)
@@ -17,7 +17,7 @@ namespace ClubDeportivoEmma21.Forms
             InitializeComponent();
             lblUserStatus.Text = "Usuario: " + usuario + "\nRol: " + rol;
 
-            // Seguridad: Solo el Administrador ve el botón de Morosos
+            // Seguridad: Solo el Administrador ve el botón de Morosos.
             if (rol != "Admin")
             {
                 btnMorosos.Visible = false;
@@ -31,7 +31,7 @@ namespace ClubDeportivoEmma21.Forms
             CargarImagenFondo();
 
             // LLAMADA AL BLINDAJE: 
-            // Cada vez que entramos al menú, actualizamos quién debe y quién no.
+            // Cada vez que ingresa al menú, actualiza quién debe y quién no.
             RefrescarEstadoMorosos();
         }
 
@@ -42,7 +42,7 @@ namespace ClubDeportivoEmma21.Forms
                 using (var conn = _db.GetConnection())
                 {
                     conn.Open();
-                    // Ejecutamos el Stored Procedure que definimos en MySQL
+                    // Ejecuta el Stored Procedure definido en MySQL.
                     using (var cmd = new MySqlCommand("sp_ActualizarMorosos", conn))
                     {
                         cmd.CommandType = System.Data.CommandType.StoredProcedure;
@@ -52,7 +52,7 @@ namespace ClubDeportivoEmma21.Forms
             }
             catch (Exception ex)
             {
-                // Un error aquí no debe detener el programa, solo lo registramos en la consola
+                // Un error aquí no debe detener el programa, solo lo registra en la consola.
                 Console.WriteLine("Aviso: No se pudo actualizar morosos automáticamente: " + ex.Message);
             }
         }
@@ -111,7 +111,7 @@ namespace ClubDeportivoEmma21.Forms
         private void btnLogOut_Click(object sender, EventArgs e)
         {
             this.Close();
-            // Mostramos el login nuevamente
+            // Muestra el login nuevamente.
             foreach (Form f in Application.OpenForms)
             {
                 if (f is FormLogin) { f.Show(); break; }
@@ -119,5 +119,10 @@ namespace ClubDeportivoEmma21.Forms
         }
 
         private void picFondo_Click(object sender, EventArgs e) { }
+
+        private void pnlSidebar_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

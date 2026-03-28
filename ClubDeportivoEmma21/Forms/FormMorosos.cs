@@ -55,14 +55,14 @@ namespace ClubDeportivoEmma21.Forms
                 {
                     conn.Open();
 
-                    // Primero aseguramos que la lista esté fresca llamando al procedimiento
+                    // Primero asegura que la lista esté fresca llamando al procedimiento.
                     using (var cmdSp = new MySqlCommand("sp_ActualizarMorosos", conn))
                     {
                         cmdSp.CommandType = System.Data.CommandType.StoredProcedure;
                         cmdSp.ExecuteNonQuery();
                     }
 
-                    // Ahora traemos solo a los que tienen cuotas con estado 'Vencido'
+                    // Luego trae solo a los que tienen cuotas con estado 'Vencido'.
                     string sqlSelect = @"SELECT DISTINCT s.id_socio, p.nombre, p.apellido, p.telefono, 
                                        c.mes_a_pagar, c.valor_cuota 
                                 FROM cuota c 
@@ -77,7 +77,7 @@ namespace ClubDeportivoEmma21.Forms
                     }
                 }
 
-                // Llenamos el ListView
+                // Llena el ListView
                 lstSociosMorosos.Items.Clear();
                 foreach (DataRow row in morososTable.Rows)
                 {

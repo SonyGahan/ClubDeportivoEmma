@@ -8,7 +8,7 @@ namespace ClubDeportivoEmma21.Utils
     {
         private readonly DatabaseHelper _db = new DatabaseHelper();
 
-        // REGLA 1: Validación de Apto Médico (Para Socios y No Socios)
+        // REGLA 1: Validación de Apto Médico: Para Socios y No Socios.
         public bool ValidarAptoMedico(int idPersona, out string mensaje)
         {
             mensaje = "";
@@ -46,7 +46,7 @@ namespace ClubDeportivoEmma21.Utils
                                     return false;
                                 }
 
-                                return true; // Todo ok
+                                return true; // Todo correcto.
                             }
                         }
                     }
@@ -56,7 +56,7 @@ namespace ClubDeportivoEmma21.Utils
             return false;
         }
 
-        // REGLA 2: Validación de Morosidad (Solo para Socios)
+        // REGLA 2: Validación de Morosidad: Solo para Socios.
         public bool EsSocioMoroso(int idSocio, out string mensaje)
         {
             mensaje = "";
@@ -65,7 +65,7 @@ namespace ClubDeportivoEmma21.Utils
                 using (var conn = _db.GetConnection())
                 {
                     conn.Open();
-                    // Buscamos si tiene al menos una cuota vencida
+                    // Busca si tiene al menos una cuota vencida.
                     string sql = "SELECT COUNT(*) FROM cuota WHERE id_socio = @id AND estado_pago = 'Vencido'";
                     using (var cmd = new MySqlCommand(sql, conn))
                     {

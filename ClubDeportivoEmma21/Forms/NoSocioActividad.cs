@@ -152,8 +152,8 @@ namespace ClubDeportivoEmma21.Forms
                     {
                         cmd.Parameters.AddWithValue("@idNoSocio", idNoSocioActual);
                         cmd.Parameters.AddWithValue("@idAct", act.Value); // El ID de la actividad
-                        cmd.Parameters.AddWithValue("@monto", act.Costo); // Usamos 'monto' como vimos en Workbench
-                        cmd.Parameters.AddWithValue("@forma", "Efectivo"); // Podrías sumarle un selector de pago luego
+                        cmd.Parameters.AddWithValue("@monto", act.Costo); // Usa 'monto' como en la BD.
+                        cmd.Parameters.AddWithValue("@forma", "Efectivo"); // Se le podría sumar un selector de pago luego, ver.
 
                         cmd.ExecuteNonQuery();
                     }

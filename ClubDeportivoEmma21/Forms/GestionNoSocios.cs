@@ -48,7 +48,7 @@ namespace ClubDeportivoEmma21.Forms
                 {
                     conn.Open();
 
-                    // JOIN entre persona, pago_diario y actividad para traer el nombre del deporte
+                    // JOIN entre persona, pago_diario y actividad para traer el nombre del deporte.
                     string sql = @"SELECT p.nombre, p.apellido, p.dni, pd.monto, act.nombre_actividad 
                          FROM persona p 
                          JOIN no_socio n ON p.id_persona = n.id_no_socio 
@@ -69,7 +69,7 @@ namespace ClubDeportivoEmma21.Forms
 
                                 if (reader["monto"] != DBNull.Value)
                                 {
-                                    // Ahora sí mostramos el nombre real de la actividad
+                                    // Muestra el nombre real de la actividad.
                                     lblActividadDato.Text = reader["nombre_actividad"].ToString();
                                     lblMontoDato.Text = "$ " + Convert.ToDecimal(reader["monto"]).ToString("N2");
                                     lblActividadDato.ForeColor = Color.DarkBlue;

@@ -25,7 +25,7 @@ namespace ClubDeportivoEmma21.Forms
         {
             try
             {
-                // Busca la imagen en la subcarpeta img del directorio de ejecución
+                // Busca la imagen en la subcarpeta img del directorio de ejecución.
                 string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "img", "Logo_gym_1.jpeg");
 
                 if (File.Exists(path))
@@ -35,7 +35,7 @@ namespace ClubDeportivoEmma21.Forms
             }
             catch (Exception)
             {
-                // En caso de error, el PictureBox queda vacío pero el programa no se detiene
+                // En caso de error, el PictureBox queda vacío pero el programa no se detiene.
             }
         }
 
@@ -52,7 +52,7 @@ namespace ClubDeportivoEmma21.Forms
                 using (var conn = _db.GetConnection())
                 {
                     conn.Open();
-                    // Usamos los nombres de tabla y campos que vimos en tu MySQL Workbench
+                    // Usa los nombres de tabla y campos que existen en la Base de Datos.
                     string sql = "SELECT rol FROM usuario WHERE nombre_usuario = @u AND contrasena = @p";
 
                     using (var cmd = new MySqlCommand(sql, conn))
@@ -65,7 +65,7 @@ namespace ClubDeportivoEmma21.Forms
                         if (rol != null)
                         {
                             this.Hide();
-                            // Pasamos el rol y el nombre a la ventana principal
+                            // Pasa el rol y el nombre a la ventana principal.
                             new MenuPrincipal(rol.ToString(), txtUsuario.Text).Show();
                         }
                         else
@@ -86,10 +86,10 @@ namespace ClubDeportivoEmma21.Forms
             Application.Exit();
         }
 
-        // Este método evita el error CS0103 del Designer
+        // Este método evita el error CS0103 del Designer.
         private void pnlCuerpo_Paint(object sender, PaintEventArgs e)
         {
-            // Sin lógica de dibujo personalizada necesaria por ahora
+            // Sin lógica de dibujo personalizada necesaria por ahora - para desarrollar.
         }
     }
 }

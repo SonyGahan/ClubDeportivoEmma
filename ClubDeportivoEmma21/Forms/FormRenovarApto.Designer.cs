@@ -17,187 +17,188 @@
 
         private void InitializeComponent()
         {
-            this.pnlHeader = new System.Windows.Forms.Panel();
-            this.lblTitulo = new System.Windows.Forms.Label();
-            this.pnlCuerpo = new System.Windows.Forms.Panel();
-            this.lblDniBusqueda = new System.Windows.Forms.Label();
-            this.txtDni = new System.Windows.Forms.TextBox();
-            this.btnBuscar = new System.Windows.Forms.Button();
-            this.lblNombreLabel = new System.Windows.Forms.Label();
-            this.lblNombreDato = new System.Windows.Forms.Label();
-            this.lblVencimientoLabel = new System.Windows.Forms.Label();
-            this.lblVencimientoDato = new System.Windows.Forms.Label();
-            this.btnRenovar = new System.Windows.Forms.Button();
-            this.btnCancelar = new System.Windows.Forms.Button();
-            this.pnlHeader.SuspendLayout();
-            this.pnlCuerpo.SuspendLayout();
-            this.SuspendLayout();
+            pnlHeader = new Panel();
+            lblTitulo = new Label();
+            pnlCuerpo = new Panel();
+            lblDniBusqueda = new Label();
+            txtDni = new TextBox();
+            btnBuscar = new Button();
+            lblNombreLabel = new Label();
+            lblNombreDato = new Label();
+            lblVencimientoLabel = new Label();
+            lblVencimientoDato = new Label();
+            btnRenovar = new Button();
+            btnCancelar = new Button();
+            pnlHeader.SuspendLayout();
+            pnlCuerpo.SuspendLayout();
+            SuspendLayout();
             // 
             // pnlHeader
             // 
-            this.pnlHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(80)))), ((int)(((byte)(107)))));
-            this.pnlHeader.Controls.Add(this.lblTitulo);
-            this.pnlHeader.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlHeader.Location = new System.Drawing.Point(0, 0);
-            this.pnlHeader.Name = "pnlHeader";
-            this.pnlHeader.Size = new System.Drawing.Size(500, 70);
-            this.pnlHeader.TabIndex = 0;
+            pnlHeader.BackColor = Color.FromArgb(58, 80, 107);
+            pnlHeader.Controls.Add(lblTitulo);
+            pnlHeader.Dock = DockStyle.Top;
+            pnlHeader.Location = new Point(0, 0);
+            pnlHeader.Name = "pnlHeader";
+            pnlHeader.Size = new Size(500, 70);
+            pnlHeader.TabIndex = 0;
             // 
             // lblTitulo
             // 
-            this.lblTitulo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblTitulo.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold);
-            this.lblTitulo.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.lblTitulo.Location = new System.Drawing.Point(0, 0);
-            this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(500, 70);
-            this.lblTitulo.TabIndex = 0;
-            this.lblTitulo.Text = "Renovación Apto Médico";
-            this.lblTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            lblTitulo.Dock = DockStyle.Fill;
+            lblTitulo.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
+            lblTitulo.ForeColor = Color.WhiteSmoke;
+            lblTitulo.Location = new Point(0, 0);
+            lblTitulo.Name = "lblTitulo";
+            lblTitulo.Size = new Size(500, 70);
+            lblTitulo.TabIndex = 0;
+            lblTitulo.Text = "Renovación Apto Médico";
+            lblTitulo.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // pnlCuerpo
             // 
-            this.pnlCuerpo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(237)))), ((int)(((byte)(242)))));
-            this.pnlCuerpo.Controls.Add(this.lblDniBusqueda);
-            this.pnlCuerpo.Controls.Add(this.txtDni);
-            this.pnlCuerpo.Controls.Add(this.btnBuscar);
-            this.pnlCuerpo.Controls.Add(this.lblNombreLabel);
-            this.pnlCuerpo.Controls.Add(this.lblNombreDato);
-            this.pnlCuerpo.Controls.Add(this.lblVencimientoLabel);
-            this.pnlCuerpo.Controls.Add(this.lblVencimientoDato);
-            this.pnlCuerpo.Controls.Add(this.btnRenovar);
-            this.pnlCuerpo.Controls.Add(this.btnCancelar);
-            this.pnlCuerpo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlCuerpo.Location = new System.Drawing.Point(0, 70);
-            this.pnlCuerpo.Name = "pnlCuerpo";
-            this.pnlCuerpo.Size = new System.Drawing.Size(500, 330);
-            this.pnlCuerpo.TabIndex = 1;
+            pnlCuerpo.BackColor = Color.FromArgb(232, 237, 242);
+            pnlCuerpo.Controls.Add(lblDniBusqueda);
+            pnlCuerpo.Controls.Add(txtDni);
+            pnlCuerpo.Controls.Add(btnBuscar);
+            pnlCuerpo.Controls.Add(lblNombreLabel);
+            pnlCuerpo.Controls.Add(lblNombreDato);
+            pnlCuerpo.Controls.Add(lblVencimientoLabel);
+            pnlCuerpo.Controls.Add(lblVencimientoDato);
+            pnlCuerpo.Controls.Add(btnRenovar);
+            pnlCuerpo.Controls.Add(btnCancelar);
+            pnlCuerpo.Dock = DockStyle.Fill;
+            pnlCuerpo.Location = new Point(0, 70);
+            pnlCuerpo.Name = "pnlCuerpo";
+            pnlCuerpo.Size = new Size(500, 330);
+            pnlCuerpo.TabIndex = 1;
+            pnlCuerpo.Paint += pnlCuerpo_Paint;
             // 
             // lblDniBusqueda
             // 
-            this.lblDniBusqueda.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.lblDniBusqueda.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(47)))), ((int)(((byte)(47)))));
-            this.lblDniBusqueda.Location = new System.Drawing.Point(40, 30);
-            this.lblDniBusqueda.Name = "lblDniBusqueda";
-            this.lblDniBusqueda.Size = new System.Drawing.Size(100, 25);
-            this.lblDniBusqueda.TabIndex = 0;
-            this.lblDniBusqueda.Text = "Ingrese DNI:";
+            lblDniBusqueda.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            lblDniBusqueda.ForeColor = Color.FromArgb(47, 47, 47);
+            lblDniBusqueda.Location = new Point(40, 30);
+            lblDniBusqueda.Name = "lblDniBusqueda";
+            lblDniBusqueda.Size = new Size(100, 25);
+            lblDniBusqueda.TabIndex = 0;
+            lblDniBusqueda.Text = "Ingrese DNI:";
             // 
             // txtDni
             // 
-            this.txtDni.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtDni.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.txtDni.Location = new System.Drawing.Point(150, 27);
-            this.txtDni.Name = "txtDni";
-            this.txtDni.Size = new System.Drawing.Size(180, 25);
-            this.txtDni.TabIndex = 1;
+            txtDni.BorderStyle = BorderStyle.FixedSingle;
+            txtDni.Font = new Font("Segoe UI", 10F);
+            txtDni.Location = new Point(150, 27);
+            txtDni.Name = "txtDni";
+            txtDni.Size = new Size(180, 25);
+            txtDni.TabIndex = 1;
             // 
             // btnBuscar
             // 
-            this.btnBuscar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(80)))), ((int)(((byte)(107)))));
-            this.btnBuscar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnBuscar.FlatAppearance.BorderSize = 0;
-            this.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBuscar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.btnBuscar.ForeColor = System.Drawing.Color.White;
-            this.btnBuscar.Location = new System.Drawing.Point(350, 25);
-            this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(100, 30);
-            this.btnBuscar.TabIndex = 2;
-            this.btnBuscar.Text = "BUSCAR";
-            this.btnBuscar.UseVisualStyleBackColor = false;
-            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
+            btnBuscar.BackColor = Color.FromArgb(58, 80, 107);
+            btnBuscar.Cursor = Cursors.Hand;
+            btnBuscar.FlatAppearance.BorderSize = 0;
+            btnBuscar.FlatStyle = FlatStyle.Flat;
+            btnBuscar.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            btnBuscar.ForeColor = Color.White;
+            btnBuscar.Location = new Point(350, 25);
+            btnBuscar.Name = "btnBuscar";
+            btnBuscar.Size = new Size(100, 30);
+            btnBuscar.TabIndex = 2;
+            btnBuscar.Text = "BUSCAR";
+            btnBuscar.UseVisualStyleBackColor = false;
+            btnBuscar.Click += btnBuscar_Click;
             // 
             // lblNombreLabel
             // 
-            this.lblNombreLabel.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.lblNombreLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(47)))), ((int)(((byte)(47)))));
-            this.lblNombreLabel.Location = new System.Drawing.Point(40, 100);
-            this.lblNombreLabel.Name = "lblNombreLabel";
-            this.lblNombreLabel.Size = new System.Drawing.Size(100, 25);
-            this.lblNombreLabel.TabIndex = 3;
-            this.lblNombreLabel.Text = "Nombre:";
+            lblNombreLabel.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            lblNombreLabel.ForeColor = Color.FromArgb(47, 47, 47);
+            lblNombreLabel.Location = new Point(40, 100);
+            lblNombreLabel.Name = "lblNombreLabel";
+            lblNombreLabel.Size = new Size(100, 25);
+            lblNombreLabel.TabIndex = 3;
+            lblNombreLabel.Text = "Nombre:";
             // 
             // lblNombreDato
             // 
-            this.lblNombreDato.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
-            this.lblNombreDato.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(80)))), ((int)(((byte)(107)))));
-            this.lblNombreDato.Location = new System.Drawing.Point(150, 100);
-            this.lblNombreDato.Name = "lblNombreDato";
-            this.lblNombreDato.Size = new System.Drawing.Size(300, 25);
-            this.lblNombreDato.TabIndex = 4;
-            this.lblNombreDato.Text = "-";
+            lblNombreDato.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
+            lblNombreDato.ForeColor = Color.FromArgb(58, 80, 107);
+            lblNombreDato.Location = new Point(150, 100);
+            lblNombreDato.Name = "lblNombreDato";
+            lblNombreDato.Size = new Size(300, 25);
+            lblNombreDato.TabIndex = 4;
+            lblNombreDato.Text = "-";
             // 
             // lblVencimientoLabel
             // 
-            this.lblVencimientoLabel.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.lblVencimientoLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(47)))), ((int)(((byte)(47)))));
-            this.lblVencimientoLabel.Location = new System.Drawing.Point(40, 140);
-            this.lblVencimientoLabel.Name = "lblVencimientoLabel";
-            this.lblVencimientoLabel.Size = new System.Drawing.Size(100, 25);
-            this.lblVencimientoLabel.TabIndex = 5;
-            this.lblVencimientoLabel.Text = "Vence el:";
+            lblVencimientoLabel.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            lblVencimientoLabel.ForeColor = Color.FromArgb(47, 47, 47);
+            lblVencimientoLabel.Location = new Point(40, 140);
+            lblVencimientoLabel.Name = "lblVencimientoLabel";
+            lblVencimientoLabel.Size = new Size(100, 25);
+            lblVencimientoLabel.TabIndex = 5;
+            lblVencimientoLabel.Text = "Vence el:";
             // 
             // lblVencimientoDato
             // 
-            this.lblVencimientoDato.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
-            this.lblVencimientoDato.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(47)))), ((int)(((byte)(47)))));
-            this.lblVencimientoDato.Location = new System.Drawing.Point(150, 140);
-            this.lblVencimientoDato.Name = "lblVencimientoDato";
-            this.lblVencimientoDato.Size = new System.Drawing.Size(300, 25);
-            this.lblVencimientoDato.TabIndex = 6;
-            this.lblVencimientoDato.Text = "-";
+            lblVencimientoDato.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
+            lblVencimientoDato.ForeColor = Color.FromArgb(47, 47, 47);
+            lblVencimientoDato.Location = new Point(150, 140);
+            lblVencimientoDato.Name = "lblVencimientoDato";
+            lblVencimientoDato.Size = new Size(300, 25);
+            lblVencimientoDato.TabIndex = 6;
+            lblVencimientoDato.Text = "-";
             // 
             // btnRenovar
             // 
-            this.btnRenovar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(113)))), ((int)(((byte)(132)))));
-            this.btnRenovar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnRenovar.Enabled = false;
-            this.btnRenovar.FlatAppearance.BorderSize = 0;
-            this.btnRenovar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRenovar.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.btnRenovar.ForeColor = System.Drawing.Color.White;
-            this.btnRenovar.Location = new System.Drawing.Point(270, 230);
-            this.btnRenovar.Name = "btnRenovar";
-            this.btnRenovar.Size = new System.Drawing.Size(180, 45);
-            this.btnRenovar.TabIndex = 7;
-            this.btnRenovar.Text = "RENOVAR (1 AÑO)";
-            this.btnRenovar.UseVisualStyleBackColor = false;
-            this.btnRenovar.Click += new System.EventHandler(this.btnRenovar_Click);
+            btnRenovar.BackColor = Color.FromArgb(90, 113, 132);
+            btnRenovar.Cursor = Cursors.Hand;
+            btnRenovar.Enabled = false;
+            btnRenovar.FlatAppearance.BorderSize = 0;
+            btnRenovar.FlatStyle = FlatStyle.Flat;
+            btnRenovar.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            btnRenovar.ForeColor = Color.White;
+            btnRenovar.Location = new Point(270, 230);
+            btnRenovar.Name = "btnRenovar";
+            btnRenovar.Size = new Size(180, 45);
+            btnRenovar.TabIndex = 7;
+            btnRenovar.Text = "RENOVAR (1 AÑO)";
+            btnRenovar.UseVisualStyleBackColor = false;
+            btnRenovar.Click += btnRenovar_Click;
             // 
             // btnCancelar
             // 
-            this.btnCancelar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(215)))), ((int)(((byte)(193)))));
-            this.btnCancelar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCancelar.FlatAppearance.BorderSize = 0;
-            this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancelar.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.btnCancelar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(47)))), ((int)(((byte)(47)))));
-            this.btnCancelar.Location = new System.Drawing.Point(50, 230);
-            this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(180, 45);
-            this.btnCancelar.TabIndex = 8;
-            this.btnCancelar.Text = "VOLVER";
-            this.btnCancelar.UseVisualStyleBackColor = false;
-            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
+            btnCancelar.BackColor = Color.FromArgb(231, 215, 193);
+            btnCancelar.Cursor = Cursors.Hand;
+            btnCancelar.FlatAppearance.BorderSize = 0;
+            btnCancelar.FlatStyle = FlatStyle.Flat;
+            btnCancelar.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            btnCancelar.ForeColor = Color.FromArgb(47, 47, 47);
+            btnCancelar.Location = new Point(50, 230);
+            btnCancelar.Name = "btnCancelar";
+            btnCancelar.Size = new Size(180, 45);
+            btnCancelar.TabIndex = 8;
+            btnCancelar.Text = "VOLVER";
+            btnCancelar.UseVisualStyleBackColor = false;
+            btnCancelar.Click += btnCancelar_Click;
             // 
             // FormRenovarApto
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(500, 400);
-            this.Controls.Add(this.pnlCuerpo);
-            this.Controls.Add(this.pnlHeader);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.MaximizeBox = false;
-            this.Name = "FormRenovarApto";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Renovación Apto Médico - Club Emma 21";
-            this.Load += new System.EventHandler(this.FormRenovarApto_Load);
-            this.pnlHeader.ResumeLayout(false);
-            this.pnlCuerpo.ResumeLayout(false);
-            this.pnlCuerpo.PerformLayout();
-            this.ResumeLayout(false);
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(500, 400);
+            Controls.Add(pnlCuerpo);
+            Controls.Add(pnlHeader);
+            FormBorderStyle = FormBorderStyle.FixedDialog;
+            MaximizeBox = false;
+            Name = "FormRenovarApto";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Renovación Apto Médico - Club Emma 21";
+            Load += FormRenovarApto_Load;
+            pnlHeader.ResumeLayout(false);
+            pnlCuerpo.ResumeLayout(false);
+            pnlCuerpo.PerformLayout();
+            ResumeLayout(false);
 
         }
 

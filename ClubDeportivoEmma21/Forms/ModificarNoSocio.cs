@@ -32,11 +32,13 @@ namespace ClubDeportivoEmma21.Forms
             this.btnGuardar.MouseLeave += (s, e) => this.btnGuardar.BackColor = Color.FromArgb(90, 113, 132);
 
             // Botón Cancelar (Dorado)
-            this.btnCancelar.MouseEnter += (s, e) => {
+            this.btnCancelar.MouseEnter += (s, e) =>
+            {
                 this.btnCancelar.BackColor = Color.FromArgb(212, 175, 55);
                 this.btnCancelar.ForeColor = Color.White;
             };
-            this.btnCancelar.MouseLeave += (s, e) => {
+            this.btnCancelar.MouseLeave += (s, e) =>
+            {
                 this.btnCancelar.BackColor = Color.FromArgb(231, 215, 193);
                 this.btnCancelar.ForeColor = Color.Black;
             };
@@ -56,7 +58,7 @@ namespace ClubDeportivoEmma21.Forms
                 using (var conn = _db.GetConnection())
                 {
                     conn.Open();
-                    // Buscamos específicamente personas que existan en la tabla NO_SOCIO
+                    // Busca específicamente personas que existan en la tabla NO_SOCIO.
                     string sql = @"SELECT p.id_persona, p.nombre, p.apellido, p.telefono, p.direccion, p.mail 
                                  FROM persona p 
                                  JOIN no_socio n ON p.id_persona = n.id_no_socio 
@@ -142,6 +144,11 @@ namespace ClubDeportivoEmma21.Forms
             txtMail.Clear();
             idPersonaModificar = 0;
             btnGuardar.Enabled = false;
+        }
+
+        private void pnlCuerpo_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

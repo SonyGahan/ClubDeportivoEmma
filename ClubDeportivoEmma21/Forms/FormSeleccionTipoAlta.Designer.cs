@@ -17,126 +17,127 @@
 
         private void InitializeComponent()
         {
-            this.pnlHeader = new System.Windows.Forms.Panel();
-            this.lblTitulo = new System.Windows.Forms.Label();
-            this.pnlCuerpo = new System.Windows.Forms.Panel();
-            this.lblInstruccion = new System.Windows.Forms.Label();
-            this.btnAltaSocio = new System.Windows.Forms.Button();
-            this.btnAltaNoSocio = new System.Windows.Forms.Button();
-            this.btnVolver = new System.Windows.Forms.Button();
-            this.pnlHeader.SuspendLayout();
-            this.pnlCuerpo.SuspendLayout();
-            this.SuspendLayout();
+            pnlHeader = new Panel();
+            lblTitulo = new Label();
+            pnlCuerpo = new Panel();
+            lblInstruccion = new Label();
+            btnAltaSocio = new Button();
+            btnAltaNoSocio = new Button();
+            btnVolver = new Button();
+            pnlHeader.SuspendLayout();
+            pnlCuerpo.SuspendLayout();
+            SuspendLayout();
             // 
             // pnlHeader
             // 
-            this.pnlHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(80)))), ((int)(((byte)(107)))));
-            this.pnlHeader.Controls.Add(this.lblTitulo);
-            this.pnlHeader.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlHeader.Location = new System.Drawing.Point(0, 0);
-            this.pnlHeader.Name = "pnlHeader";
-            this.pnlHeader.Size = new System.Drawing.Size(450, 70);
-            this.pnlHeader.TabIndex = 0;
+            pnlHeader.BackColor = Color.FromArgb(58, 80, 107);
+            pnlHeader.Controls.Add(lblTitulo);
+            pnlHeader.Dock = DockStyle.Top;
+            pnlHeader.Location = new Point(0, 0);
+            pnlHeader.Name = "pnlHeader";
+            pnlHeader.Size = new Size(450, 70);
+            pnlHeader.TabIndex = 0;
             // 
             // lblTitulo
             // 
-            this.lblTitulo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblTitulo.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
-            this.lblTitulo.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.lblTitulo.Location = new System.Drawing.Point(0, 0);
-            this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(450, 70);
-            this.lblTitulo.TabIndex = 0;
-            this.lblTitulo.Text = "Tipo de Registro";
-            this.lblTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            lblTitulo.Dock = DockStyle.Fill;
+            lblTitulo.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
+            lblTitulo.ForeColor = Color.WhiteSmoke;
+            lblTitulo.Location = new Point(0, 0);
+            lblTitulo.Name = "lblTitulo";
+            lblTitulo.Size = new Size(450, 70);
+            lblTitulo.TabIndex = 0;
+            lblTitulo.Text = "Tipo de Registro";
+            lblTitulo.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // pnlCuerpo
             // 
-            this.pnlCuerpo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(237)))), ((int)(((byte)(242)))));
-            this.pnlCuerpo.Controls.Add(this.lblInstruccion);
-            this.pnlCuerpo.Controls.Add(this.btnAltaSocio);
-            this.pnlCuerpo.Controls.Add(this.btnAltaNoSocio);
-            this.pnlCuerpo.Controls.Add(this.btnVolver);
-            this.pnlCuerpo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlCuerpo.Location = new System.Drawing.Point(0, 70);
-            this.pnlCuerpo.Name = "pnlCuerpo";
-            this.pnlCuerpo.Size = new System.Drawing.Size(450, 280);
-            this.pnlCuerpo.TabIndex = 1;
+            pnlCuerpo.BackColor = Color.FromArgb(232, 237, 242);
+            pnlCuerpo.Controls.Add(lblInstruccion);
+            pnlCuerpo.Controls.Add(btnAltaSocio);
+            pnlCuerpo.Controls.Add(btnAltaNoSocio);
+            pnlCuerpo.Controls.Add(btnVolver);
+            pnlCuerpo.Dock = DockStyle.Fill;
+            pnlCuerpo.Location = new Point(0, 70);
+            pnlCuerpo.Name = "pnlCuerpo";
+            pnlCuerpo.Size = new Size(450, 280);
+            pnlCuerpo.TabIndex = 1;
+            pnlCuerpo.Paint += pnlCuerpo_Paint;
             // 
             // lblInstruccion
             // 
-            this.lblInstruccion.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
-            this.lblInstruccion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(47)))), ((int)(((byte)(47)))));
-            this.lblInstruccion.Location = new System.Drawing.Point(50, 25);
-            this.lblInstruccion.Name = "lblInstruccion";
-            this.lblInstruccion.Size = new System.Drawing.Size(350, 30);
-            this.lblInstruccion.TabIndex = 0;
-            this.lblInstruccion.Text = "¿Cómo desea registrar al nuevo cliente?";
-            this.lblInstruccion.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            lblInstruccion.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
+            lblInstruccion.ForeColor = Color.FromArgb(47, 47, 47);
+            lblInstruccion.Location = new Point(50, 25);
+            lblInstruccion.Name = "lblInstruccion";
+            lblInstruccion.Size = new Size(350, 30);
+            lblInstruccion.TabIndex = 0;
+            lblInstruccion.Text = "¿Cómo desea registrar al nuevo cliente?";
+            lblInstruccion.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // btnAltaSocio
             // 
-            this.btnAltaSocio.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(113)))), ((int)(((byte)(132)))));
-            this.btnAltaSocio.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAltaSocio.FlatAppearance.BorderSize = 0;
-            this.btnAltaSocio.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAltaSocio.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
-            this.btnAltaSocio.ForeColor = System.Drawing.Color.White;
-            this.btnAltaSocio.Location = new System.Drawing.Point(75, 75);
-            this.btnAltaSocio.Name = "btnAltaSocio";
-            this.btnAltaSocio.Size = new System.Drawing.Size(300, 50);
-            this.btnAltaSocio.TabIndex = 1;
-            this.btnAltaSocio.Text = "NUEVO SOCIO";
-            this.btnAltaSocio.UseVisualStyleBackColor = false;
-            this.btnAltaSocio.Click += new System.EventHandler(this.btnAltaSocio_Click);
+            btnAltaSocio.BackColor = Color.FromArgb(90, 113, 132);
+            btnAltaSocio.Cursor = Cursors.Hand;
+            btnAltaSocio.FlatAppearance.BorderSize = 0;
+            btnAltaSocio.FlatStyle = FlatStyle.Flat;
+            btnAltaSocio.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
+            btnAltaSocio.ForeColor = Color.White;
+            btnAltaSocio.Location = new Point(75, 75);
+            btnAltaSocio.Name = "btnAltaSocio";
+            btnAltaSocio.Size = new Size(300, 50);
+            btnAltaSocio.TabIndex = 1;
+            btnAltaSocio.Text = "NUEVO SOCIO";
+            btnAltaSocio.UseVisualStyleBackColor = false;
+            btnAltaSocio.Click += btnAltaSocio_Click;
             // 
             // btnAltaNoSocio
             // 
-            this.btnAltaNoSocio.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(113)))), ((int)(((byte)(132)))));
-            this.btnAltaNoSocio.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAltaNoSocio.FlatAppearance.BorderSize = 0;
-            this.btnAltaNoSocio.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAltaNoSocio.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
-            this.btnAltaNoSocio.ForeColor = System.Drawing.Color.White;
-            this.btnAltaNoSocio.Location = new System.Drawing.Point(75, 140);
-            this.btnAltaNoSocio.Name = "btnAltaNoSocio";
-            this.btnAltaNoSocio.Size = new System.Drawing.Size(300, 50);
-            this.btnAltaNoSocio.TabIndex = 2;
-            this.btnAltaNoSocio.Text = "NUEVO NO SOCIO";
-            this.btnAltaNoSocio.UseVisualStyleBackColor = false;
-            this.btnAltaNoSocio.Click += new System.EventHandler(this.btnAltaNoSocio_Click);
+            btnAltaNoSocio.BackColor = Color.FromArgb(90, 113, 132);
+            btnAltaNoSocio.Cursor = Cursors.Hand;
+            btnAltaNoSocio.FlatAppearance.BorderSize = 0;
+            btnAltaNoSocio.FlatStyle = FlatStyle.Flat;
+            btnAltaNoSocio.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
+            btnAltaNoSocio.ForeColor = Color.White;
+            btnAltaNoSocio.Location = new Point(75, 140);
+            btnAltaNoSocio.Name = "btnAltaNoSocio";
+            btnAltaNoSocio.Size = new Size(300, 50);
+            btnAltaNoSocio.TabIndex = 2;
+            btnAltaNoSocio.Text = "NUEVO NO SOCIO";
+            btnAltaNoSocio.UseVisualStyleBackColor = false;
+            btnAltaNoSocio.Click += btnAltaNoSocio_Click;
             // 
             // btnVolver
             // 
-            this.btnVolver.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(215)))), ((int)(((byte)(193)))));
-            this.btnVolver.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnVolver.FlatAppearance.BorderSize = 0;
-            this.btnVolver.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnVolver.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.btnVolver.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(47)))), ((int)(((byte)(47)))));
-            this.btnVolver.Location = new System.Drawing.Point(150, 215);
-            this.btnVolver.Name = "btnVolver";
-            this.btnVolver.Size = new System.Drawing.Size(150, 40);
-            this.btnVolver.TabIndex = 3;
-            this.btnVolver.Text = "CANCELAR";
-            this.btnVolver.UseVisualStyleBackColor = false;
-            this.btnVolver.Click += new System.EventHandler(this.btnVolver_Click);
+            btnVolver.BackColor = Color.FromArgb(231, 215, 193);
+            btnVolver.Cursor = Cursors.Hand;
+            btnVolver.FlatAppearance.BorderSize = 0;
+            btnVolver.FlatStyle = FlatStyle.Flat;
+            btnVolver.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            btnVolver.ForeColor = Color.FromArgb(47, 47, 47);
+            btnVolver.Location = new Point(150, 215);
+            btnVolver.Name = "btnVolver";
+            btnVolver.Size = new Size(150, 40);
+            btnVolver.TabIndex = 3;
+            btnVolver.Text = "CANCELAR";
+            btnVolver.UseVisualStyleBackColor = false;
+            btnVolver.Click += btnVolver_Click;
             // 
             // FormSeleccionTipoAlta
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(450, 350);
-            this.Controls.Add(this.pnlCuerpo);
-            this.Controls.Add(this.pnlHeader);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.MaximizeBox = false;
-            this.Name = "FormSeleccionTipoAlta";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Selección de Alta - Club Emma 21";
-            this.pnlHeader.ResumeLayout(false);
-            this.pnlCuerpo.ResumeLayout(false);
-            this.ResumeLayout(false);
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(450, 350);
+            Controls.Add(pnlCuerpo);
+            Controls.Add(pnlHeader);
+            FormBorderStyle = FormBorderStyle.FixedDialog;
+            MaximizeBox = false;
+            Name = "FormSeleccionTipoAlta";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Selección de Alta - Club Emma 21";
+            pnlHeader.ResumeLayout(false);
+            pnlCuerpo.ResumeLayout(false);
+            ResumeLayout(false);
 
         }
 

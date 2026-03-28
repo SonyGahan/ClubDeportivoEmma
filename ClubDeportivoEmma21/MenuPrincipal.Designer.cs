@@ -41,6 +41,7 @@
             pnlSidebar.Name = "pnlSidebar";
             pnlSidebar.Size = new Size(250, 650);
             pnlSidebar.TabIndex = 0;
+            pnlSidebar.Paint += pnlSidebar_Paint;
             // 
             // lblUserStatus
             // 

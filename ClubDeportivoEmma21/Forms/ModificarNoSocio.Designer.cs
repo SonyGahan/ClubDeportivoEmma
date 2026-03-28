@@ -17,254 +17,255 @@
 
         private void InitializeComponent()
         {
-            this.pnlHeader = new System.Windows.Forms.Panel();
-            this.lblTitulo = new System.Windows.Forms.Label();
-            this.pnlCuerpo = new System.Windows.Forms.Panel();
-            this.lblDniBusqueda = new System.Windows.Forms.Label();
-            this.txtDniBusqueda = new System.Windows.Forms.TextBox();
-            this.btnBuscar = new System.Windows.Forms.Button();
-            this.lblNombre = new System.Windows.Forms.Label();
-            this.txtNombre = new System.Windows.Forms.TextBox();
-            this.lblApellido = new System.Windows.Forms.Label();
-            this.txtApellido = new System.Windows.Forms.TextBox();
-            this.lblTelefono = new System.Windows.Forms.Label();
-            this.txtTelefono = new System.Windows.Forms.TextBox();
-            this.lblDireccion = new System.Windows.Forms.Label();
-            this.txtDireccion = new System.Windows.Forms.TextBox();
-            this.lblMail = new System.Windows.Forms.Label();
-            this.txtMail = new System.Windows.Forms.TextBox();
-            this.btnGuardar = new System.Windows.Forms.Button();
-            this.btnCancelar = new System.Windows.Forms.Button();
-            this.pnlHeader.SuspendLayout();
-            this.pnlCuerpo.SuspendLayout();
-            this.SuspendLayout();
+            pnlHeader = new Panel();
+            lblTitulo = new Label();
+            pnlCuerpo = new Panel();
+            lblDniBusqueda = new Label();
+            txtDniBusqueda = new TextBox();
+            btnBuscar = new Button();
+            lblNombre = new Label();
+            txtNombre = new TextBox();
+            lblApellido = new Label();
+            txtApellido = new TextBox();
+            lblTelefono = new Label();
+            txtTelefono = new TextBox();
+            lblDireccion = new Label();
+            txtDireccion = new TextBox();
+            lblMail = new Label();
+            txtMail = new TextBox();
+            btnGuardar = new Button();
+            btnCancelar = new Button();
+            pnlHeader.SuspendLayout();
+            pnlCuerpo.SuspendLayout();
+            SuspendLayout();
             // 
             // pnlHeader
             // 
-            this.pnlHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(80)))), ((int)(((byte)(107)))));
-            this.pnlHeader.Controls.Add(this.lblTitulo);
-            this.pnlHeader.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlHeader.Location = new System.Drawing.Point(0, 0);
-            this.pnlHeader.Name = "pnlHeader";
-            this.pnlHeader.Size = new System.Drawing.Size(550, 80);
-            this.pnlHeader.TabIndex = 0;
+            pnlHeader.BackColor = Color.FromArgb(58, 80, 107);
+            pnlHeader.Controls.Add(lblTitulo);
+            pnlHeader.Dock = DockStyle.Top;
+            pnlHeader.Location = new Point(0, 0);
+            pnlHeader.Name = "pnlHeader";
+            pnlHeader.Size = new Size(550, 80);
+            pnlHeader.TabIndex = 0;
             // 
             // lblTitulo
             // 
-            this.lblTitulo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblTitulo.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold);
-            this.lblTitulo.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.lblTitulo.Location = new System.Drawing.Point(0, 0);
-            this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(550, 80);
-            this.lblTitulo.TabIndex = 0;
-            this.lblTitulo.Text = "Modificar No Socio";
-            this.lblTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            lblTitulo.Dock = DockStyle.Fill;
+            lblTitulo.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
+            lblTitulo.ForeColor = Color.WhiteSmoke;
+            lblTitulo.Location = new Point(0, 0);
+            lblTitulo.Name = "lblTitulo";
+            lblTitulo.Size = new Size(550, 80);
+            lblTitulo.TabIndex = 0;
+            lblTitulo.Text = "Modificar No Socio";
+            lblTitulo.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // pnlCuerpo
             // 
-            this.pnlCuerpo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(237)))), ((int)(((byte)(242)))));
-            this.pnlCuerpo.Controls.Add(this.lblDniBusqueda);
-            this.pnlCuerpo.Controls.Add(this.txtDniBusqueda);
-            this.pnlCuerpo.Controls.Add(this.btnBuscar);
-            this.pnlCuerpo.Controls.Add(this.lblNombre);
-            this.pnlCuerpo.Controls.Add(this.txtNombre);
-            this.pnlCuerpo.Controls.Add(this.lblApellido);
-            this.pnlCuerpo.Controls.Add(this.txtApellido);
-            this.pnlCuerpo.Controls.Add(this.lblTelefono);
-            this.pnlCuerpo.Controls.Add(this.txtTelefono);
-            this.pnlCuerpo.Controls.Add(this.lblDireccion);
-            this.pnlCuerpo.Controls.Add(this.txtDireccion);
-            this.pnlCuerpo.Controls.Add(this.lblMail);
-            this.pnlCuerpo.Controls.Add(this.txtMail);
-            this.pnlCuerpo.Controls.Add(this.btnGuardar);
-            this.pnlCuerpo.Controls.Add(this.btnCancelar);
-            this.pnlCuerpo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlCuerpo.Location = new System.Drawing.Point(0, 80);
-            this.pnlCuerpo.Name = "pnlCuerpo";
-            this.pnlCuerpo.Size = new System.Drawing.Size(550, 470);
-            this.pnlCuerpo.TabIndex = 1;
+            pnlCuerpo.BackColor = Color.FromArgb(232, 237, 242);
+            pnlCuerpo.Controls.Add(lblDniBusqueda);
+            pnlCuerpo.Controls.Add(txtDniBusqueda);
+            pnlCuerpo.Controls.Add(btnBuscar);
+            pnlCuerpo.Controls.Add(lblNombre);
+            pnlCuerpo.Controls.Add(txtNombre);
+            pnlCuerpo.Controls.Add(lblApellido);
+            pnlCuerpo.Controls.Add(txtApellido);
+            pnlCuerpo.Controls.Add(lblTelefono);
+            pnlCuerpo.Controls.Add(txtTelefono);
+            pnlCuerpo.Controls.Add(lblDireccion);
+            pnlCuerpo.Controls.Add(txtDireccion);
+            pnlCuerpo.Controls.Add(lblMail);
+            pnlCuerpo.Controls.Add(txtMail);
+            pnlCuerpo.Controls.Add(btnGuardar);
+            pnlCuerpo.Controls.Add(btnCancelar);
+            pnlCuerpo.Dock = DockStyle.Fill;
+            pnlCuerpo.Location = new Point(0, 80);
+            pnlCuerpo.Name = "pnlCuerpo";
+            pnlCuerpo.Size = new Size(550, 470);
+            pnlCuerpo.TabIndex = 1;
+            pnlCuerpo.Paint += pnlCuerpo_Paint;
             // 
             // lblDniBusqueda
             // 
-            this.lblDniBusqueda.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.lblDniBusqueda.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(47)))), ((int)(((byte)(47)))));
-            this.lblDniBusqueda.Location = new System.Drawing.Point(40, 30);
-            this.lblDniBusqueda.Name = "lblDniBusqueda";
-            this.lblDniBusqueda.Size = new System.Drawing.Size(120, 25);
-            this.lblDniBusqueda.TabIndex = 0;
-            this.lblDniBusqueda.Text = "DNI del Cliente:";
+            lblDniBusqueda.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            lblDniBusqueda.ForeColor = Color.FromArgb(47, 47, 47);
+            lblDniBusqueda.Location = new Point(40, 30);
+            lblDniBusqueda.Name = "lblDniBusqueda";
+            lblDniBusqueda.Size = new Size(120, 25);
+            lblDniBusqueda.TabIndex = 0;
+            lblDniBusqueda.Text = "DNI del Cliente:";
             // 
             // txtDniBusqueda
             // 
-            this.txtDniBusqueda.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtDniBusqueda.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.txtDniBusqueda.Location = new System.Drawing.Point(170, 27);
-            this.txtDniBusqueda.Name = "txtDniBusqueda";
-            this.txtDniBusqueda.Size = new System.Drawing.Size(180, 25);
-            this.txtDniBusqueda.TabIndex = 1;
+            txtDniBusqueda.BorderStyle = BorderStyle.FixedSingle;
+            txtDniBusqueda.Font = new Font("Segoe UI", 10F);
+            txtDniBusqueda.Location = new Point(170, 27);
+            txtDniBusqueda.Name = "txtDniBusqueda";
+            txtDniBusqueda.Size = new Size(180, 25);
+            txtDniBusqueda.TabIndex = 1;
             // 
             // btnBuscar
             // 
-            this.btnBuscar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(80)))), ((int)(((byte)(107)))));
-            this.btnBuscar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnBuscar.FlatAppearance.BorderSize = 0;
-            this.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBuscar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.btnBuscar.ForeColor = System.Drawing.Color.White;
-            this.btnBuscar.Location = new System.Drawing.Point(370, 25);
-            this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(120, 30);
-            this.btnBuscar.TabIndex = 2;
-            this.btnBuscar.Text = "BUSCAR";
-            this.btnBuscar.UseVisualStyleBackColor = false;
-            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
+            btnBuscar.BackColor = Color.FromArgb(58, 80, 107);
+            btnBuscar.Cursor = Cursors.Hand;
+            btnBuscar.FlatAppearance.BorderSize = 0;
+            btnBuscar.FlatStyle = FlatStyle.Flat;
+            btnBuscar.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            btnBuscar.ForeColor = Color.White;
+            btnBuscar.Location = new Point(370, 25);
+            btnBuscar.Name = "btnBuscar";
+            btnBuscar.Size = new Size(120, 30);
+            btnBuscar.TabIndex = 2;
+            btnBuscar.Text = "BUSCAR";
+            btnBuscar.UseVisualStyleBackColor = false;
+            btnBuscar.Click += btnBuscar_Click;
             // 
             // lblNombre
             // 
-            this.lblNombre.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.lblNombre.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(47)))), ((int)(((byte)(47)))));
-            this.lblNombre.Location = new System.Drawing.Point(40, 100);
-            this.lblNombre.Name = "lblNombre";
-            this.lblNombre.Size = new System.Drawing.Size(120, 25);
-            this.lblNombre.TabIndex = 3;
-            this.lblNombre.Text = "Nombre:";
+            lblNombre.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            lblNombre.ForeColor = Color.FromArgb(47, 47, 47);
+            lblNombre.Location = new Point(40, 100);
+            lblNombre.Name = "lblNombre";
+            lblNombre.Size = new Size(120, 25);
+            lblNombre.TabIndex = 3;
+            lblNombre.Text = "Nombre:";
             // 
             // txtNombre
             // 
-            this.txtNombre.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtNombre.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.txtNombre.Location = new System.Drawing.Point(170, 97);
-            this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(320, 25);
-            this.txtNombre.TabIndex = 4;
+            txtNombre.BorderStyle = BorderStyle.FixedSingle;
+            txtNombre.Font = new Font("Segoe UI", 10F);
+            txtNombre.Location = new Point(170, 97);
+            txtNombre.Name = "txtNombre";
+            txtNombre.Size = new Size(320, 25);
+            txtNombre.TabIndex = 4;
             // 
             // lblApellido
             // 
-            this.lblApellido.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.lblApellido.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(47)))), ((int)(((byte)(47)))));
-            this.lblApellido.Location = new System.Drawing.Point(40, 150);
-            this.lblApellido.Name = "lblApellido";
-            this.lblApellido.Size = new System.Drawing.Size(120, 25);
-            this.lblApellido.TabIndex = 5;
-            this.lblApellido.Text = "Apellido:";
+            lblApellido.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            lblApellido.ForeColor = Color.FromArgb(47, 47, 47);
+            lblApellido.Location = new Point(40, 150);
+            lblApellido.Name = "lblApellido";
+            lblApellido.Size = new Size(120, 25);
+            lblApellido.TabIndex = 5;
+            lblApellido.Text = "Apellido:";
             // 
             // txtApellido
             // 
-            this.txtApellido.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtApellido.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.txtApellido.Location = new System.Drawing.Point(170, 147);
-            this.txtApellido.Name = "txtApellido";
-            this.txtApellido.Size = new System.Drawing.Size(320, 25);
-            this.txtApellido.TabIndex = 6;
+            txtApellido.BorderStyle = BorderStyle.FixedSingle;
+            txtApellido.Font = new Font("Segoe UI", 10F);
+            txtApellido.Location = new Point(170, 147);
+            txtApellido.Name = "txtApellido";
+            txtApellido.Size = new Size(320, 25);
+            txtApellido.TabIndex = 6;
             // 
             // lblTelefono
             // 
-            this.lblTelefono.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.lblTelefono.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(47)))), ((int)(((byte)(47)))));
-            this.lblTelefono.Location = new System.Drawing.Point(40, 200);
-            this.lblTelefono.Name = "lblTelefono";
-            this.lblTelefono.Size = new System.Drawing.Size(120, 25);
-            this.lblTelefono.TabIndex = 7;
-            this.lblTelefono.Text = "Teléfono:";
+            lblTelefono.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            lblTelefono.ForeColor = Color.FromArgb(47, 47, 47);
+            lblTelefono.Location = new Point(40, 200);
+            lblTelefono.Name = "lblTelefono";
+            lblTelefono.Size = new Size(120, 25);
+            lblTelefono.TabIndex = 7;
+            lblTelefono.Text = "Teléfono:";
             // 
             // txtTelefono
             // 
-            this.txtTelefono.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtTelefono.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.txtTelefono.Location = new System.Drawing.Point(170, 197);
-            this.txtTelefono.Name = "txtTelefono";
-            this.txtTelefono.Size = new System.Drawing.Size(320, 25);
-            this.txtTelefono.TabIndex = 8;
+            txtTelefono.BorderStyle = BorderStyle.FixedSingle;
+            txtTelefono.Font = new Font("Segoe UI", 10F);
+            txtTelefono.Location = new Point(170, 197);
+            txtTelefono.Name = "txtTelefono";
+            txtTelefono.Size = new Size(320, 25);
+            txtTelefono.TabIndex = 8;
             // 
             // lblDireccion
             // 
-            this.lblDireccion.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.lblDireccion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(47)))), ((int)(((byte)(47)))));
-            this.lblDireccion.Location = new System.Drawing.Point(40, 250);
-            this.lblDireccion.Name = "lblDireccion";
-            this.lblDireccion.Size = new System.Drawing.Size(120, 25);
-            this.lblDireccion.TabIndex = 9;
-            this.lblDireccion.Text = "Dirección:";
+            lblDireccion.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            lblDireccion.ForeColor = Color.FromArgb(47, 47, 47);
+            lblDireccion.Location = new Point(40, 250);
+            lblDireccion.Name = "lblDireccion";
+            lblDireccion.Size = new Size(120, 25);
+            lblDireccion.TabIndex = 9;
+            lblDireccion.Text = "Dirección:";
             // 
             // txtDireccion
             // 
-            this.txtDireccion.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtDireccion.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.txtDireccion.Location = new System.Drawing.Point(170, 247);
-            this.txtDireccion.Name = "txtDireccion";
-            this.txtDireccion.Size = new System.Drawing.Size(320, 25);
-            this.txtDireccion.TabIndex = 10;
+            txtDireccion.BorderStyle = BorderStyle.FixedSingle;
+            txtDireccion.Font = new Font("Segoe UI", 10F);
+            txtDireccion.Location = new Point(170, 247);
+            txtDireccion.Name = "txtDireccion";
+            txtDireccion.Size = new Size(320, 25);
+            txtDireccion.TabIndex = 10;
             // 
             // lblMail
             // 
-            this.lblMail.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.lblMail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(47)))), ((int)(((byte)(47)))));
-            this.lblMail.Location = new System.Drawing.Point(40, 300);
-            this.lblMail.Name = "lblMail";
-            this.lblMail.Size = new System.Drawing.Size(120, 25);
-            this.lblMail.TabIndex = 11;
-            this.lblMail.Text = "E-mail:";
+            lblMail.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            lblMail.ForeColor = Color.FromArgb(47, 47, 47);
+            lblMail.Location = new Point(40, 300);
+            lblMail.Name = "lblMail";
+            lblMail.Size = new Size(120, 25);
+            lblMail.TabIndex = 11;
+            lblMail.Text = "E-mail:";
             // 
             // txtMail
             // 
-            this.txtMail.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtMail.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.txtMail.Location = new System.Drawing.Point(170, 297);
-            this.txtMail.Name = "txtMail";
-            this.txtMail.Size = new System.Drawing.Size(320, 25);
-            this.txtMail.TabIndex = 12;
+            txtMail.BorderStyle = BorderStyle.FixedSingle;
+            txtMail.Font = new Font("Segoe UI", 10F);
+            txtMail.Location = new Point(170, 297);
+            txtMail.Name = "txtMail";
+            txtMail.Size = new Size(320, 25);
+            txtMail.TabIndex = 12;
             // 
             // btnGuardar
             // 
-            this.btnGuardar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(113)))), ((int)(((byte)(132)))));
-            this.btnGuardar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnGuardar.Enabled = false;
-            this.btnGuardar.FlatAppearance.BorderSize = 0;
-            this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnGuardar.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
-            this.btnGuardar.ForeColor = System.Drawing.Color.White;
-            this.btnGuardar.Location = new System.Drawing.Point(300, 380);
-            this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(190, 50);
-            this.btnGuardar.TabIndex = 13;
-            this.btnGuardar.Text = "GUARDAR CAMBIOS";
-            this.btnGuardar.UseVisualStyleBackColor = false;
-            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
+            btnGuardar.BackColor = Color.FromArgb(90, 113, 132);
+            btnGuardar.Cursor = Cursors.Hand;
+            btnGuardar.Enabled = false;
+            btnGuardar.FlatAppearance.BorderSize = 0;
+            btnGuardar.FlatStyle = FlatStyle.Flat;
+            btnGuardar.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
+            btnGuardar.ForeColor = Color.White;
+            btnGuardar.Location = new Point(300, 380);
+            btnGuardar.Name = "btnGuardar";
+            btnGuardar.Size = new Size(190, 50);
+            btnGuardar.TabIndex = 13;
+            btnGuardar.Text = "GUARDAR CAMBIOS";
+            btnGuardar.UseVisualStyleBackColor = false;
+            btnGuardar.Click += btnGuardar_Click;
             // 
             // btnCancelar
             // 
-            this.btnCancelar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(215)))), ((int)(((byte)(193)))));
-            this.btnCancelar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCancelar.FlatAppearance.BorderSize = 0;
-            this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancelar.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
-            this.btnCancelar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(47)))), ((int)(((byte)(47)))));
-            this.btnCancelar.Location = new System.Drawing.Point(40, 380);
-            this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(190, 50);
-            this.btnCancelar.TabIndex = 14;
-            this.btnCancelar.Text = "CANCELAR";
-            this.btnCancelar.UseVisualStyleBackColor = false;
-            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
+            btnCancelar.BackColor = Color.FromArgb(231, 215, 193);
+            btnCancelar.Cursor = Cursors.Hand;
+            btnCancelar.FlatAppearance.BorderSize = 0;
+            btnCancelar.FlatStyle = FlatStyle.Flat;
+            btnCancelar.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
+            btnCancelar.ForeColor = Color.FromArgb(47, 47, 47);
+            btnCancelar.Location = new Point(40, 380);
+            btnCancelar.Name = "btnCancelar";
+            btnCancelar.Size = new Size(190, 50);
+            btnCancelar.TabIndex = 14;
+            btnCancelar.Text = "CANCELAR";
+            btnCancelar.UseVisualStyleBackColor = false;
+            btnCancelar.Click += btnCancelar_Click;
             // 
             // ModificarNoSocio
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(550, 550);
-            this.Controls.Add(this.pnlCuerpo);
-            this.Controls.Add(this.pnlHeader);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.MaximizeBox = false;
-            this.Name = "ModificarNoSocio";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Editar No Socio - Club Emma 21";
-            this.Load += new System.EventHandler(this.ModificarNoSocio_Load);
-            this.pnlHeader.ResumeLayout(false);
-            this.pnlCuerpo.ResumeLayout(false);
-            this.pnlCuerpo.PerformLayout();
-            this.ResumeLayout(false);
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(550, 550);
+            Controls.Add(pnlCuerpo);
+            Controls.Add(pnlHeader);
+            FormBorderStyle = FormBorderStyle.FixedDialog;
+            MaximizeBox = false;
+            Name = "ModificarNoSocio";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Editar No Socio - Club Emma 21";
+            Load += ModificarNoSocio_Load;
+            pnlHeader.ResumeLayout(false);
+            pnlCuerpo.ResumeLayout(false);
+            pnlCuerpo.PerformLayout();
+            ResumeLayout(false);
 
         }
 

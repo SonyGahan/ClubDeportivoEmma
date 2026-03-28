@@ -19,7 +19,7 @@ namespace ClubDeportivoEmma21.Forms
 
         private void FormModificaCliente_Load(object sender, EventArgs e)
         {
-            // Iniciamos con los campos vacíos
+            // Inicia con los campos vacíos.
             this.btnGuardar.Enabled = false;
         }
 
@@ -33,11 +33,13 @@ namespace ClubDeportivoEmma21.Forms
             this.btnGuardar.MouseLeave += (s, e) => this.btnGuardar.BackColor = Color.FromArgb(90, 113, 132);
 
             // Botón Cancelar (Dorado)
-            this.btnCancelar.MouseEnter += (s, e) => {
+            this.btnCancelar.MouseEnter += (s, e) =>
+            {
                 this.btnCancelar.BackColor = Color.FromArgb(212, 175, 55);
                 this.btnCancelar.ForeColor = Color.White;
             };
-            this.btnCancelar.MouseLeave += (s, e) => {
+            this.btnCancelar.MouseLeave += (s, e) =>
+            {
                 this.btnCancelar.BackColor = Color.FromArgb(231, 215, 193);
                 this.btnCancelar.ForeColor = Color.Black;
             };
@@ -57,7 +59,7 @@ namespace ClubDeportivoEmma21.Forms
                 using (var conn = _db.GetConnection())
                 {
                     conn.Open();
-                    // Buscamos si es socio y traemos sus datos de PERSONA
+                    // Busca si es socio y traemos sus datos de PERSONA.
                     string sql = @"SELECT p.id_persona, p.nombre, p.apellido, p.telefono, p.direccion, p.mail 
                                  FROM persona p 
                                  JOIN socio s ON p.id_persona = s.id_socio 
@@ -143,6 +145,11 @@ namespace ClubDeportivoEmma21.Forms
             txtMail.Clear();
             idPersonaEncontrada = 0;
             btnGuardar.Enabled = false;
+        }
+
+        private void pnlCuerpo_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

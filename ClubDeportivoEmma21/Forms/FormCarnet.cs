@@ -25,15 +25,15 @@ namespace ClubDeportivoEmma21.Forms
         {
             try
             {
-                // Construimos la ruta hacia la carpeta img del proyecto
-                // Subimos niveles desde bin/Debug/net9.0-windows hacia la raíz del proyecto
+                // Construye la ruta hacia la carpeta img del proyecto
+                // Sube niveles desde bin/Debug/net9.0-windows hacia la raíz del proyecto
                 string baseDir = AppDomain.CurrentDomain.BaseDirectory;
                 string projectDir = Path.GetFullPath(Path.Combine(baseDir, "..", "..", ".."));
                 string imagePath = Path.Combine(projectDir, "img", "img_carnet_3.jpeg");
 
                 if (File.Exists(imagePath))
                 {
-                    // Si la imagen existe en el disco, la cargamos
+                    // Si la imagen existe en el disco, la carga.
                     picFotoSocio.Image = Image.FromFile(imagePath);
                 }
                 else
@@ -44,23 +44,25 @@ namespace ClubDeportivoEmma21.Forms
             }
             catch (Exception)
             {
-                // Si falla la carga, dejamos un color de fondo para que no se vea vacío
+                // Si falla la carga, deja un color de fondo para que no se vea vacío.
                 picFotoSocio.BackColor = Color.LightGray;
             }
         }
 
         private void AsignarEfectosHover()
         {
-            // Efectos para el botón Imprimir (Azul Petróleo)
+            // Efectos para el botón Imprimir - Azul Petróleo
             btnImprimir.MouseEnter += (s, e) => btnImprimir.BackColor = Color.FromArgb(58, 80, 107);
             btnImprimir.MouseLeave += (s, e) => btnImprimir.BackColor = Color.FromArgb(90, 113, 132);
 
-            // Efectos para el botón Volver (Dorado)
-            btnCerrar.MouseEnter += (s, e) => {
+            // Efectos para el botón Volver - Dorado
+            btnCerrar.MouseEnter += (s, e) =>
+            {
                 btnCerrar.BackColor = Color.FromArgb(212, 175, 55);
                 btnCerrar.ForeColor = Color.White;
             };
-            btnCerrar.MouseLeave += (s, e) => {
+            btnCerrar.MouseLeave += (s, e) =>
+            {
                 btnCerrar.BackColor = Color.FromArgb(231, 215, 193);
                 btnCerrar.ForeColor = Color.Black;
             };
@@ -77,6 +79,11 @@ namespace ClubDeportivoEmma21.Forms
         {
             this.DialogResult = DialogResult.Cancel;
             this.Close();
+        }
+
+        private void panelFondo_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

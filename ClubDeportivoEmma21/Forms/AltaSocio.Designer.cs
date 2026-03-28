@@ -86,7 +86,7 @@
             this.pnlCuerpo.TabIndex = 1;
             this.pnlCuerpo.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlCuerpo_Paint);
             // 
-            // Labels y Textbox (Posiciones corregidas)
+            // Labels y Textbox
             // 
             this.lblSocioNombre.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.lblSocioNombre.Location = new System.Drawing.Point(50, 30);
@@ -155,7 +155,7 @@
             this.btnRegistrarSocio.Text = "REGISTRAR SOCIO";
             this.btnRegistrarSocio.Click += new System.EventHandler(this.btnRegistrarSocio_Click);
 
-            // Botón Cancelar (CORREGIDO: Apunta a btnCancelarAltaSocio_Click)
+            // Botón Cancelar - Apunta a btnCancelarAltaSocio_Click
             this.btnCancelarAltaSocio.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(215)))), ((int)(((byte)(193)))));
             this.btnCancelarAltaSocio.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancelarAltaSocio.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);

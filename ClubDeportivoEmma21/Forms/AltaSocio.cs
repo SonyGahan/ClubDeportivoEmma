@@ -42,7 +42,7 @@ namespace ClubDeportivoEmma21.Forms
                 using (var conn = _db.GetConnection())
                 {
                     conn.Open();
-                    // Usamos el Stored Procedure que creamos en la base de datos
+                    // Usa el Stored Procedure que se creó en la base de datos
                     using (var cmd = new MySqlCommand("sp_AltaNuevoSocio", conn))
                     {
                         cmd.CommandType = System.Data.CommandType.StoredProcedure;

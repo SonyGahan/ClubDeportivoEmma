@@ -28,7 +28,7 @@ namespace ClubDeportivoEmma21.Forms
 
         private void PagoCuota_Load(object sender, EventArgs e)
         {
-            // 1. LLAMADA AL BLINDAJE: Actualizamos estados de cuenta en la BD
+            // 1. LLAMADA AL BLINDAJE: Actualiza estados de cuenta en la BD.
             ActualizarEstadosDeCuenta();
 
             ConfigurarMediosDePago();
@@ -39,7 +39,7 @@ namespace ClubDeportivoEmma21.Forms
             }
         }
 
-        // Nuevo método para llamar al Stored Procedure
+        // Metodo para llamar al Stored Procedure.
         private void ActualizarEstadosDeCuenta()
         {
             try
@@ -47,7 +47,7 @@ namespace ClubDeportivoEmma21.Forms
                 using (var conn = _db.GetConnection())
                 {
                     conn.Open();
-                    // Ejecutamos el procedimiento almacenado que creamos en MySQL
+                    // Ejecuta el Store Procedure que se diseño en MySQL.
                     using (var cmd = new MySqlCommand("sp_ActualizarMorosos", conn))
                     {
                         cmd.CommandType = System.Data.CommandType.StoredProcedure;
@@ -57,7 +57,7 @@ namespace ClubDeportivoEmma21.Forms
             }
             catch (Exception ex)
             {
-                // Log de error silencioso o aviso al usuario
+                // Log de error silencioso o aviso al usuario.
                 Console.WriteLine("Error al actualizar morosos: " + ex.Message);
             }
         }
@@ -70,7 +70,7 @@ namespace ClubDeportivoEmma21.Forms
             clbOpcionDePagoSocio.Items.Add("Tarjeta");
             clbOpcionDePagoSocio.CheckOnClick = true;
 
-            // Aseguramos selección única
+            // Asegura selección única del método de pago.
             clbOpcionDePagoSocio.ItemCheck += (s, ev) =>
             {
                 if (ev.NewValue == CheckState.Checked)
@@ -179,7 +179,7 @@ namespace ClubDeportivoEmma21.Forms
                 using (var conn = _db.GetConnection())
                 {
                     conn.Open();
-                    // Traemos la cuota más antigua pendiente o vencida
+                    // Trae la cuota más antigua pendiente o vencida.
                     string sql = @"SELECT id_cuota, mes_a_pagar, valor_cuota FROM cuota 
                                  WHERE id_socio = @id AND (estado_pago = 'Pendiente' OR estado_pago = 'Vencido') 
                                  ORDER BY mes_a_pagar ASC LIMIT 1";

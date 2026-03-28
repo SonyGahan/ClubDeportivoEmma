@@ -22,11 +22,13 @@ namespace ClubDeportivoEmma21.Forms
             this.btnAltaNoSocio.MouseLeave += (s, e) => this.btnAltaNoSocio.BackColor = Color.FromArgb(90, 113, 132);
 
             // Efecto para botón Volver (Dorado)
-            this.btnVolver.MouseEnter += (s, e) => {
+            this.btnVolver.MouseEnter += (s, e) =>
+            {
                 this.btnVolver.BackColor = Color.FromArgb(212, 175, 55);
                 this.btnVolver.ForeColor = Color.White;
             };
-            this.btnVolver.MouseLeave += (s, e) => {
+            this.btnVolver.MouseLeave += (s, e) =>
+            {
                 this.btnVolver.BackColor = Color.FromArgb(231, 215, 193);
                 this.btnVolver.ForeColor = Color.FromArgb(47, 47, 47);
             };
@@ -55,6 +57,11 @@ namespace ClubDeportivoEmma21.Forms
         private void btnVolver_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void pnlCuerpo_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

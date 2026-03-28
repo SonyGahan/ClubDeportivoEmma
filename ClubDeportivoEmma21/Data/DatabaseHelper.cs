@@ -12,7 +12,7 @@ namespace ClubDeportivoEmma21.Data
 
         public DatabaseHelper()
         {
-            // Cargar appsettings.json desde la carpeta donde corre el ejecutable
+            // Cargar appsettings.json desde la carpeta donde corre el ejecutable.
             string basePath = AppDomain.CurrentDomain.BaseDirectory;
 
             var builder = new ConfigurationBuilder()

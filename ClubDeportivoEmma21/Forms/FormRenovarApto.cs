@@ -19,7 +19,7 @@ namespace ClubDeportivoEmma21.Forms
 
         private void FormRenovarApto_Load(object sender, EventArgs e)
         {
-            // El botón de renovar empieza bloqueado hasta que se encuentre un DNI válido
+            // El botón de renovar empieza bloqueado hasta que se encuentre un DNI válido.
             btnRenovar.Enabled = false;
         }
 
@@ -34,11 +34,13 @@ namespace ClubDeportivoEmma21.Forms
             btnRenovar.MouseLeave += (s, e) => btnRenovar.BackColor = Color.FromArgb(90, 113, 132);
 
             // Botón Volver (Beige)
-            btnCancelar.MouseEnter += (s, e) => {
+            btnCancelar.MouseEnter += (s, e) =>
+            {
                 btnCancelar.BackColor = Color.FromArgb(212, 175, 55);
                 btnCancelar.ForeColor = Color.White;
             };
-            btnCancelar.MouseLeave += (s, e) => {
+            btnCancelar.MouseLeave += (s, e) =>
+            {
                 btnCancelar.BackColor = Color.FromArgb(231, 215, 193);
                 btnCancelar.ForeColor = Color.FromArgb(47, 47, 47);
             };
@@ -59,7 +61,7 @@ namespace ClubDeportivoEmma21.Forms
                 using (var conn = _db.GetConnection())
                 {
                     conn.Open();
-                    // Consultamos la tabla PERSONA para obtener nombre y fecha de vencimiento [cite: 2023]
+                    // Consulta la tabla PERSONA para obtener nombre y fecha de vencimiento.
                     string sql = "SELECT id_persona, nombre, apellido, fecha_venc_apto FROM persona WHERE dni = @dni";
 
                     using (var cmd = new MySqlCommand(sql, conn))
@@ -78,7 +80,7 @@ namespace ClubDeportivoEmma21.Forms
                                     DateTime fecha = Convert.ToDateTime(reader["fecha_venc_apto"]);
                                     lblVencimientoDato.Text = fecha.ToString("dd/MM/yyyy");
 
-                                    // Lógica de colores para el vencimiento [cite: 2038-2041]
+                                    // Lógica de colores para el vencimiento.
                                     if (fecha < DateTime.Today)
                                     {
                                         lblVencimientoDato.ForeColor = Color.Red; // Vencido
@@ -117,13 +119,13 @@ namespace ClubDeportivoEmma21.Forms
 
             try
             {
-                // Calculamos 1 año desde hoy [cite: 2070]
+                // Calcula 1 año a partir de  hoy.
                 DateTime nuevaFecha = DateTime.Today.AddYears(1);
 
                 using (var conn = _db.GetConnection())
                 {
                     conn.Open();
-                   // Actualizamos el registro en la base de datos [cite: 2075-2078]
+                    // Actualiza el registro en la base de datos.
                     string sqlUpdate = "UPDATE persona SET apto_medico = 1, fecha_venc_apto = @fecha WHERE id_persona = @id";
 
                     using (var cmd = new MySqlCommand(sqlUpdate, conn))
@@ -155,6 +157,11 @@ namespace ClubDeportivoEmma21.Forms
             lblVencimientoDato.ForeColor = Color.FromArgb(47, 47, 47);
             idPersonaEncontrada = 0;
             btnRenovar.Enabled = false;
+        }
+
+        private void pnlCuerpo_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

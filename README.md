@@ -1,7 +1,10 @@
-# 🏅 Club Deportivo Emma
+# 🏅 Club Deportivo Emma - Sistema de Gestión Integral
 
-Sistema de gestión para un club deportivo desarrollado en **C# (.NET 9)** con interfaz de **Windows Forms** y base de datos **MySQL**.  
-Permite gestionar inscripciones de socios y no socios, pagos de cuotas, actividades y listado de morosos.
+![.NET](https://img.shields.io/badge/.NET-9.0-512BD4?style=for-the-badge&logo=dotnet)
+![MySQL](https://img.shields.io/badge/MySQL-8.0-4479A1?style=for-the-badge&logo=mysql)
+![C#](https://img.shields.io/badge/C%23-12.0-239120?style=for-the-badge&logo=csharp)
+
+Sistema profesional desarrollado para la administración de un club deportivo. El proyecto destaca por su robustez en el manejo de reglas de negocio, integridad de datos y una interfaz de usuario intuitiva y estilizada.
 
 ---
 
@@ -17,15 +20,30 @@ Permite gestionar inscripciones de socios y no socios, pagos de cuotas, activida
 
 ---
 
+### ⚙️ Arquitectura de Base de Datos
+- **Procedimientos Almacenados (Stored Procedures):** Toda la lógica crítica de escritura se delega al motor MySQL (`sp_AltaNuevoSocio`, `sp_ActualizarMorosos`), garantizando velocidad y seguridad.
+- **Transacciones Atómicas:** El proceso de alta asegura que el registro de la persona, su membresía y su primera cuota se generen en un solo bloque indivisible.
+- **Normalización:** Estructura de tablas optimizada (Persona -> Socio/No Socio) para evitar redundancia.
+
+### 🛡️ Motor de Validaciones (`ValidadorNegocio.cs`)
+Implementación de una capa de servicios para verificar:
+- **Estado de Apto Médico:** Bloqueo automático de acceso a actividades y emisión de carnets si el apto está vencido.
+- **Control de Morosidad:** Detección de deudas pendientes que impiden la operación del socio en el club.
+
+---
+
 ## 🛠️ Tecnologías utilizadas
 
-- **Lenguaje**: C# 12
-- **Framework**: .NET 9 (Windows Forms)
-- **Base de datos**: MySQL 8+
-- **Gestor de paquetes**: NuGet
-- **Librerías**:
-  - `MySql.Data` → Conexión a MySQL
-  - `Microsoft.Extensions.Configuration.Json` → Carga de configuración
+### Stack Técnico
+- **Frontend:** Windows Forms (.NET 9) con diseño explícito en C#.
+- **Backend:** C# 12 con Programación Orientada a Objetos (POO).
+- **Persistencia:** MySQL Server 8.0+.
+- **Configuración:** Inyección de dependencias para la lectura de `appsettings.json`.
+
+### Requisitos Previos
+- Visual Studio 2022 (v17.10+).
+- MySQL Workbench o similar.
+- SDK de .NET 9.0.
 
 ---
 
@@ -42,6 +60,19 @@ ClubDeportivoEmma/
 ```
 
 ---
+
+## 📷 Capturas de Pantalla
+
+A continuación te mostramos cómo se ve la aplicación:
+
+![Presentación del Sistema](/ClubDeportivoEmma21/img/login.JPG)
+
+---
+
+![Vista Principal](/ClubDeportivoEmma21/img/menuPrincipal.JPG)
+
+---
+
 
 ## 🚀 Cómo ejecutar el proyecto
 
@@ -60,10 +91,10 @@ ClubDeportivoEmma/
    cd DSOO-clubEmma
    ```  
 
-### 2. Configuración
+2. **Configuración**
 
-1. **Crear la base de datos** `baseclubdeportivo` ejecutando el script SQL proporcionado.
-2. En la raíz del proyecto, crea un archivo `appsettings.json` con tu conexión:
+A. **Crear la base de datos** `baseclubdeportivo` ejecutando el script SQL proporcionado. Crucial: Ejecutar los scripts de Stored Procedures para habilitar las funcionalidades de alta y morosidad.
+B. En la raíz del proyecto, crea un archivo `appsettings.json` con tu conexión:
 
 ```json
 {
@@ -81,8 +112,8 @@ Presiona F5 o haz clic en Iniciar.
 
 ```
 Inicia sesión con:
-Usuario: admin
-Contraseña: admin123
+Usuario: MyUser
+Contraseña: MyPassword
 ```
 
 ---
